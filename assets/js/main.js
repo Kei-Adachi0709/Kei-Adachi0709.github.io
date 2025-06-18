@@ -8,69 +8,10 @@ const navLinks = document.querySelectorAll('.nav__link');
 const header = document.getElementById('header');
 const themeButton = document.getElementById('theme-button');
 const scrollUp = document.getElementById('scroll-up');
-const pageLoader = document.getElementById('page-loader');
+// const pageLoader = document.getElementById('page-loader'); // 削除
 
-// ===== ページローダー（修正版） =====
-const initPageLoader = () => {
-    const preloader = document.getElementById('page-loader') || document.getElementById('preloader');
-    
-    if (preloader) {
-        console.log('ページローダーを初期化中...');
-        
-        // 最小表示時間を設定（UX向上）
-        const minLoadTime = 800;
-        const startTime = Date.now();
-        
-        const hideLoader = () => {
-            const elapsedTime = Date.now() - startTime;
-            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
-            
-            console.log('ページローダーを非表示にします...');
-            
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                preloader.style.pointerEvents = 'none';
-                
-                // アニメーション完了後に要素を削除
-                setTimeout(() => {
-                    if (preloader.parentNode) {
-                        preloader.style.display = 'none';
-                        console.log('ページローダーが正常に非表示になりました');
-                    }
-                }, 300);
-            }, remainingTime);
-        };
-        
-        // DOM完全読み込み後にローダーを非表示
-        if (document.readyState === 'complete') {
-            console.log('DOM読み込み完了 - ローダーを非表示');
-            hideLoader();
-        } else {
-            window.addEventListener('load', () => {
-                console.log('Window load イベント - ローダーを非表示');
-                hideLoader();
-            });
-            
-            // DOMContentLoaded のフォールバック
-            document.addEventListener('DOMContentLoaded', () => {
-                console.log('DOMContentLoaded - ローダーの準備');
-                setTimeout(hideLoader, 500);
-            });
-            
-            // 最終フォールバック: 3秒後に強制非表示
-            setTimeout(() => {
-                console.log('フォールバック - ローダーを強制非表示');
-                hideLoader();
-            }, 3000);
-        }
-    } else {
-        console.log('ページローダー要素が見つかりません');
-    }
-};
-
-// ページローダーを即座に初期化
-initPageLoader();
+// ===== ページローダー関連コードを削除 =====
+// Loading画面で止まる問題を解決するため、ページローダー機能を完全に削除しました
 
 // ===== モバイルメニューの表示/非表示 =====
 if (navToggle) {
