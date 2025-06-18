@@ -11,22 +11,33 @@ class SecurityTestSuite {
         this.passedTests = 0;
         this.failedTests = 0;
     }
-    
-    /**
+      /**
      * すべてのセキュリティテストを実行
      */
     runAllTests() {
         console.log('🔒 セキュリティテストスイート開始');
         console.log('=====================================');
         
-        // XSS対策テスト
+        // 基本的なXSS対策テスト
         this.testXSSProtection();
         
-        // CSRF対策テスト
+        // IPA準拠包括的XSS対策テスト
+        this.testComprehensiveXSSProtection();
+        
+        // 基本的なCSRF対策テスト
         this.testCSRFProtection();
         
-        // 入力値検証テスト
+        // IPA準拠包括的CSRF対策テスト
+        this.testComprehensiveCSRFProtection();
+        
+        // 基本的な入力値検証テスト
         this.testInputValidation();
+        
+        // IPA準拠入力値検証テスト
+        this.testIPAInputValidation();
+        
+        // セキュアCookie管理テスト
+        this.testSecureCookieManagement();
         
         // SQL関連セキュリティテスト
         this.testSQLSafety();
@@ -127,10 +138,9 @@ class SecurityTestSuite {
             emailTestsPassed,
             'Valid emails accepted, invalid emails rejected'
         );
-        
-        // 名前検証
+          // 名前検証
         const validNames = ['田中太郎', 'John Doe', 'Maria García'];
-        const invalidNames = ['<script>', ''; DROP TABLE users; --'];
+        const invalidNames = ['<script>', '\'; DROP TABLE users; --'];
         
         const nameTestsPassed = validNames.every(name => 
             SecurityUtils.validateInput(name, 'name').length > 0
@@ -508,3 +518,300 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🔒 セキュリティテストスイートが読み込まれました');
     console.log('💡 セキュリティテストは「Security」セクションから実行できます');
 });
+
+/**
+ * 拡張セキュリティテストクラス
+ * IPAガイドラインに基づく包括的なセキュリティテストを実施
+ */
+class ExtendedSecurityTestSuite extends SecurityTestSuite {
+    
+    /**
+     * すべての拡張セキュリティテストを実行
+     */
+    runAllTests() {
+        super.runAllTests();
+        
+        console.log('=====================================');
+        console.log('🔒 拡張セキュリティテストスイート開始（IPA準拠）');
+        
+        // 包括的XSSテスト
+        this.testComprehensiveXSSProtection();
+        
+        // 包括的CSRFテスト
+        this.testComprehensiveCSRFProtection();
+        
+        // IPA準拠の入力値検証テスト
+        this.testIPAInputValidation();
+        
+        // セキュアCookie管理テスト
+        this.testSecureCookieManagement();
+        
+        this.generateTestReport();
+    }
+    
+    /**
+     * 「安全なウェブサイトの作り方」準拠の包括XSSテスト
+     */
+    testComprehensiveXSSProtection() {
+        console.log('🧪 包括的XSS保護テスト開始（IPA準拠）');
+        
+        // IPAガイドライン記載の典型的なXSSペイロード
+        const ipaXSSPayloads = [
+            // 基本的なスクリプトタグ
+            '<script>alert("XSS")</script>',
+            '<SCRIPT>alert("XSS")</SCRIPT>',
+            
+            // イベントハンドラ悪用
+            '<img src="x" onerror="alert(\'XSS\')">',
+            '<body onload="alert(\'XSS\')">',
+            '<input type="button" onclick="alert(\'XSS\')" value="click">',
+            
+            // JavaScript スキーム
+            'javascript:alert("XSS")',
+            'JAVASCRIPT:alert("XSS")',
+            
+            // HTMLエンティティ悪用
+            '&lt;script&gt;alert("XSS")&lt;/script&gt;',
+            
+            // 属性値内での悪用
+            '" onclick="alert(\'XSS\')" "',
+            '\' onclick=\'alert("XSS")\' \'',
+            
+            // CSSを悪用した攻撃
+            '<style>@import"javascript:alert(\'XSS\')";</style>',
+            
+            // Unicodeエスケープ悪用
+            '<script>alert(String.fromCharCode(88,83,83))</script>',
+            
+            // Base64エンコード悪用
+            '<script>eval(atob("YWxlcnQoIlhTUyIp"))</script>',
+              // HTMLコメント悪用
+            '<!--<script>alert("XSS")</script>-->',
+            
+            // XMLCDataセクション
+            '<![CDATA[<script>alert("XSS")</script>]]>',
+            
+            // SVGベクター攻撃
+            '<svg><script>alert("XSS")</script></svg>',
+            '<svg onload="alert(\'XSS\')">',
+            
+            // データURIスキーム
+            'data:text/html,<script>alert("XSS")</script>',
+            
+            // iframeによる攻撃
+            '<iframe src="javascript:alert(\'XSS\')"></iframe>',
+            
+            // objectタグ悪用
+            '<object data="javascript:alert(\'XSS\')"></object>',
+            
+            // embedタグ悪用
+            '<embed src="javascript:alert(\'XSS\')">',
+            
+            // linkタグ悪用
+            '<link rel="stylesheet" href="javascript:alert(\'XSS\')">',
+            
+            // metaタグリフレッシュ悪用
+            '<meta http-equiv="refresh" content="0;url=javascript:alert(\'XSS\')">',
+              // formアクション悪用
+            '<form action="javascript:alert(\'XSS\')"><input type="submit"></form>'
+        ];
+          let passedCount = 0;
+        let totalCount = ipaXSSPayloads.length;
+        
+        ipaXSSPayloads.forEach((payload, index) => {
+            // 高度なXSS保護クラスでテスト
+            const escaped = AdvancedXSSProtection.escapeHTMLCharacters(payload);
+            const attrEscaped = AdvancedXSSProtection.escapeHTMLAttribute(payload);
+            
+            // 危険な要素が含まれていないかチェック
+            const dangerousElements = [
+                '<script', '<iframe', '<object', '<embed', '<svg',
+                'javascript:', 'vbscript:', 'data:text/html',
+                'onclick=', 'onerror=', 'onload=', 'onmouseover='
+            ];
+            
+            const isSecure = dangerousElements.every(dangerous => {
+                return !escaped.toLowerCase().includes(dangerous.toLowerCase()) &&
+                       !attrEscaped.toLowerCase().includes(dangerous.toLowerCase());
+            });
+            
+            if (isSecure) passedCount++;
+            
+            this.addTestResult(
+                `IPA XSS Test ${index + 1}`,
+                isSecure,
+                `Type: ${this.getXSSPayloadType(payload)} | Safe: ${isSecure}`
+            );
+        });
+        
+        const successRate = Math.round((passedCount / totalCount) * 100);
+        console.log(`🛡️ XSS保護率: ${successRate}% (${passedCount}/${totalCount})`);
+        
+        return successRate >= 95; // 95%以上で合格
+    }
+    
+    /**
+     * XSSペイロードのタイプを判定
+     */
+    getXSSPayloadType(payload) {
+        if (payload.includes('<script')) return 'Script Tag';
+        if (payload.includes('javascript:')) return 'JavaScript Scheme';
+        if (payload.includes('on')) return 'Event Handler';
+        if (payload.includes('<svg')) return 'SVG Vector';
+        if (payload.includes('<iframe')) return 'Frame Injection';
+        if (payload.includes('data:')) return 'Data URI';
+        return 'Other';
+    }
+    
+    /**
+     * 「安全なウェブサイトの作り方」準拠の包括CSRF対策テスト
+     */
+    testComprehensiveCSRFProtection() {
+        console.log('🧪 包括的CSRF保護テスト開始（IPA準拠）');
+        
+        // 1. セキュアトークン生成テスト
+        const tokenData = EnhancedCSRFProtection.generateSecureCSRFToken();
+        
+        this.addTestResult(
+            'Enhanced CSRF Token Generation',
+            tokenData.token && tokenData.expiry && tokenData.created &&
+            tokenData.token.length === 128, // 64バイト = 128文字
+            `Token length: ${tokenData.token.length}, Has expiry: ${!!tokenData.expiry}`
+        );
+        
+        // 2. トークン有効期限テスト
+        sessionStorage.setItem('csrf_token_data', JSON.stringify(tokenData));
+        
+        const validToken = EnhancedCSRFProtection.validateCSRFTokenWithExpiry(tokenData.token);
+        const invalidToken = EnhancedCSRFProtection.validateCSRFTokenWithExpiry('invalid');
+        
+        this.addTestResult(
+            'CSRF Token Validation',
+            validToken && !invalidToken,
+            `Valid token accepted: ${validToken}, Invalid token rejected: ${!invalidToken}`
+        );
+        
+        // 3. リファラー検証テスト
+        const referrerValid = EnhancedCSRFProtection.validateReferrerAndOrigin();
+        
+        this.addTestResult(
+            'Referrer Validation',
+            referrerValid,
+            `Current origin validation: ${referrerValid}`
+        );
+        
+        return validToken && !invalidToken && referrerValid;
+    }
+    
+    /**
+     * IPAガイドライン準拠の入力値検証テスト
+     */
+    testIPAInputValidation() {
+        console.log('🧪 IPA準拠入力値検証テスト開始');
+        
+        // 正常なテストケース
+        const validData = {
+            name: '田中太郎',
+            email: 'tanaka@example.com',
+            message: 'お問い合わせありがとうございます。'
+        };
+        
+        const validResult = EnhancedInputValidation.validateContactForm(validData);
+        
+        this.addTestResult(
+            'Valid Input Acceptance',
+            validResult.valid,
+            `Valid data properly accepted: ${validResult.valid}`
+        );
+        
+        // 悪意のある入力テストケース
+        const maliciousInputs = [
+            {
+                name: '<script>alert("XSS")</script>',
+                type: 'XSS in name'
+            },
+            {
+                email: 'test@test.com<script>alert("XSS")</script>',
+                type: 'XSS in email'
+            },
+            {
+                message: 'SELECT * FROM users--',
+                type: 'SQL injection'
+            },
+            {
+                name: 'A'.repeat(200), // 長すぎる名前
+                type: 'Length overflow'
+            },
+            {
+                email: 'invalid-email',
+                type: 'Invalid email format'
+            }
+        ];
+        
+        let maliciousBlocked = 0;
+        
+        maliciousInputs.forEach((testCase, index) => {
+            const testData = { ...validData, ...testCase };
+            delete testData.type;
+            
+            const result = EnhancedInputValidation.validateContactForm(testData);
+            
+            if (!result.valid) {
+                maliciousBlocked++;
+            }
+            
+            this.addTestResult(
+                `Malicious Input Block ${index + 1}`,
+                !result.valid,
+                `${testCase.type}: ${!result.valid ? 'Blocked' : 'Allowed'}`
+            );
+        });
+        
+        const blockRate = Math.round((maliciousBlocked / maliciousInputs.length) * 100);
+        console.log(`🚫 悪意ある入力ブロック率: ${blockRate}%`);
+        
+        return blockRate >= 90; // 90%以上で合格
+    }
+    
+    /**
+     * セキュアCookie管理テスト
+     */
+    testSecureCookieManagement() {
+        console.log('🧪 セキュアCookie管理テスト開始');
+        
+        // セキュアCookie設定テスト
+        const cookieSet = SecureCookieManager.setSecureCookie('test_cookie', 'test_value', {
+            maxAge: 3600,
+            sameSite: 'Strict',
+            secure: window.location.protocol === 'https:'
+        });
+        
+        this.addTestResult(
+            'Secure Cookie Setting',
+            cookieSet,
+            `Cookie set successfully: ${cookieSet}`
+        );
+        
+        // Cookie読み取りテスト
+        const cookieValue = SecureCookieManager.getSecureCookie('test_cookie');
+        
+        this.addTestResult(
+            'Secure Cookie Reading',
+            cookieValue === 'test_value',
+            `Cookie value retrieved: ${cookieValue === 'test_value'}`
+        );
+        
+        // Cookie削除テスト
+        const cookieDeleted = SecureCookieManager.deleteSecureCookie('test_cookie');
+        
+        this.addTestResult(
+            'Secure Cookie Deletion',
+            cookieDeleted,
+            `Cookie deleted successfully: ${cookieDeleted}`
+        );
+        
+        return cookieSet && cookieValue === 'test_value' && cookieDeleted;
+    }
+}
+
+//# sourceMappingURL=security-test-suite.js.map

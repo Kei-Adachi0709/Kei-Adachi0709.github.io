@@ -1,0 +1,139 @@
+{
+  "name": "足立慧 - フロントエンド開発者ポートフォリオ",
+  "short_name": "Kei Adachi Portfolio",
+  "description": "JavaScript, React, HTML/CSS を専門とする2025年新卒フロントエンド開発者のポートフォリオサイト",
+  "lang": "ja",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#6366f1",
+  "background_color": "#ffffff",
+  "categories": ["portfolio", "developer", "frontend", "javascript"],
+  "icons": [
+    {
+      "src": "assets/images/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "プロフィール",
+      "short_name": "About",
+      "description": "足立慧のプロフィールと経歴",
+      "url": "/#about",
+      "icons": [
+        {
+          "src": "assets/images/icons/shortcut-about.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "スキル",
+      "short_name": "Skills",
+      "description": "技術スキルと専門分野",
+      "url": "/#skills",
+      "icons": [
+        {
+          "src": "assets/images/icons/shortcut-skills.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "ポートフォリオ",
+      "short_name": "Portfolio",
+      "description": "プロジェクト実績とデモ",
+      "url": "/#portfolio",
+      "icons": [
+        {
+          "src": "assets/images/icons/shortcut-portfolio.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "連絡先",
+      "short_name": "Contact",
+      "description": "連絡先とコンタクトフォーム",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "assets/images/icons/shortcut-contact.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "ホームページ（デスクトップ）"
+    },
+    {
+      "src": "assets/images/screenshots/mobile-home.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "ホームページ（モバイル）"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://kei-adachi0709.github.io/"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

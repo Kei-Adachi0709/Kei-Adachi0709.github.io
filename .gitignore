@@ -72,3 +72,53 @@ test.html
 
 # GitHub Pages用（通常は除外しないが、開発時のみ除外したい場合）
 # _site/
+
+# パフォーマンス最適化関連
+assets/dist/
+assets/css/critical.css
+assets/images/optimized/
+reports/
+coverage/
+lighthouse-report.html
+lighthouse-report.json
+webpack-bundle-analyzer-report.html
+*.lighthouse.html
+*.webpagetest.json
+*.pagespeed.json
+
+# セキュリティスキャン結果
+*.snyk
+
+# キャッシュ
+.cache/
+.parcel-cache/
+.eslintcache
+.npm
+
+# その他の最適化ツール関連
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# 環境設定（本番環境では除外）
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# GitHub Pages関連（開発時除外）
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# 監視・レポート関連
+health-report.md
+monitoring-report.html
+performance-report.json
+security-scan-results.txt
+
+# デプロイメント関連
+deployment-log.txt
+deploy-status.json

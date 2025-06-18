@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- セキュリティヘッダー -->
+      <!-- セキュリティヘッダー（安全なウェブサイトの作り方準拠） -->
     <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
+        default-src 'none';
         script-src 'self' 'unsafe-inline' 'unsafe-eval' 
             https://unpkg.com 
-            https://cdn.jsdelivr.net 
-            https://fonts.googleapis.com;
+            https://cdn.jsdelivr.net;
         style-src 'self' 'unsafe-inline' 
             https://unpkg.com 
             https://cdn.jsdelivr.net 
@@ -21,33 +19,90 @@
             https://fonts.gstatic.com 
             https://cdn.jsdelivr.net;
         connect-src 'self' https:;
+        media-src 'none';
         frame-src 'none';
+        frame-ancestors 'none';
         object-src 'none';
         base-uri 'self';
         form-action 'self';
+        child-src 'none';
+        worker-src 'none';
+        manifest-src 'self';
         upgrade-insecure-requests;
+        block-all-mixed-content;
     ">
+    <!-- Clickjacking対策 -->
     <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- XSS攻撃対策 -->
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <!-- MIMEタイプスニッフィング対策 -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- リファラー制御 -->
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <!-- 機能ポリシー（プライバシー保護） -->
     <meta http-equiv="Permissions-Policy" content="
         camera=(), 
         microphone=(), 
         geolocation=(), 
         payment=(), 
-        usb=()
+        usb=(),
+        midi=(),
+        magnetometer=(),
+        gyroscope=(),
+        fullscreen=(),
+        picture-in-picture=()
     ">
+    <!-- HSTS準備（本番環境でのみ有効） -->
+    <!-- <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload"> -->
+      <!-- SEO・ソーシャルメディア用メタタグ（就活最適化） -->
+    <title>足立慧 (Kei Adachi) - フロントエンド開発者ポートフォリオ | JavaScript, React, HTML/CSS</title>
+    <meta name="description" content="足立慧のポートフォリオサイト。フロントエンド開発エンジニア志望の新卒採用向け。JavaScript, React, HTML/CSS, ウェブ開発の実績とスキルをご紹介。東京在住の2025年新卒エンジニア。">
+    <meta name="keywords" content="足立慧,Kei Adachi,フロントエンド開発者,新卒エンジニア,JavaScript開発者,React開発者,HTML/CSS,ウェブ開発,ポートフォリオ,新卒採用,エンジニア就活,2025年新卒,東京,IT企業,Web制作">
+    <meta name="author" content="足立慧 (Kei Adachi)">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     
-    <!-- SEO・ソーシャルメディア用メタタグ -->
-    <title>Kei Adachi - Portfolio | フロントエンド開発者</title>
-    <meta name="description" content="Kei Adachiのポートフォリオサイト。フロントエンド開発、Webアプリケーション開発の実績をご紹介します。">
-    <meta name="keywords" content="フロントエンド,Web開発,JavaScript,HTML,CSS,ポートフォリオ,Kei Adachi">
-    <meta name="author" content="Kei Adachi">
+    <!-- 地域・言語設定 -->
+    <meta name="geo.region" content="JP-13">
+    <meta name="geo.placename" content="Tokyo, Japan">
+    <meta name="language" content="ja">
+    <link rel="alternate" hreflang="ja" href="https://kei-adachi0709.github.io/">
+    <link rel="alternate" hreflang="en" href="https://kei-adachi0709.github.io/en/">
     
-    <!-- Open Graph（Facebook/Twitter用） -->
-    <meta property="og:title" content="Kei Adachi - Portfolio">
-    <meta property="og:description" content="フロントエンド開発者のポートフォリオサイト">
+    <!-- 正規URL設定 -->
+    <link rel="canonical" href="https://kei-adachi0709.github.io/">
+    
+    <!-- Open Graph（Facebook/LinkedIn用 - 就活重要） -->
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="足立慧 - フロントエンド開発者 | 新卒エンジニア採用">
+    <meta property="og:description" content="足立慧のエンジニアポートフォリオ。JavaScript, React, HTML/CSS の実践スキルを持つ2025年新卒フロントエンド開発者。革新的なウェブアプリケーション開発に情熱を注いでいます。">
+    <meta property="og:url" content="https://kei-adachi0709.github.io/">
+    <meta property="og:site_name" content="足立慧 - エンジニアポートフォリオ">
+    <meta property="og:image" content="https://kei-adachi0709.github.io/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="足立慧 - フロントエンド開発者のポートフォリオサイト">
+    
+    <!-- Twitter Cards（採用担当者向け） -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="足立慧 - フロントエンド開発者 | 新卒エンジニア">
+    <meta name="twitter:description" content="JavaScript, React, HTML/CSS 実践スキルを持つ2025年新卒フロントエンド開発者のポートフォリオ">
+    <meta name="twitter:image" content="https://kei-adachi0709.github.io/assets/images/twitter-card.jpg">
+    <meta name="twitter:image:alt" content="足立慧のエンジニアポートフォリオ">
+    <meta name="twitter:creator" content="@kei_adachi0709">
+    
+    <!-- LinkedIn特化メタタグ -->
+    <meta property="profile:first_name" content="慧">
+    <meta property="profile:last_name" content="足立">
+    <meta property="profile:username" content="kei-adachi0709">
+    
+    <!-- 採用担当者向け構造化データ準備 -->
+    <meta name="job-title" content="フロントエンド開発者">
+    <meta name="experience-level" content="新卒">
+    <meta name="availability" content="2025年4月">
+    <meta name="location" content="東京都">
+    <meta name="skills" content="JavaScript, React, HTML, CSS, Git, Webpack, SASS">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kei-adachi0709.github.io">
     <meta property="og:image" content="https://kei-adachi0709.github.io/assets/images/og-image.jpg">
@@ -58,29 +113,45 @@
     <meta name="twitter:title" content="Kei Adachi - Portfolio">
     <meta name="twitter:description" content="フロントエンド開発者のポートフォリオサイト">
     <meta name="twitter:image" content="https://kei-adachi0709.github.io/assets/images/twitter-card.jpg">
-    
-    <!-- ファビコン -->
+      <!-- ファビコン -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
     
-    <!-- プリロード -->
+    <!-- DNS プリフェッチ（パフォーマンス最適化） -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    
+    <!-- プリロード設定（クリティカルリソース） -->
+    <link rel="preload" href="assets/css/critical.css" as="style">
     <link rel="preload" href="assets/fonts/NotoSansJP-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/css/main.css" as="style">
+    <link rel="preload" href="assets/images/hero-bg.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/profile.webp" as="image" type="image/webp">
     
-    <!-- スタイルシート -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- クリティカルCSS（Above the Fold） -->
+    <link rel="stylesheet" href="assets/css/critical.css">
     
-    <!-- Google Fonts -->
+    <!-- 非クリティカルCSS（遅延読み込み） -->
+    <link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    
+    <!-- フォント最適化読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      <!-- AOS（アニメーションライブラリ）-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      
+    <!-- 外部ライブラリ（遅延読み込み） -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
     
-    <!-- RemixIcon -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"></noscript>
     
     <!-- 構造化データ（JSON-LD） -->
     <script type="application/ld+json">
@@ -95,6 +166,123 @@
         ]
     }
     </script>
+    
+    <!-- JSON-LD構造化データ（就活・採用SEO特化） -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "足立慧",
+        "alternateName": "Kei Adachi",
+        "jobTitle": "フロントエンド開発者",
+        "description": "JavaScript, React, HTML/CSS を専門とする2025年新卒フロントエンド開発者。革新的なウェブアプリケーション開発に情熱を注いでいます。",
+        "url": "https://kei-adachi0709.github.io/",
+        "image": "https://kei-adachi0709.github.io/assets/images/profile.jpg",
+        "sameAs": [
+            "https://github.com/Kei-Adachi0709",
+            "https://linkedin.com/in/kei-adachi0709",
+            "https://twitter.com/kei_adachi0709"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tokyo",
+            "addressCountry": "JP"
+        },
+        "email": "kei.adachi0709@example.com",
+        "telephone": "+81-90-1234-5678",
+        "knowsAbout": [
+            "JavaScript",
+            "React",
+            "HTML5",
+            "CSS3",
+            "SASS/SCSS",
+            "Git",
+            "Webpack",
+            "ES6+",
+            "Responsive Web Design",
+            "Web Accessibility",
+            "Performance Optimization",
+            "SEO"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "○○大学",
+            "location": "Tokyo, Japan"
+        },
+        "seeks": {
+            "@type": "JobPosting",
+            "title": "フロントエンド開発者",
+            "description": "JavaScript, React を使用したモダンなウェブアプリケーション開発",
+            "employmentType": "FULL_TIME",
+            "experienceRequirements": "新卒",
+            "availabilityStarts": "2025-04-01"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "足立慧 - エンジニアポートフォリオ",
+        "alternateName": "Kei Adachi Portfolio",
+        "url": "https://kei-adachi0709.github.io/",
+        "description": "フロントエンド開発者 足立慧の技術スキル、プロジェクト実績、連絡先情報を掲載したポートフォリオサイト",
+        "inLanguage": "ja-JP",
+        "creator": {
+            "@type": "Person",
+            "name": "足立慧"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "フロントエンド開発",
+            "description": "JavaScript, React, HTML/CSS を中心とするウェブ開発技術"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://kei-adachi0709.github.io/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "足立慧",
+            "jobTitle": "フロントエンド開発者",
+            "url": "https://kei-adachi0709.github.io/"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "ホーム",
+                    "item": "https://kei-adachi0709.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "ポートフォリオ",
+                    "item": "https://kei-adachi0709.github.io/#portfolio"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "連絡先",
+                    "item": "https://kei-adachi0709.github.io/#contact"
+                }
+            ]
+        }    }
+    </script>
+    
+    <!-- クリティカルJavaScript（インライン、最優先実行） -->
+    <script src="assets/js/critical.js"></script>
 </head>
 <body>
     <!-- ページローダー -->
@@ -781,12 +969,38 @@
     <!-- スクロールアップボタン -->
     <a href="#" class="scrollup" id="scroll-up">
         <i class="ri-arrow-up-line"></i>
-    </a>    <!-- JavaScript -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="assets/js/security.js"></script>
-    <script src="assets/js/security-test.js"></script>
-    <script src="assets/js/main.js"></script>
+    </a>    <!-- JavaScript（パフォーマンス最適化済み） -->
+    <!-- クリティカルスクリプト（即座に実行） -->
+    <script src="assets/js/performance.js"></script>
+    
+    <!-- 非クリティカルスクリプト（遅延読み込み） -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <!-- 機能別スクリプト -->
+    <script defer src="assets/js/image-optimization.js"></script>
+    <script defer src="assets/js/security.js"></script>
+    <script defer src="assets/js/security-test.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
+    
+    <!-- メインスクリプト（最後に読み込み） -->
+    <script defer src="assets/js/main.js"></script>
+    
+    <!-- サービスワーカー登録（PWA対応） -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

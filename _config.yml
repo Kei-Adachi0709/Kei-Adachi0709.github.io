@@ -1,5 +1,63 @@
-theme: jekyll-theme-minimal
+# GitHub Pages設定
 title: Kei Adachi Portfolio
-description: フロントエンド開発者のポートフォリオサイト
+description: フロントエンド開発者のポートフォリオサイト | Web Developer Portfolio
+url: "https://kei-adachi0709.github.io"
+baseurl: ""
+
+# SEO設定
+author: Kei Adachi
+email: kei.adachi0709@example.com
+lang: ja_JP
+twitter:
+  username: kei_adachi0709
+  card: summary_large_image
+social:
+  name: Kei Adachi
+  links:
+    - https://github.com/Kei-Adachi0709
+    - https://linkedin.com/in/kei-adachi
+
+# Jekyll設定
+theme: jekyll-theme-minimal
 show_downloads: false
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# ファイル除外設定
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - webpack.config.js
+  - assets/scss/
+  - "*.md"
+  - "*.pdf"
+  - .github/
+  - GIT_DEPLOY_GUIDE.md
+  - BACKUP_MAINTENANCE.md
+  - SECURITY.md
+
+# ファイル含有設定
+include:
+  - README.md
+  - _config.yml
+
+# プラグイン設定
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Google Analytics（必要に応じて設定）
 google_analytics: 
+
+# その他のSEO設定
+logo: /assets/images/logo.png
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png

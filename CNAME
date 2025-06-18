@@ -1,0 +1,12 @@
+# GitHub Pages カスタムドメイン設定
+# 使用方法:
+# 1. カスタムドメインがある場合は、下記のコメントアウトを外してドメイン名を記載
+# 2. DNS設定でCNAMEレコードを kei-adachi0709.github.io に向ける
+# 3. GitHub Pagesの設定でHTTPS強制を有効化
+
+# example.com
+# www.example.com
+# portfolio.example.com
+
+# デフォルトはGitHub Pagesドメインを使用
+# https://kei-adachi0709.github.io

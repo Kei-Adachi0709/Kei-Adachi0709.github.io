@@ -1,4 +1,26 @@
+# robots.txt for Kei Adachi Portfolio (就活用)
+# 採用担当者・リクルーターの検索エンジンアクセスを最適化
+
 User-agent: *
+Allow: /
+
+# サイトマップの指定
+Sitemap: https://kei-adachi0709.github.io/sitemap.xml
+
+# 特定のボットを優遇（就活関連）
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# LinkedIn・Indeed などの採用プラットフォーム対応
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: IndeedBot
 Allow: /
 
 # セキュリティ関連ファイルの保護
@@ -14,5 +36,24 @@ Disallow: /.eslintrc.json
 Disallow: /.prettierrc
 Disallow: /security.conf
 
-# サイトマップの指定
-Sitemap: https://kei-adachi0709.github.io/sitemap.xml
+# 一時ファイル・ログファイル除外
+Disallow: /*.tmp
+Disallow: /*~
+
+# 画像・フォントは許可（ポートフォリオとして重要）
+Allow: /assets/images/
+Allow: /assets/fonts/
+Allow: /assets/css/
+Allow: /assets/js/main.js
+Allow: /assets/js/performance.js
+Allow: /assets/js/image-optimization.js
+
+# 特定の重要ページを明示的に許可
+Allow: /#about
+Allow: /#skills
+Allow: /#portfolio
+Allow: /#contact
+Allow: /#qualification
+
+# Host 指定（正規URL）
+Host: https://kei-adachi0709.github.io
