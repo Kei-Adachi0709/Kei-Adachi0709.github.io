@@ -1,0 +1,59 @@
+{
+  "name": "kei-adachi0709-portfolio",
+  "version": "1.0.0",
+  "description": "Kei Adachi's Portfolio Website - GitHub Pages",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --host=localhost --port=3000 --open=/",
+    "build": "npm run css:build && npm run js:build",
+    "css:build": "sass assets/scss/main.scss assets/css/main.css --style=compressed",
+    "css:watch": "sass --watch assets/scss/main.scss:assets/css/main.css",
+    "js:build": "webpack --mode=production",
+    "js:dev": "webpack --mode=development --watch",
+    "deploy": "gh-pages -d .",
+    "lint:css": "stylelint assets/scss/**/*.scss",
+    "lint:js": "eslint assets/js/**/*.js",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "portfolio",
+    "github-pages",
+    "frontend",
+    "web-development",
+    "responsive-design"
+  ],
+  "author": "Kei Adachi <kei.adachi0709@example.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.8.0",
+    "eslint": "^8.42.0",
+    "gh-pages": "^5.0.0",
+    "live-server": "^1.2.2",
+    "mini-css-extract-plugin": "^2.7.0",
+    "prettier": "^2.8.8",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.3.0",
+    "style-loader": "^3.3.0",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "webpack": "^5.84.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "swiper": "^9.3.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kei-Adachi0709/Kei-Adachi0709.github.io.git"
+  },
+  "homepage": "https://kei-adachi0709.github.io"
+}

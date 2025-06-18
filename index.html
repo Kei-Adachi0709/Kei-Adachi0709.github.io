@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- 基本的なメタ情報 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO・ソーシャルメディア用メタタグ -->
+    <title>Kei Adachi - Portfolio | フロントエンド開発者</title>
+    <meta name="description" content="Kei Adachiのポートフォリオサイト。フロントエンド開発、Webアプリケーション開発の実績をご紹介します。">
+    <meta name="keywords" content="フロントエンド,Web開発,JavaScript,HTML,CSS,ポートフォリオ,Kei Adachi">
+    <meta name="author" content="Kei Adachi">
+    
+    <!-- Open Graph（Facebook/Twitter用） -->
+    <meta property="og:title" content="Kei Adachi - Portfolio">
+    <meta property="og:description" content="フロントエンド開発者のポートフォリオサイト">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kei-adachi0709.github.io">
+    <meta property="og:image" content="https://kei-adachi0709.github.io/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Kei Adachi Portfolio">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kei Adachi - Portfolio">
+    <meta name="twitter:description" content="フロントエンド開発者のポートフォリオサイト">
+    <meta name="twitter:image" content="https://kei-adachi0709.github.io/assets/images/twitter-card.jpg">
+    
+    <!-- ファビコン -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    
+    <!-- プリロード -->
+    <link rel="preload" href="assets/fonts/NotoSansJP-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/css/main.css" as="style">
+    
+    <!-- スタイルシート -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS（アニメーションライブラリ）-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- 構造化データ（JSON-LD） -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kei Adachi",
+        "jobTitle": "フロントエンド開発者",
+        "url": "https://kei-adachi0709.github.io",
+        "sameAs": [
+            "https://github.com/Kei-Adachi0709"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- ページローダー -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- ヘッダー・ナビゲーション -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <!-- ロゴ -->
+            <a href="#home" class="nav__logo">
+                Kei Adachi
+            </a>
+
+            <!-- ナビゲーションメニュー -->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">Skills</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link">Projects</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- メニュー閉じるボタン -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <!-- テーマ切り替えボタン -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+
+            <!-- ダークモード切り替え -->
+            <i class="ri-moon-line change-theme" id="theme-button"></i>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main">
+        <!-- ホームセクション -->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <!-- 基本構造のプレースホルダー -->
+                <div class="home__content">
+                    <h1 class="home__title">Coming Soon</h1>
+                    <p class="home__description">ポートフォリオサイトを構築中です...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- その他のセクション（Phase 2で実装予定） -->
+        <section class="about section" id="about">
+            <!-- About section content -->
+        </section>
+
+        <section class="skills section" id="skills">
+            <!-- Skills section content -->
+        </section>
+
+        <section class="projects section" id="projects">
+            <!-- Projects section content -->
+        </section>
+
+        <section class="contact section" id="contact">
+            <!-- Contact section content -->
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <p class="footer__copy">
+                © 2025 Kei Adachi. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- スクロールアップボタン -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
