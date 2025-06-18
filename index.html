@@ -43,9 +43,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- AOS（アニメーションライブラリ）-->
+      <!-- AOS（アニメーションライブラリ）-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- RemixIcon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     
     <!-- 構造化データ（JSON-LD） -->
     <script type="application/ld+json">
@@ -76,25 +78,33 @@
             <!-- ロゴ -->
             <a href="#home" class="nav__logo">
                 Kei Adachi
-            </a>
-
-            <!-- ナビゲーションメニュー -->
+            </a>            <!-- ナビゲーションメニュー -->
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">Home</a>
+                        <a href="#home" class="nav__link active-link">
+                            <i class="ri-home-5-line nav__icon"></i> Home
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#about" class="nav__link">About</a>
+                        <a href="#about" class="nav__link">
+                            <i class="ri-user-2-line nav__icon"></i> About
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#skills" class="nav__link">Skills</a>
+                        <a href="#skills" class="nav__link">
+                            <i class="ri-file-list-3-line nav__icon"></i> Skills
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#projects" class="nav__link">Projects</a>
+                        <a href="#portfolio" class="nav__link">
+                            <i class="ri-image-line nav__icon"></i> Portfolio
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#contact" class="nav__link">Contact</a>
+                        <a href="#contact" class="nav__link">
+                            <i class="ri-send-plane-line nav__icon"></i> Contact
+                        </a>
                     </li>
                 </ul>
 
@@ -112,45 +122,552 @@
             <!-- ダークモード切り替え -->
             <i class="ri-moon-line change-theme" id="theme-button"></i>
         </nav>
-    </header>
-
-    <!-- メインコンテンツ -->
+    </header>    <!-- メインコンテンツ -->
     <main class="main">
-        <!-- ホームセクション -->
-        <section class="home section" id="home">
-            <div class="home__container container grid">
-                <!-- 基本構造のプレースホルダー -->
-                <div class="home__content">
-                    <h1 class="home__title">Coming Soon</h1>
-                    <p class="home__description">ポートフォリオサイトを構築中です...</p>
+        <!-- ヒーローセクション -->
+        <section class="hero section" id="home">
+            <div class="hero__container container grid">
+                <div class="hero__content">
+                    <div class="hero__data">
+                        <span class="hero__greeting">Hello, I'm</span>
+                        <h1 class="hero__name">Kei Adachi</h1>
+                        <h2 class="hero__profession">
+                            <span class="typed"></span>
+                        </h2>
+                        <p class="hero__description">
+                            フロントエンド開発者として、ユーザー体験を重視したモダンなWebアプリケーションの開発を行っています。
+                            React、Vue.js、TypeScriptを使用したSPA開発が得意です。
+                        </p>
+                        <div class="hero__buttons">
+                            <a href="#contact" class="button hero__button">Contact Me</a>
+                            <a href="#portfolio" class="button button--ghost hero__button">View Work</a>
+                        </div>
+                    </div>
+                    <div class="hero__img">
+                        <svg class="hero__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0" mask-type="alpha">
+                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                                130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                                97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                                0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                            </mask>                            <g mask="url(#mask0)">
+                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                                165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                                129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                                -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                                <image class="hero__blob-img" x="12" y="18" href="https://via.placeholder.com/170x170/2563eb/ffffff?text=KEI"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="hero__scroll">
+                    <a href="#about" class="hero__scroll-button button--flex">
+                        <i class="ri-mouse-line hero__scroll-mouse"></i>
+                        <span class="hero__scroll-name">Scroll down</span>
+                        <i class="ri-arrow-down-line hero__scroll-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>        <!-- アバウトセクション -->
+        <section class="about section" id="about">
+            <h2 class="section__title" data-aos="fade-up">About Me</h2>
+            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">My introduction</span>            <div class="about__container container grid">
+                <img src="https://via.placeholder.com/350x400/2563eb/ffffff?text=ABOUT" alt="About image" class="about__img" data-aos="fade-right">
+
+                <div class="about__data" data-aos="fade-left">
+                    <p class="about__description">
+                        フロントエンド開発者として3年の経験を持ち、ユーザー体験を重視したWebアプリケーション開発に情熱を注いでいます。
+                        React、Vue.js、TypeScriptを用いたモダンな開発手法に精通しており、
+                        レスポンシブデザインやアクセシビリティにも配慮した品質の高いコードを書くことを心がけています。
+                    </p>
+
+                    <div class="about__info">
+                        <div>
+                            <span class="about__info-title">03+</span>
+                            <span class="about__info-name">Years <br> experience</span>
+                        </div>
+
+                        <div>
+                            <span class="about__info-title">20+</span>
+                            <span class="about__info-name">Completed <br> projects</span>
+                        </div>
+
+                        <div>
+                            <span class="about__info-title">05+</span>
+                            <span class="about__info-name">Companies <br> worked</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="assets/pdf/Kei-Adachi-CV.pdf" class="button button--flex">
+                            Download CV<i class="ri-download-line button__icon"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- その他のセクション（Phase 2で実装予定） -->
-        <section class="about section" id="about">
-            <!-- About section content -->
-        </section>
-
+        <!-- スキルセクション -->
         <section class="skills section" id="skills">
-            <!-- Skills section content -->
+            <h2 class="section__title" data-aos="fade-up">Skills</h2>
+            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">My technical level</span>
+
+            <div class="skills__container container grid">
+                <div data-aos="fade-right">
+                    <!-- スキル1 -->
+                    <div class="skills__content skills__open">
+                        <div class="skills__header">
+                            <i class="ri-braces-line skills__icon"></i>
+
+                            <div>
+                                <h1 class="skills__title">Frontend Developer</h1>
+                                <span class="skills__subtitle">More than 3 years</span>
+                            </div>
+
+                            <i class="ri-arrow-down-s-line skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <!-- ...existing skills list... -->
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">HTML</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__html"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">CSS</h3>
+                                    <span class="skills__number">85%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__css"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">JavaScript</h3>
+                                    <span class="skills__number">80%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">React</h3>
+                                    <span class="skills__number">75%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__react"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- スキル2 -->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="ri-server-line skills__icon"></i>
+
+                            <div>
+                                <h1 class="skills__title">Backend Developer</h1>
+                                <span class="skills__subtitle">More than 2 years</span>
+                            </div>
+
+                            <i class="ri-arrow-down-s-line skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <!-- ...existing skills list... -->
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Node.js</h3>
+                                    <span class="skills__number">70%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__node"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Express.js</h3>
+                                    <span class="skills__number">65%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__express"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">MongoDB</h3>
+                                    <span class="skills__number">60%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__mongo"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <!-- スキル3 -->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="ri-pencil-ruler-2-line skills__icon"></i>
+
+                            <div>
+                                <h1 class="skills__title">Designer</h1>
+                                <span class="skills__subtitle">More than 2 years</span>
+                            </div>
+
+                            <i class="ri-arrow-down-s-line skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <!-- ...existing skills list... -->
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Figma</h3>
+                                    <span class="skills__number">80%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__figma"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Sketch</h3>
+                                    <span class="skills__number">70%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__sketch"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Photoshop</h3>
+                                    <span class="skills__number">65%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__photoshop"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="projects section" id="projects">
-            <!-- Projects section content -->
+        <!-- クオリフィケーションセクション -->
+        <section class="qualification section">
+            <h2 class="section__title">Qualification</h2>
+            <span class="section__subtitle">My personal journey</span>
+
+            <div class="qualification__container container">
+                <div class="qualification__tabs">
+                    <div class="qualification__button button--flex qualification__active" data-target='#education'>
+                        <i class="ri-graduation-cap-line qualification__icon"></i>
+                        Education
+                    </div>
+
+                    <div class="qualification__button button--flex" data-target='#work'>
+                        <i class="ri-briefcase-line qualification__icon"></i>
+                        Work
+                    </div>
+                </div>
+
+                <div class="qualification__sections">
+                    <!-- 教育経歴 -->
+                    <div class="qualification__content qualification__active" data-content id="education">
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Computer Science</h3>
+                                <span class="qualification__subtitle">Tokyo University</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2018 - 2022
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">Web Design</h3>
+                                <span class="qualification__subtitle">Tech Institute</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2021 - 2022
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">JavaScript Certification</h3>
+                                <span class="qualification__subtitle">FreeCodeCamp</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2022
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 職歴 -->
+                    <div class="qualification__content" data-content id="work">
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Frontend Developer</h3>
+                                <span class="qualification__subtitle">Tech Solutions Inc.</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2022 - Present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">Junior Developer</h3>
+                                <span class="qualification__subtitle">StartUp Co.</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2021 - 2022
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Intern Developer</h3>
+                                <span class="qualification__subtitle">Web Agency</span>
+                                <div class="qualification__calendar">
+                                    <i class="ri-calendar-line"></i>
+                                    2020 - 2021
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- ポートフォリオセクション -->
+        <section class="portfolio section" id="portfolio">
+            <h2 class="section__title">Portfolio</h2>
+            <span class="section__subtitle">Most recent work</span>
+
+            <div class="portfolio__container container swiper-container">
+                <div class="swiper-wrapper">                    <!-- ポートフォリオ1 -->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="https://via.placeholder.com/400x200/2563eb/ffffff?text=E-COMMERCE" alt="Portfolio 1" class="portfolio__img">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Modern E-commerce Website</h3>
+                            <p class="portfolio__description">
+                                React、TypeScript、Next.jsを使用したモダンなECサイト。
+                                ユーザー認証、決済機能、管理画面を実装。
+                            </p>
+                            <a href="#" class="button button--flex button--small portfolio__button">
+                                Demo
+                                <i class="ri-arrow-right-line button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ポートフォリオ2 -->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="https://via.placeholder.com/400x200/3b82f6/ffffff?text=TASK+APP" alt="Portfolio 2" class="portfolio__img">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Task Management App</h3>
+                            <p class="portfolio__description">
+                                Vue.js、Vuex、Firebaseを使用したタスク管理アプリ。
+                                リアルタイム同期、ドラッグ&ドロップ機能を実装。
+                            </p>
+                            <a href="#" class="button button--flex button--small portfolio__button">
+                                Demo
+                                <i class="ri-arrow-right-line button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ポートフォリオ3 -->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="https://via.placeholder.com/400x200/1d4ed8/ffffff?text=WEATHER" alt="Portfolio 3" class="portfolio__img">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Weather Dashboard</h3>
+                            <p class="portfolio__description">
+                                JavaScript、Chart.js、OpenWeather APIを使用した天気予報ダッシュボード。
+                                レスポンシブデザインとPWA対応。
+                            </p>
+                            <a href="#" class="button button--flex button--small portfolio__button">
+                                Demo
+                                <i class="ri-arrow-right-line button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- スワイパーのナビゲーション -->
+                <div class="swiper-button-next">
+                    <i class="ri-arrow-right-s-line swiper-portfolio-icon"></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="ri-arrow-left-s-line swiper-portfolio-icon"></i>
+                </div>
+
+                <!-- ページネーション -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!-- コンタクトセクション -->
         <section class="contact section" id="contact">
-            <!-- Contact section content -->
-        </section>
-    </main>
+            <h2 class="section__title">Contact Me</h2>
+            <span class="section__subtitle">Get in touch</span>
 
-    <!-- フッター -->
+            <div class="contact__container container grid">
+                <div>
+                    <div class="contact__information">
+                        <i class="ri-phone-line contact__icon"></i>
+
+                        <div>
+                            <h3 class="contact__title">Call Me</h3>
+                            <span class="contact__subtitle">+81 090-1234-5678</span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="ri-mail-line contact__icon"></i>
+
+                        <div>
+                            <h3 class="contact__title">Email</h3>
+                            <span class="contact__subtitle">kei.adachi0709@example.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="ri-map-pin-line contact__icon"></i>
+
+                        <div>
+                            <h3 class="contact__title">Location</h3>
+                            <span class="contact__subtitle">Tokyo, Japan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" class="contact__form grid">
+                    <div class="contact__inputs grid">
+                        <div class="contact__content">
+                            <label for="name" class="contact__label">Name</label>
+                            <input type="text" id="name" class="contact__input">
+                        </div>
+                        <div class="contact__content">
+                            <label for="email" class="contact__label">Email</label>
+                            <input type="email" id="email" class="contact__input">
+                        </div>
+                    </div>
+                    <div class="contact__content">
+                        <label for="project" class="contact__label">Project</label>
+                        <input type="text" id="project" class="contact__input">
+                    </div>
+                    <div class="contact__content">
+                        <label for="message" class="contact__label">Message</label>
+                        <textarea name="" id="message" cols="0" rows="7" class="contact__input"></textarea>
+                    </div>
+
+                    <div>
+                        <a href="#" class="button button--flex">
+                            Send Message
+                            <i class="ri-send-plane-line button__icon"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>    <!-- フッター -->
     <footer class="footer">
-        <div class="footer__container container">
-            <p class="footer__copy">
-                © 2025 Kei Adachi. All rights reserved.
-            </p>
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Kei Adachi</h1>
+                    <span class="footer__subtitle">Frontend developer</span>
+                </div>
+
+                <ul class="footer__links">
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="footer__link">About</a>
+                    </li>
+                </ul>
+
+                <div class="footer__socials">
+                    <a href="https://www.github.com/" target="_blank" class="footer__social">
+                        <i class="ri-github-line"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" class="footer__social">
+                        <i class="ri-linkedin-box-line"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social">
+                        <i class="ri-twitter-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <p class="footer__copy">&#169; Kei Adachi. All rights reserved</p>
         </div>
     </footer>
 
