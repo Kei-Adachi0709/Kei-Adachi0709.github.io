@@ -93,23 +93,23 @@ function scrollUp() {
     }
 }
 
-// ===== ダークモード機能 =====
-const selectedTheme = localStorage.getItem('selected-theme');
-const selectedIcon = localStorage.getItem('selected-icon');
+// ===== セキュアなダークモード機能 =====
+const selectedTheme = secureStorageGet('selected-theme');
+const selectedIcon = secureStorageGet('selected-icon');
 
 const getCurrentTheme = () => document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-const getCurrentIcon = () => themeButton.classList.contains('ri-moon-line') ? 'ri-moon-line' : 'ri-sun-line';
+const getCurrentIcon = () => themeButton?.classList.contains('ri-moon-line') ? 'ri-moon-line' : 'ri-sun-line';
 
-// 保存されたテーマがあれば適用
-if (selectedTheme) {
+// 保存されたテーマがあれば適用（セキュリティチェック付き）
+if (selectedTheme && ['dark', 'light'].includes(selectedTheme)) {
     document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove']('dark-theme');
-    if (themeButton) {
-        themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove']('ri-moon-line');
-        themeButton.classList[selectedIcon === 'ri-sun-line' ? 'add' : 'remove']('ri-sun-line');
+    if (themeButton && selectedIcon && ['ri-moon-line', 'ri-sun-line'].includes(selectedIcon)) {
+        themeButton.classList.remove('ri-moon-line', 'ri-sun-line');
+        themeButton.classList.add(selectedIcon);
     }
 }
 
-// テーマ切り替えボタンのイベントリスナー
+// テーマ切り替えボタンのイベントリスナー（セキュリティ強化）
 if (themeButton) {
     themeButton.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
@@ -117,8 +117,9 @@ if (themeButton) {
         themeButton.classList.toggle('ri-sun-line');
         themeButton.classList.toggle('ri-moon-line');
         
-        localStorage.setItem('selected-theme', getCurrentTheme());
-        localStorage.setItem('selected-icon', getCurrentIcon());
+        // セキュアなストレージ保存
+        secureStorageSet('selected-theme', getCurrentTheme());
+        secureStorageSet('selected-icon', getCurrentIcon());
     });
 }
 
@@ -231,35 +232,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ===== コンタクトフォーム処理 =====
+// ===== セキュアなコンタクトフォーム処理 =====
 function initContactForm() {
     const contactForm = document.querySelector('.contact__form');
     if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
+        // セキュアなフォームハンドラーを使用
+        new SecureFormHandler(contactForm);
     }
 }
 
 function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    // フォームデータの取得
-    const formData = new FormData(e.target);
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const project = document.getElementById('project').value;
-    const message = document.getElementById('message').value;
-    
-    // 簡単なバリデーション
-    if (!name || !email || !message) {
-        alert('すべての必須フィールドを入力してください。');
-        return;
+    // この関数は SecureFormHandler で置き換えられました
+    // セキュリティ強化されたフォーム処理を使用
+    console.log('Secure form processing handled by SecureFormHandler');
+}
+
+// ===== セキュアなDOM操作 =====
+function secureUpdateContent(elementId, content) {
+    const element = document.getElementById(elementId);
+    if (element && SecurityUtils) {
+        SecurityUtils.safeSetInnerHTML(element, content);
     }
+}
+
+// ===== セキュアな外部リンク処理 =====
+function initSecureLinks() {
+    const externalLinks = document.querySelectorAll('a[href^="http"]');
     
-    // EmailJS や他のサービスとの統合はPhase 3で実装予定
-    alert('メッセージが送信されました！（実際の送信機能はPhase 3で実装予定）');
-    
-    // フォームリセット
-    e.target.reset();
+    externalLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = link.href;
+            
+            if (SecurityUtils && SecurityUtils.isValidURL(url)) {
+                SecurityUtils.openSafeURL(url);
+            } else {
+                console.warn('Blocked potentially unsafe URL:', url);
+                SecurityUtils?.logSecurityEvent('BLOCKED_UNSAFE_URL', { url });
+            }
+        });
+        
+        // rel属性にnoopenerとnoreferrerを追加
+        link.rel = 'noopener noreferrer';
+    });
+}
+
+// ===== セキュアなローカルストレージ操作 =====
+function secureStorageSet(key, value) {
+    try {
+        if (SecurityUtils) {
+            const sanitizedKey = SecurityUtils.sanitizeHTML(key);
+            const sanitizedValue = SecurityUtils.sanitizeHTML(value);
+            localStorage.setItem(sanitizedKey, sanitizedValue);
+        }
+    } catch (error) {
+        console.error('Secure storage error:', error);
+        SecurityUtils?.logSecurityEvent('STORAGE_ERROR', { key, error: error.message });
+    }
+}
+
+function secureStorageGet(key) {
+    try {
+        if (SecurityUtils) {
+            const sanitizedKey = SecurityUtils.sanitizeHTML(key);
+            return localStorage.getItem(sanitizedKey);
+        }
+    } catch (error) {
+        console.error('Secure storage error:', error);
+        SecurityUtils?.logSecurityEvent('STORAGE_ERROR', { key, error: error.message });
+        return null;
+    }
 }
 
 // ===== パフォーマンス監視 =====
@@ -334,23 +376,186 @@ function throttle(func, limit) {
     };
 }
 
-// ===== 初期化 =====
+// ===== セキュリティ強化された初期化 =====
 document.addEventListener('DOMContentLoaded', () => {
-    initContactForm();
+    // セキュリティユーティリティの初期化を待つ
+    if (typeof SecurityUtils !== 'undefined') {
+        // セキュアなフォーム初期化
+        initContactForm();
+        
+        // セキュアなリンク処理
+        initSecureLinks();
+        
+        // パフォーマンス監視（開発環境のみ）
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            monitorPerformance();
+        }
+        
+        // アニメーション対象要素を監視
+        const animateElements = document.querySelectorAll('[data-aos]');
+        animateElements.forEach(el => {
+            animationObserver.observe(el);
+        });
+          console.log('Portfolio site Phase 3 (Security) initialized successfully');
+        
+        // セキュリティテストUI初期化
+        initSecurityTestUI();
+    } else {
+        console.error('Security utilities not loaded');
+    }
+});
+
+// ===== セキュリティテストUI初期化 =====
+function initSecurityTestUI() {
+    const runTestButton = document.getElementById('runSecurityTest');
+    const benchmarkButton = document.getElementById('runBenchmark');
+    const consoleElement = document.getElementById('securityConsole');
+    const scoreElement = document.getElementById('scoreNumber');
+    const recommendationsElement = document.getElementById('securityRecommendations');
+    const recommendationsList = document.getElementById('recommendationsList');
     
-    // パフォーマンス監視（開発環境のみ）
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        monitorPerformance();
+    if (runTestButton) {
+        runTestButton.addEventListener('click', async () => {
+            if (typeof SecurityTestSuite === 'undefined') {
+                console.error('SecurityTestSuite not loaded');
+                return;
+            }
+            
+            // ボタンを無効化
+            runTestButton.disabled = true;
+            runTestButton.innerHTML = '<i class="ri-loader-4-line"></i> テスト実行中...';
+            
+            // コンソールをクリア
+            consoleElement.innerHTML = '';
+            
+            // テストスイート実行
+            const testSuite = new SecurityTestSuite();
+            
+            // カスタムログ関数でコンソールに出力
+            const originalLog = console.log;
+            console.log = (...args) => {
+                originalLog(...args);
+                logToSecurityConsole(args.join(' '));
+            };
+            
+            try {
+                await testSuite.runAllTests();
+                logToSecurityConsole('✅ すべてのセキュリティテストが完了しました', 'success');
+                
+                // テスト結果の表示
+                const passedTests = testSuite.passedTests;
+                const totalTests = testSuite.passedTests + testSuite.failedTests;
+                const successRate = Math.round((passedTests / totalTests) * 100);
+                
+                logToSecurityConsole(`📊 テスト結果: ${passedTests}/${totalTests} (${successRate}%)`, 'info');
+                
+            } catch (error) {
+                logToSecurityConsole(`❌ テスト実行エラー: ${error.message}`, 'error');
+            }
+            
+            // console.logを元に戻す
+            console.log = originalLog;
+            
+            // ボタンを有効化
+            runTestButton.disabled = false;
+            runTestButton.innerHTML = '<i class="ri-play-circle-line"></i> セキュリティテスト実行';
+        });
     }
     
-    // アニメーション対象要素を監視
-    const animateElements = document.querySelectorAll('[data-aos]');
-    animateElements.forEach(el => {
-        animationObserver.observe(el);
-    });
+    if (benchmarkButton) {
+        benchmarkButton.addEventListener('click', async () => {
+            if (typeof SecurityBenchmark === 'undefined') {
+                console.error('SecurityBenchmark not loaded');
+                return;
+            }
+            
+            // ボタンを無効化
+            benchmarkButton.disabled = true;
+            benchmarkButton.innerHTML = '<i class="ri-loader-4-line"></i> 計測中...';
+            
+            try {
+                const benchmark = SecurityBenchmark.calculateSecurityScore();
+                
+                // スコア表示のアニメーション
+                animateScore(scoreElement, benchmark.score);
+                
+                // 推奨事項の表示
+                if (benchmark.recommendation.length > 0) {
+                    showRecommendations(recommendationsList, benchmark.recommendation);
+                    recommendationsElement.style.display = 'block';
+                } else {
+                    recommendationsElement.style.display = 'none';
+                }
+                
+                logToSecurityConsole(`🏆 セキュリティスコア: ${benchmark.score}/100`, 'success');
+                
+                // スコアが80未満の場合は警告
+                if (benchmark.score < 80) {
+                    logToSecurityConsole('⚠️ セキュリティスコアが低いです。改善提案を確認してください。', 'error');
+                } else if (benchmark.score < 90) {
+                    logToSecurityConsole('✨ 良好なセキュリティレベルです。', 'info');
+                } else {
+                    logToSecurityConsole('🛡️ 優秀なセキュリティレベルです！', 'success');
+                }
+                
+            } catch (error) {
+                logToSecurityConsole(`❌ ベンチマーク実行エラー: ${error.message}`, 'error');
+            }
+            
+            // ボタンを有効化
+            benchmarkButton.disabled = false;
+            benchmarkButton.innerHTML = '<i class="ri-bar-chart-line"></i> セキュリティスコア計測';
+        });
+    }
+}
+
+// セキュリティコンソールにログを出力
+function logToSecurityConsole(message, type = 'info') {
+    const consoleElement = document.getElementById('securityConsole');
+    if (!consoleElement) return;
     
-    console.log('Portfolio site Phase 2 initialized successfully');
-});
+    // プレースホルダーを削除
+    const placeholder = consoleElement.querySelector('.security__console-placeholder');
+    if (placeholder) {
+        placeholder.remove();
+    }
+    
+    const logLine = document.createElement('div');
+    logLine.className = `security__console-line security__console-${type}`;
+    logLine.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+    
+    consoleElement.appendChild(logLine);
+    consoleElement.scrollTop = consoleElement.scrollHeight;
+}
+
+// スコアアニメーション
+function animateScore(element, targetScore) {
+    if (!element) return;
+    
+    let currentScore = 0;
+    const increment = targetScore / 30; // 30フレームでアニメーション
+    
+    const animation = setInterval(() => {
+        currentScore += increment;
+        if (currentScore >= targetScore) {
+            currentScore = targetScore;
+            clearInterval(animation);
+        }
+        element.textContent = Math.round(currentScore);
+    }, 50);
+}
+
+// 推奨事項の表示
+function showRecommendations(listElement, recommendations) {
+    if (!listElement) return;
+    
+    listElement.innerHTML = '';
+    recommendations.forEach(recommendation => {
+        const li = document.createElement('li');
+        li.textContent = recommendation;
+        listElement.appendChild(li);
+    });
+}
 
 // ===== サービスワーカー登録（PWA化の準備） =====
 if ('serviceWorker' in navigator) {

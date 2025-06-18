@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <!-- 基本的なメタ情報 -->
+<head>    <!-- 基本的なメタ情報 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- セキュリティヘッダー -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+            https://unpkg.com 
+            https://cdn.jsdelivr.net 
+            https://fonts.googleapis.com;
+        style-src 'self' 'unsafe-inline' 
+            https://unpkg.com 
+            https://cdn.jsdelivr.net 
+            https://fonts.googleapis.com;
+        img-src 'self' data: https: blob:;
+        font-src 'self' 
+            https://fonts.gstatic.com 
+            https://cdn.jsdelivr.net;
+        connect-src 'self' https:;
+        frame-src 'none';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        upgrade-insecure-requests;
+    ">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="
+        camera=(), 
+        microphone=(), 
+        geolocation=(), 
+        payment=(), 
+        usb=()
+    ">
     
     <!-- SEO・ソーシャルメディア用メタタグ -->
     <title>Kei Adachi - Portfolio | フロントエンド開発者</title>
@@ -100,10 +133,14 @@
                         <a href="#portfolio" class="nav__link">
                             <i class="ri-image-line nav__icon"></i> Portfolio
                         </a>
-                    </li>
-                    <li class="nav__item">
+                    </li>                    <li class="nav__item">
                         <a href="#contact" class="nav__link">
                             <i class="ri-send-plane-line nav__icon"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#security" class="nav__link">
+                            <i class="ri-shield-check-line nav__icon"></i> Security
                         </a>
                     </li>
                 </ul>
@@ -629,25 +666,95 @@
                             Send Message
                             <i class="ri-send-plane-line button__icon"></i>
                         </a>
+                    </div>                </form>
+            </div>
+        </section>        <!-- セキュリティテスト -->
+        <section class="security section" id="security">
+            <h2 class="section__title" data-aos="fade-up">Security Testing</h2>
+            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">サイトのセキュリティ対策を検証</span>
+
+            <div class="security__container container grid">
+                <div class="security__info" data-aos="fade-right">
+                    <div class="security__description">
+                        <h3 class="security__title">セキュリティテストスイート</h3>
+                        <p class="security__details">
+                            このサイトに実装されているセキュリティ対策の有効性を検証できます。
+                            XSS、CSRF、入力値検証、SQLインジェクション対策などの包括的なテストを実行します。
+                        </p>
+                        
+                        <div class="security__features">
+                            <div class="security__feature" data-aos="fade-up" data-aos-delay="200">
+                                <i class="ri-shield-check-line security__feature-icon"></i>
+                                <span>XSS対策検証</span>
+                            </div>
+                            <div class="security__feature" data-aos="fade-up" data-aos-delay="300">
+                                <i class="ri-lock-line security__feature-icon"></i>
+                                <span>CSRF保護確認</span>
+                            </div>
+                            <div class="security__feature" data-aos="fade-up" data-aos-delay="400">
+                                <i class="ri-shield-star-line security__feature-icon"></i>
+                                <span>入力値検証テスト</span>
+                            </div>
+                            <div class="security__feature" data-aos="fade-up" data-aos-delay="500">
+                                <i class="ri-database-2-line security__feature-icon"></i>
+                                <span>SQLインジェクション対策</span>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                    
+                    <div class="security__actions" data-aos="fade-up" data-aos-delay="600">
+                        <button class="button security__run-test" id="runSecurityTest">
+                            <i class="ri-play-circle-line"></i>
+                            セキュリティテスト実行
+                        </button>
+                        <button class="button button--flex security__benchmark" id="runBenchmark">
+                            <i class="ri-bar-chart-line"></i>
+                            セキュリティスコア計測
+                        </button>
+                    </div>
+                </div>
+
+                <div class="security__results" id="securityResults" data-aos="fade-left">
+                    <div class="security__score-display" id="securityScore">
+                        <div class="security__score-circle">
+                            <span class="security__score-number" id="scoreNumber">--</span>
+                            <span class="security__score-label">セキュリティスコア</span>
+                        </div>
+                    </div>
+                    
+                    <div class="security__test-output" id="testOutput">
+                        <h4 class="security__output-title">テスト結果</h4>
+                        <div class="security__console" id="securityConsole">
+                            <p class="security__console-placeholder">セキュリティテストを実行すると結果がここに表示されます</p>
+                        </div>
+                    </div>
+                    
+                    <div class="security__recommendations" id="securityRecommendations" style="display: none;">
+                        <h4 class="security__recommendations-title">
+                            <i class="ri-lightbulb-line"></i>
+                            改善提案
+                        </h4>
+                        <ul class="security__recommendations-list" id="recommendationsList"></ul>
+                    </div>
+                </div>
             </div>
         </section>
-    </main>    <!-- フッター -->
+    </main><!-- フッター -->
     <footer class="footer">
         <div class="footer__bg">
             <div class="footer__container container grid">
                 <div>
                     <h1 class="footer__title">Kei Adachi</h1>
                     <span class="footer__subtitle">Frontend developer</span>
-                </div>
-
-                <ul class="footer__links">
+                </div>                <ul class="footer__links">
                     <li>
                         <a href="#portfolio" class="footer__link">Portfolio</a>
                     </li>
                     <li>
                         <a href="#contact" class="footer__link">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#security" class="footer__link">Security</a>
                     </li>
                     <li>
                         <a href="#about" class="footer__link">About</a>
@@ -674,13 +781,12 @@
     <!-- スクロールアップボタン -->
     <a href="#" class="scrollup" id="scroll-up">
         <i class="ri-arrow-up-line"></i>
-    </a>
-
-    <!-- JavaScript -->
+    </a>    <!-- JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="assets/js/security.js"></script>
+    <script src="assets/js/security-test.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

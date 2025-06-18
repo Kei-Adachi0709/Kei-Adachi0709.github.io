@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# セキュリティ関連ファイルの保護
+Disallow: /assets/js/security.js
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.pdf
+Disallow: /*.env
+Disallow: /*.log
+Disallow: /*.config
+Disallow: /webpack.config.js
+Disallow: /.eslintrc.json
+Disallow: /.prettierrc
+Disallow: /security.conf
+
+# サイトマップの指定
+Sitemap: https://kei-adachi0709.github.io/sitemap.xml
