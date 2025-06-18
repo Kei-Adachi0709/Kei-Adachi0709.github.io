@@ -280,9 +280,50 @@
             ]
         }    }
     </script>
-    
-    <!-- クリティカルJavaScript（インライン、最優先実行） -->
+      <!-- クリティカルJavaScript（インライン、最優先実行） -->
     <script src="assets/js/critical.js"></script>
+    
+    <!-- ページローダー緊急フォールバック -->
+    <script>
+        // 即座に実行される緊急フォールバック
+        (function() {
+            console.log('緊急フォールバックスクリプト開始');
+            
+            // DOMContentLoaded時の処理
+            function handleDOMReady() {
+                const loader = document.getElementById('page-loader');
+                if (loader) {
+                    console.log('ローダー要素発見 - 5秒後に強制非表示');
+                    setTimeout(function() {
+                        loader.style.opacity = '0';
+                        loader.style.visibility = 'hidden';
+                        loader.style.pointerEvents = 'none';
+                        console.log('ローダー強制非表示完了');
+                        
+                        setTimeout(function() {
+                            loader.style.display = 'none';
+                        }, 300);
+                    }, 5000);
+                }
+            }
+            
+            // 状態チェック
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', handleDOMReady);
+            } else {
+                handleDOMReady();
+            }
+            
+            // 最終フォールバック - 10秒後に強制非表示
+            setTimeout(function() {
+                const loader = document.getElementById('page-loader');
+                if (loader && loader.style.display !== 'none') {
+                    console.log('最終フォールバック - ローダーを完全に削除');
+                    loader.style.display = 'none';
+                }
+            }, 10000);
+        })();
+    </script>
 </head>
 <body>
     <!-- ページローダー -->
