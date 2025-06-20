@@ -135,10 +135,13 @@
     <link rel="preload" href="assets/images/profile.webp" as="image" type="image/webp">
     
     <!-- クリティカルCSS（Above the Fold） -->
-    <link rel="stylesheet" href="assets/css/critical.css">
-      <!-- 非クリティカルCSS（遅延読み込み） -->
+    <link rel="stylesheet" href="assets/css/critical.css">    <!-- 非クリティカルCSS（遅延読み込み） -->
     <link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    
+    <!-- レスポンシブCSS -->
+    <link rel="preload" href="assets/css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/responsive.css"></noscript>
     
     <!-- ポートフォリオ専用CSS -->
     <link rel="preload" href="assets/css/portfolio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -394,20 +397,18 @@
                         フロントエンド開発者として3年の経験を持ち、ユーザー体験を重視したWebアプリケーション開発に情熱を注いでいます。
                         React、Vue.js、TypeScriptを用いたモダンな開発手法に精通しており、
                         レスポンシブデザインやアクセシビリティにも配慮した品質の高いコードを書くことを心がけています。
-                    </p>
-
-                    <div class="about__info">
-                        <div>
+                    </p>                    <div class="about__info">
+                        <div class="about__info-item">
                             <span class="about__info-title">03+</span>
                             <span class="about__info-name">Years <br> experience</span>
                         </div>
 
-                        <div>
+                        <div class="about__info-item">
                             <span class="about__info-title">20+</span>
                             <span class="about__info-name">Completed <br> projects</span>
                         </div>
 
-                        <div>
+                        <div class="about__info-item">
                             <span class="about__info-title">05+</span>
                             <span class="about__info-name">Companies <br> worked</span>
                         </div>
@@ -926,6 +927,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
     <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>    <!-- 機能別スクリプト -->
+    <script defer src="assets/js/navigation.js"></script>
     <script defer src="assets/js/portfolio-data.js"></script>
     <script defer src="assets/js/portfolio-filter.js"></script>
     <script defer src="assets/js/image-optimization.js"></script>
