@@ -135,9 +135,7 @@
     <link rel="preload" href="assets/images/profile.webp" as="image" type="image/webp">
     
     <!-- クリティカルCSS（Above the Fold） -->
-    <link rel="stylesheet" href="assets/css/critical.css">    <!-- 非クリティカルCSS（遅延読み込み） -->
-    <link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>    <!-- note風メインスタイル -->
+    <link rel="stylesheet" href="assets/css/critical.css">    <!-- 非クリティカルCSS（遅延読み込み） --><!-- note風メインスタイル -->
     <link rel="preload" href="assets/css/note-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/note-style.css"></noscript>
     
@@ -1620,13 +1618,10 @@
         <script defer src="assets/js/note-app.js"></script>
         <script defer src="assets/js/navigation.js"></script>
         <script defer src="assets/js/portfolio-filter.js"></script>
-        <script defer src="assets/js/image-optimization.js"></script>
-        <script defer src="assets/js/security.js"></script>
-        <script defer src="assets/js/security-test.js"></script>
-        <script defer src="assets/js/analytics.js"></script>
-        
+        <script defer src="assets/js/image-optimization.js"></script>        <script defer src="assets/js/security.js"></script>
+        <script defer src="assets/js/analytics.js"></script>        
         <!-- メインスクリプト（最後に読み込み） -->
-        <script defer src="assets/js/main.js"></script>
+        <!-- main.jsは削除済み - note-app.jsに統合 -->
     
     <!-- サービスワーカー登録（PWA対応） -->
     <script>

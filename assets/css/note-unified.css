@@ -1,0 +1,107 @@
+/* ==========================================================================
+   NOTE.COM風ポートフォリオサイト - 統合CSS
+   ========================================================================== */
+
+/* 基本スタイル - note-style.css */
+@import url('note-style.css');
+
+/* コンポーネント - note-components.css */
+@import url('note-components.css');
+
+/* ヘッダー - note-header.css */
+@import url('note-header.css');
+
+/* スキル - note-skills.css */
+@import url('note-skills.css');
+
+/* ポートフォリオ - note-portfolio.css */
+@import url('note-portfolio.css');
+
+/* モーダル - note-modal.css */
+@import url('note-modal.css');
+
+/* コンタクト - note-contact.css */
+@import url('note-contact.css');
+
+/* フッター - note-footer.css */
+@import url('note-footer.css');
+
+/* デザイン統一 - note-design.css */
+@import url('note-design.css');
+
+/* ==========================================================================
+   追加のユーティリティクラス
+   ========================================================================== */
+
+/* アニメーション用ユーティリティ */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* レスポンシブ対応のユーティリティ */
+.hidden-mobile {
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+}
+
+.hidden-desktop {
+    @media (min-width: 769px) {
+        display: none !important;
+    }
+}
+
+/* アクセシビリティ向上 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 印刷用スタイル */
+@media print {
+    .note-header,
+    .note-mobile-menu,
+    .note-hero__actions,
+    .note-portfolio__filters,
+    footer {
+        display: none !important;
+    }
+    
+    .note-main {
+        margin-top: 0 !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+}
