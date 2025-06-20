@@ -1,4 +1,25 @@
 /* ==========================================================================
+   職歴・資格セクション CSS変数定義
+   ========================================================================== */
+
+:root {
+    /* 職歴・資格セクション専用変数 */
+    --note-primary-color: #6366f1;
+    --note-secondary-color: #8b5cf6;
+    --note-background-color: #ffffff;
+    --note-card-background: #ffffff;
+    --note-card-bg: #ffffff;
+    --note-secondary-bg: #f8fafc;
+    --note-border-color: #e2e8f0;
+    --note-text-color: #1e293b;
+    --note-text-light: #64748b;
+    --note-border-radius-lg: 12px;
+    --note-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --note-space-6: 1.5rem;
+    --note-space-4: 1rem;
+}
+
+/* ==========================================================================
    職歴セクション - Experience Section CSS
    ========================================================================== */
 
@@ -853,6 +874,47 @@
 }
 
 /* ==========================================================================
+   基本的な表示確保
+   ========================================================================== */
+
+.note-section {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    padding: 4rem 0;
+}
+
+.note-section--alt {
+    background-color: var(--note-secondary-bg);
+}
+
+.note-container {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--note-space-6);
+}
+
+.note-section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.note-section__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--note-text-color);
+    margin-bottom: 1rem;
+}
+
+.note-section__subtitle {
+    font-size: 1.125rem;
+    color: var(--note-text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
    既存のコード（変更なし）
    ========================================================================== */
 
@@ -901,4 +963,46 @@
     .note-detail-toggle {
         border: 2px solid currentColor;
     }
+}
+
+/* 職歴・資格セクション表示強制 */
+#experience,
+#certifications {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 500px;
+}
+
+.note-experience,
+.note-certifications {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.note-timeline,
+.note-cert-grid {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.note-timeline-item,
+.note-cert-card {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 2rem;
+}
+
+.note-experience-card {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
 }
