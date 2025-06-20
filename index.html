@@ -167,17 +167,12 @@
     
     <link rel="preload" href="assets/css/note-header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/note-header.css"></noscript>
-    
-    <link rel="preload" href="assets/css/note-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <link rel="preload" href="assets/css/note-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/note-components.css"></noscript>
     
-    <!-- レスポンシブCSS -->
-    <link rel="preload" href="assets/css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/responsive.css"></noscript>
-    
-    <!-- ポートフォリオ専用CSS -->
-    <link rel="preload" href="assets/css/portfolio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/portfolio.css"></noscript>
+    <!-- 職歴・資格セクション専用CSS -->
+    <link rel="preload" href="assets/css/note-experience.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-experience.css"></noscript>
     
     <!-- フォント最適化読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -325,14 +320,19 @@
                     <span class="note-nav__logo-text">Kei Adachi</span>
                     <span class="note-nav__logo-subtitle">Portfolio</span>
                 </a>
-                
-                <!-- デスクトップナビゲーション -->
+                  <!-- デスクトップナビゲーション -->
                 <ul class="note-nav__list">
                     <li class="note-nav__item">
                         <a href="#about" class="note-nav__link">About</a>
                     </li>
                     <li class="note-nav__item">
                         <a href="#skills" class="note-nav__link">Skills</a>
+                    </li>
+                    <li class="note-nav__item">
+                        <a href="#experience" class="note-nav__link">Experience</a>
+                    </li>
+                    <li class="note-nav__item">
+                        <a href="#certifications" class="note-nav__link">Certifications</a>
                     </li>
                     <li class="note-nav__item">
                         <a href="#portfolio" class="note-nav__link">Portfolio</a>
@@ -361,10 +361,11 @@
         
         <!-- モバイルメニュー -->
         <div class="note-nav__mobile-menu" id="mobile-menu">
-            <div class="note-nav__mobile-content">
-                <ul class="note-nav__mobile-list">
+            <div class="note-nav__mobile-content">                <ul class="note-nav__mobile-list">
                     <li><a href="#about" class="note-nav__mobile-link">About</a></li>
                     <li><a href="#skills" class="note-nav__mobile-link">Skills</a></li>
+                    <li><a href="#experience" class="note-nav__mobile-link">Experience</a></li>
+                    <li><a href="#certifications" class="note-nav__mobile-link">Certifications</a></li>
                     <li><a href="#portfolio" class="note-nav__mobile-link">Portfolio</a></li>
                     <li><a href="#contact" class="note-nav__mobile-link">Contact</a></li>
                 </ul>
@@ -828,29 +829,303 @@
                     </div>
                 </div>
             </div>
-        </section>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__figma"></span>
+        </section>        </section>
+        
+        <!-- 職歴セクション -->
+        <section class="note-section" id="experience">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">Work Experience</h2>
+                    <p class="note-section__subtitle">プロフェッショナル経験とキャリアパス</p>
+                </div>
+                
+                <div class="note-experience">
+                    <div class="note-timeline">
+                        <!-- 職歴1: インフラエンジニア開発者（現在） -->
+                        <div class="note-timeline-item" data-aos="fade-up">
+                            <div class="note-timeline-marker">
+                                <div class="note-timeline-marker__dot note-timeline-marker__dot--current"></div>
+                                <div class="note-timeline-marker__line"></div>
+                            </div>
+                            <div class="note-timeline-content">
+                                <div class="note-experience-card">
+                                    <div class="note-experience-card__header">
+                                        <div class="note-experience-card__period">
+                                            <span class="note-period-badge note-period-badge--current">
+                                                <i class="ri-calendar-line"></i>
+                                                2023年4月 - 現在
+                                            </span>
+                                        </div>
+                                        <h3 class="note-experience-card__title">インフラエンジニア開発者</h3>
+                                        <h4 class="note-experience-card__company">
+                                            <i class="ri-building-line"></i>
+                                            クラウドソリューションズ株式会社
+                                        </h4>
+                                    </div>
+                                    <div class="note-experience-card__content">
+                                        <p class="note-experience-card__description">
+                                            AWS、Docker、Kubernetesを中心としたクラウドインフラの設計・構築・運用を担当。
+                                            企業のDX推進において、スケーラブルで可用性の高いシステム基盤を提供。
+                                        </p>
+                                        <div class="note-experience-card__achievements">
+                                            <h5 class="note-experience-card__achievements-title">主な実績・業務内容</h5>
+                                            <ul class="note-experience-card__achievements-list">
+                                                <li>AWS EKSを使用したKubernetesクラスター構築（50+サービス運用）</li>
+                                                <li>Terraformによるインフラ自動化（デプロイ時間90%短縮）</li>
+                                                <li>CI/CDパイプライン構築（GitHub Actions、Jenkins）</li>
+                                                <li>監視・ログ基盤構築（Prometheus、Grafana、ELK Stack）</li>
+                                                <li>コンテナ化移行プロジェクトリード（10+アプリケーション）</li>
+                                            </ul>
+                                        </div>                                        <div class="note-experience-card__technologies">
+                                            <h5 class="note-experience-card__tech-title">使用技術・ツール</h5>
+                                            <div class="note-tech-tags">
+                                                <span class="note-tech-tag note-tech-tag--cloud">AWS</span>
+                                                <span class="note-tech-tag note-tech-tag--container">Docker</span>
+                                                <span class="note-tech-tag note-tech-tag--orchestration">Kubernetes</span>
+                                                <span class="note-tech-tag note-tech-tag--iac">Terraform</span>
+                                                <span class="note-tech-tag note-tech-tag--ci">GitHub Actions</span>
+                                                <span class="note-tech-tag note-tech-tag--monitoring">Prometheus</span>
+                                                <span class="note-tech-tag note-tech-tag--visualization">Grafana</span>
+                                                <span class="note-tech-tag note-tech-tag--scripting">Python</span>
+                                                <span class="note-tech-tag note-tech-tag--shell">Bash</span>
+                                            </div>
+                                        </div>
+                                        <!-- 詳細情報（展開可能） -->
+                                        <div class="note-experience-card__details" id="experience-details-1">
+                                            <div class="note-experience-details">
+                                                <h5 class="note-experience-details__title">プロジェクト詳細</h5>
+                                                <div class="note-experience-details__content">
+                                                    <div class="note-detail-section">
+                                                        <h6>チーム構成・役割</h6>
+                                                        <p>5名のエンジニアチームでインフラアーキテクトとして参画。技術選定、アーキテクチャ設計、実装リードを担当。</p>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>課題・解決策</h6>
+                                                        <ul>
+                                                            <li><strong>課題:</strong> 従来のオンプレミス環境での運用コスト増大</li>
+                                                            <li><strong>解決:</strong> クラウドネイティブなアーキテクチャ採用でコスト30%削減</li>
+                                                            <li><strong>課題:</strong> デプロイ作業の属人化・時間長期化</li>
+                                                            <li><strong>解決:</strong> Infrastructure as Code導入で自動化推進</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>成果・インパクト</h6>
+                                                        <div class="note-metrics">
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">90%</span>
+                                                                <span class="note-metric-label">デプロイ時間短縮</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">99.9%</span>
+                                                                <span class="note-metric-label">システム稼働率</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">30%</span>
+                                                                <span class="note-metric-label">運用コスト削減</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="note-experience-card__actions">
+                                            <button class="note-detail-toggle" data-target="experience-details-1" aria-expanded="false">
+                                                <i class="ri-add-line"></i>
+                                                詳細を見る
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Sketch</h3>
-                                    <span class="skills__number">70%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__sketch"></span>
+                        </div>
+                        
+                        <!-- 職歴2: ジュニアインフラエンジニア -->
+                        <div class="note-timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="note-timeline-marker">
+                                <div class="note-timeline-marker__dot"></div>
+                                <div class="note-timeline-marker__line"></div>
+                            </div>
+                            <div class="note-timeline-content">
+                                <div class="note-experience-card">
+                                    <div class="note-experience-card__header">
+                                        <div class="note-experience-card__period">
+                                            <span class="note-period-badge">
+                                                <i class="ri-calendar-line"></i>
+                                                2022年1月 - 2023年3月
+                                            </span>
+                                        </div>
+                                        <h3 class="note-experience-card__title">ジュニアインフラエンジニア</h3>
+                                        <h4 class="note-experience-card__company">
+                                            <i class="ri-building-line"></i>
+                                            テックソリューションズ合同会社
+                                        </h4>
+                                    </div>
+                                    <div class="note-experience-card__content">
+                                        <p class="note-experience-card__description">
+                                            オンプレミスからクラウドへの移行プロジェクトに参画。
+                                            サーバー構築、ネットワーク設定、監視システムの導入を経験。
+                                        </p>
+                                        <div class="note-experience-card__achievements">
+                                            <h5 class="note-experience-card__achievements-title">主な実績・業務内容</h5>
+                                            <ul class="note-experience-card__achievements-list">
+                                                <li>AWSへのサーバー移行作業（EC2、RDS、S3）</li>
+                                                <li>Dockerコンテナ化支援（5+アプリケーション）</li>
+                                                <li>監視アラート設定・運用（CloudWatch、Zabbix）</li>
+                                                <li>バックアップ・復旧手順書作成</li>
+                                                <li>セキュリティ強化対応（WAF、VPC設定）</li>
+                                            </ul>
+                                        </div>                                        <div class="note-experience-card__technologies">
+                                            <h5 class="note-experience-card__tech-title">使用技術・ツール</h5>
+                                            <div class="note-tech-tags">
+                                                <span class="note-tech-tag note-tech-tag--cloud">AWS</span>
+                                                <span class="note-tech-tag note-tech-tag--container">Docker</span>
+                                                <span class="note-tech-tag note-tech-tag--os">Linux</span>
+                                                <span class="note-tech-tag note-tech-tag--monitoring">Zabbix</span>
+                                                <span class="note-tech-tag note-tech-tag--scripting">Python</span>
+                                                <span class="note-tech-tag note-tech-tag--shell">Shell Script</span>
+                                                <span class="note-tech-tag note-tech-tag--network">VPC</span>
+                                            </div>
+                                        </div>
+                                        <!-- 詳細情報（展開可能） -->
+                                        <div class="note-experience-card__details" id="experience-details-2">
+                                            <div class="note-experience-details">
+                                                <h5 class="note-experience-details__title">プロジェクト詳細</h5>
+                                                <div class="note-experience-details__content">
+                                                    <div class="note-detail-section">
+                                                        <h6>プロジェクト背景</h6>
+                                                        <p>レガシーシステムの現代化プロジェクトにて、クラウド移行とコンテナ化を推進。段階的な移行戦略を採用し、ビジネス継続性を重視。</p>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>学習・成長</h6>
+                                                        <ul>
+                                                            <li>AWSサービスの実践的な運用経験を積む</li>
+                                                            <li>Dockerコンテナ化のベストプラクティス習得</li>
+                                                            <li>監視・アラート設定による運用自動化</li>
+                                                            <li>インシデント対応プロセスの確立</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>成果・評価</h6>
+                                                        <div class="note-metrics">
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">5+</span>
+                                                                <span class="note-metric-label">アプリケーション移行</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">80%</span>
+                                                                <span class="note-metric-label">障害対応時間短縮</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">100%</span>
+                                                                <span class="note-metric-label">移行成功率</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="note-experience-card__actions">
+                                            <button class="note-detail-toggle" data-target="experience-details-2" aria-expanded="false">
+                                                <i class="ri-add-line"></i>
+                                                詳細を見る
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Photoshop</h3>
-                                    <span class="skills__number">65%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__photoshop"></span>
+                        </div>
+                        
+                        <!-- 職歴3: ITサポート・インターン -->
+                        <div class="note-timeline-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="note-timeline-marker">
+                                <div class="note-timeline-marker__dot"></div>
+                            </div>
+                            <div class="note-timeline-content">
+                                <div class="note-experience-card">
+                                    <div class="note-experience-card__header">
+                                        <div class="note-experience-card__period">
+                                            <span class="note-period-badge">
+                                                <i class="ri-calendar-line"></i>
+                                                2021年6月 - 2021年12月
+                                            </span>
+                                        </div>
+                                        <h3 class="note-experience-card__title">ITサポート・インターン</h3>
+                                        <h4 class="note-experience-card__company">
+                                            <i class="ri-building-line"></i>
+                                            株式会社システムデザイン
+                                        </h4>
+                                    </div>
+                                    <div class="note-experience-card__content">
+                                        <p class="note-experience-card__description">
+                                            大学在学中のインターンシップとして、ITサポート業務とシステム管理の基礎を学習。
+                                            社内インフラの維持・管理とユーザーサポートを担当。
+                                        </p>
+                                        <div class="note-experience-card__achievements">
+                                            <h5 class="note-experience-card__achievements-title">主な実績・業務内容</h5>
+                                            <ul class="note-experience-card__achievements-list">
+                                                <li>社内PCセットアップ・設定（50+台）</li>
+                                                <li>ネットワーク障害対応・トラブルシューティング</li>
+                                                <li>バックアップシステム運用・監視</li>
+                                                <li>ヘルプデスク対応（月間100+件）</li>
+                                                <li>システム利用マニュアル作成</li>
+                                            </ul>
+                                        </div>                                        <div class="note-experience-card__technologies">
+                                            <h5 class="note-experience-card__tech-title">使用技術・ツール</h5>
+                                            <div class="note-tech-tags">
+                                                <span class="note-tech-tag note-tech-tag--os">Windows Server</span>
+                                                <span class="note-tech-tag note-tech-tag--os">Linux</span>
+                                                <span class="note-tech-tag note-tech-tag--network">TCP/IP</span>
+                                                <span class="note-tech-tag note-tech-tag--virtualization">VMware</span>
+                                                <span class="note-tech-tag note-tech-tag--office">Office 365</span>
+                                                <span class="note-tech-tag note-tech-tag--ticketing">ServiceNow</span>
+                                            </div>
+                                        </div>
+                                        <!-- 詳細情報（展開可能） -->
+                                        <div class="note-experience-card__details" id="experience-details-3">
+                                            <div class="note-experience-details">
+                                                <h5 class="note-experience-details__title">インターン詳細</h5>
+                                                <div class="note-experience-details__content">
+                                                    <div class="note-detail-section">
+                                                        <h6>インターンシップの目標</h6>
+                                                        <p>実際の企業環境でのITサポート業務を通じて、システム管理の基礎知識と顧客対応スキルを身につける。</p>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>主要な学習内容</h6>
+                                                        <ul>
+                                                            <li>企業ネットワークの構成と管理手法</li>
+                                                            <li>Windows ServerとLinuxの基本操作</li>
+                                                            <li>仮想化技術（VMware）の実践</li>
+                                                            <li>ヘルプデスク対応とドキュメント作成</li>
+                                                            <li>インシデント管理プロセス</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="note-detail-section">
+                                                        <h6>実績・評価</h6>
+                                                        <div class="note-metrics">
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">50+</span>
+                                                                <span class="note-metric-label">PCセットアップ</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">100+</span>
+                                                                <span class="note-metric-label">月間サポート件数</span>
+                                                            </div>
+                                                            <div class="note-metric-item">
+                                                                <span class="note-metric-value">95%</span>
+                                                                <span class="note-metric-label">顧客満足度</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="note-experience-card__actions">
+                                            <button class="note-detail-toggle" data-target="experience-details-3" aria-expanded="false">
+                                                <i class="ri-add-line"></i>
+                                                詳細を見る
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -858,134 +1133,336 @@
                 </div>
             </div>
         </section>
-
-        <!-- クオリフィケーションセクション -->
-        <section class="qualification section">
-            <h2 class="section__title">Qualification</h2>
-            <span class="section__subtitle">My personal journey</span>
-
-            <div class="qualification__container container">
-                <div class="qualification__tabs">
-                    <div class="qualification__button button--flex qualification__active" data-target='#education'>
-                        <i class="ri-graduation-cap-line qualification__icon"></i>
-                        Education
-                    </div>
-
-                    <div class="qualification__button button--flex" data-target='#work'>
-                        <i class="ri-briefcase-line qualification__icon"></i>
-                        Work
-                    </div>
+        
+        <!-- 保有資格セクション -->
+        <section class="note-section note-section--alt" id="certifications">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">Certifications</h2>
+                    <p class="note-section__subtitle">技術スキルを証明する保有資格一覧</p>
                 </div>
-
-                <div class="qualification__sections">
-                    <!-- 教育経歴 -->
-                    <div class="qualification__content qualification__active" data-content id="education">
-                        <div class="qualification__data">
-                            <div>
-                                <h3 class="qualification__title">Computer Science</h3>
-                                <span class="qualification__subtitle">Tokyo University</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2018 - 2022
+                
+                <div class="note-certifications">
+                    <!-- 資格カテゴリータブ -->
+                    <div class="note-certifications__tabs">
+                        <button class="note-cert-tab note-cert-tab--active" data-tab="it">
+                            <i class="ri-computer-line"></i>
+                            IT・技術系
+                        </button>
+                        <button class="note-cert-tab" data-tab="language">
+                            <i class="ri-global-line"></i>
+                            語学系
+                        </button>
+                        <button class="note-cert-tab" data-tab="other">
+                            <i class="ri-award-line"></i>
+                            その他
+                        </button>
+                    </div>
+                    
+                    <!-- IT・技術系資格 -->
+                    <div class="note-cert-content note-cert-content--active" data-content="it">
+                        <div class="note-cert-grid">
+                            <!-- AWS認定 -->
+                            <div class="note-cert-card" data-aos="fade-up">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-cloud-line" style="color: #ff9900;"></i>
+                                    </div>
+                                    <div class="note-cert-card__badge note-cert-card__badge--featured">
+                                        <span>注目</span>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">AWS Certified Cloud Practitioner</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            Amazon Web Services
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2024年10月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        AWSクラウドサービスの基礎知識とベストプラクティスを証明する認定資格
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--valid">
+                                            <i class="ri-check-line"></i>
+                                            有効期限: 2027年10月
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
-                            </div>
-                        </div>
-
-                        <div class="qualification__data">
-                            <div></div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
-                            </div>
-
-                            <div>
-                                <h3 class="qualification__title">Web Design</h3>
-                                <span class="qualification__subtitle">Tech Institute</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2021 - 2022
+                            
+                            <!-- 基本情報技術者 -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-computer-line" style="color: #2563eb;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">基本情報技術者試験</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            独立行政法人情報処理推進機構（IPA）
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2022年10月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        ITエンジニアの登竜門として、情報技術に関する基本的な知識・技能を証明
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="qualification__data">
-                            <div>
-                                <h3 class="qualification__title">JavaScript Certification</h3>
-                                <span class="qualification__subtitle">FreeCodeCamp</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2022
+                            
+                            <!-- 情報セキュリティマネジメント -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="200">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-shield-check-line" style="color: #dc2626;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">情報セキュリティマネジメント試験</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            独立行政法人情報処理推進機構（IPA）
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2022年12月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        情報セキュリティマネジメントの計画・運用・評価・改善に関する知識・実践能力を証明
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
+                            
+                            <!-- ITパスポート -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="300">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-passport-line" style="color: #059669;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">ITパスポート試験</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            独立行政法人情報処理推進機構（IPA）
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2023年6月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        ITに関する基礎的な知識を証明する国家試験
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 統計検定 -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="400">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-bar-chart-line" style="color: #7c3aed;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">統計検定3級</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            一般財団法人統計質保証推進協会
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2024年10月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        統計学の基本的な知識と統計的思考力を証明する資格
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 実用数学技能検定 -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="500">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-calculator-line" style="color: #ea580c;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">実用数学技能検定「数検」2級</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            公益財団法人日本数学検定協会
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2022年4月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        高校2年程度の数学的知識・技能と論理的思考力を証明
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- 職歴 -->
-                    <div class="qualification__content" data-content id="work">
-                        <div class="qualification__data">
-                            <div>
-                                <h3 class="qualification__title">Frontend Developer</h3>
-                                <span class="qualification__subtitle">Tech Solutions Inc.</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2022 - Present
+                    
+                    <!-- 語学系資格 -->
+                    <div class="note-cert-content" data-content="language">
+                        <div class="note-cert-grid">
+                            <div class="note-cert-card" data-aos="fade-up">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-global-line" style="color: #2563eb;"></i>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">TOEIC Listening & Reading Test</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            一般財団法人国際ビジネスコミュニケーション協会
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2024年3月受験
+                                        </span>
+                                    </div>
+                                    <div class="note-cert-card__score">
+                                        <span class="note-score-badge">
+                                            <i class="ri-trophy-line"></i>
+                                            スコア: 720点
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        英語によるコミュニケーション能力を測定する国際標準テスト
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--valid">
+                                            <i class="ri-check-line"></i>
+                                            有効期限: 2026年3月
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="qualification__data">
-                            <div></div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
-                            </div>
-
-                            <div>
-                                <h3 class="qualification__title">Junior Developer</h3>
-                                <span class="qualification__subtitle">StartUp Co.</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2021 - 2022
+                    </div>
+                    
+                    <!-- その他資格 -->
+                    <div class="note-cert-content" data-content="other">
+                        <div class="note-cert-grid">
+                            <!-- 危険物取扱者 -->
+                            <div class="note-cert-card" data-aos="fade-up">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-fire-line" style="color: #dc2626;"></i>
+                                    </div>
+                                </div>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">危険物取扱者 乙種第3・4・5・6類</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            一般財団法人消防試験研究センター
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2021年12月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        化学系危険物の取り扱いに関する国家資格（4種類取得）
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--permanent">
+                                            <i class="ri-infinity-line"></i>
+                                            終身有効
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="qualification__data">
-                            <div>
-                                <h3 class="qualification__title">Intern Developer</h3>
-                                <span class="qualification__subtitle">Web Agency</span>
-                                <div class="qualification__calendar">
-                                    <i class="ri-calendar-line"></i>
-                                    2020 - 2021
+                            
+                            <!-- 普通自動車運転免許 -->
+                            <div class="note-cert-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="note-cert-card__header">
+                                    <div class="note-cert-card__icon">
+                                        <i class="ri-car-line" style="color: #059669;"></i>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
+                                <div class="note-cert-card__content">
+                                    <h3 class="note-cert-card__title">普通自動車第一種運転免許</h3>
+                                    <div class="note-cert-card__meta">
+                                        <span class="note-cert-card__issuer">
+                                            <i class="ri-building-line"></i>
+                                            警察庁
+                                        </span>
+                                        <span class="note-cert-card__date">
+                                            <i class="ri-calendar-line"></i>
+                                            2022年1月取得
+                                        </span>
+                                    </div>
+                                    <p class="note-cert-card__description">
+                                        普通自動車の運転に関する国家資格
+                                    </p>
+                                    <div class="note-cert-card__validity">
+                                        <span class="note-validity-badge note-validity-badge--renewal">
+                                            <i class="ri-refresh-line"></i>
+                                            次回更新: 2025年1月
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>        <!-- ポートフォリオセクション -->
+        </section><!-- ポートフォリオセクション -->
         <section class="note-section" id="portfolio">
             <div class="note-container">
                 <div class="note-section__header">
@@ -1619,9 +2096,33 @@
         <script defer src="assets/js/navigation.js"></script>
         <script defer src="assets/js/portfolio-filter.js"></script>
         <script defer src="assets/js/image-optimization.js"></script>        <script defer src="assets/js/security.js"></script>
-        <script defer src="assets/js/analytics.js"></script>        
-        <!-- メインスクリプト（最後に読み込み） -->
+        <script defer src="assets/js/analytics.js"></script>          <!-- メインスクリプト（最後に読み込み） -->
         <!-- main.jsは削除済み - note-app.jsに統合 -->
+        
+        <!-- AOS（Animate On Scroll）ライブラリ -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        
+        <!-- アプリケーションJavaScript（遅延読み込み） -->
+        <script defer src="assets/js/note-app.js"></script>
+        <script defer src="assets/js/portfolio-data.js"></script>
+        <script defer src="assets/js/portfolio-filter.js"></script>
+        <script defer src="assets/js/navigation.js"></script>
+        <script defer src="assets/js/note-experience.js"></script>
+        <script defer src="assets/js/image-optimization.js"></script>
+        <script defer src="assets/js/analytics.js"></script>
+        <script defer src="assets/js/performance.js"></script>
+        <script defer src="assets/js/security.js"></script>
+        
+        <!-- AOS初期化 -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    offset: 100
+                });
+            });
+        </script>
     
     <!-- サービスワーカー登録（PWA対応） -->
     <script>

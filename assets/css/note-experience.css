@@ -1,0 +1,904 @@
+/* ==========================================================================
+   職歴セクション - Experience Section CSS
+   ========================================================================== */
+
+.note-experience {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* タイムライン全体 */
+.note-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.note-timeline::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--note-primary-color), var(--note-secondary-color));
+    border-radius: 1px;
+}
+
+/* タイムラインアイテム */
+.note-timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.note-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* タイムラインマーカー */
+.note-timeline-marker {
+    position: relative;
+    flex-shrink: 0;
+    width: 4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.note-timeline-marker__dot {
+    width: 16px;
+    height: 16px;
+    background: var(--note-background-color);
+    border: 3px solid var(--note-primary-color);
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.note-timeline-marker__dot--current {
+    background: var(--note-primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+}
+
+/* タイムラインコンテンツ */
+.note-timeline-content {
+    flex: 1;
+    margin-left: 2rem;
+}
+
+/* 経験カード */
+.note-experience-card {
+    background: var(--note-card-background);
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--note-shadow-sm);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.note-experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--note-primary-color), var(--note-secondary-color));
+}
+
+.note-experience-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--note-shadow-lg);
+}
+
+/* カードヘッダー */
+.note-experience-card__header {
+    margin-bottom: 1.5rem;
+}
+
+.note-experience-card__period {
+    margin-bottom: 0.75rem;
+}
+
+.note-period-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--note-accent-color);
+    color: var(--note-text-color);
+    border-radius: var(--note-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--note-border-color);
+}
+
+.note-period-badge--current {
+    background: var(--note-primary-color);
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+    }
+}
+
+.note-experience-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--note-heading-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.note-experience-card__company {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    color: var(--note-primary-color);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* カードコンテンツ */
+.note-experience-card__description {
+    color: var(--note-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* 実績セクション */
+.note-experience-card__achievements {
+    margin-bottom: 1.5rem;
+}
+
+.note-experience-card__achievements-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--note-heading-color);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.note-experience-card__achievements-title::before {
+    content: '🎯';
+    font-size: 1.2rem;
+}
+
+.note-experience-card__achievements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-experience-card__achievements-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--note-text-color);
+    line-height: 1.5;
+}
+
+.note-experience-card__achievements-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--note-success-color);
+    font-weight: bold;
+}
+
+/* 技術タグセクション */
+.note-experience-card__technologies {
+    margin-bottom: 0;
+}
+
+.note-experience-card__tech-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--note-heading-color);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.note-experience-card__tech-title::before {
+    content: '🛠️';
+    font-size: 1.2rem;
+}
+
+.note-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.note-tech-tag {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--note-border-radius);
+    border: 1px solid var(--note-border-color);
+    background: var(--note-background-color);
+    color: var(--note-text-color);
+    transition: all 0.2s ease;
+}
+
+.note-tech-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 技術タグの色分け */
+.note-tech-tag--cloud { background: #fff3cd; color: #856404; border-color: #ffeaa7; }
+.note-tech-tag--container { background: #d1ecf1; color: #0c5460; border-color: #bee5eb; }
+.note-tech-tag--orchestration { background: #d4f5f7; color: #0f4c81; border-color: #b6ebf0; }
+.note-tech-tag--iac { background: #e2e3ff; color: #3730a3; border-color: #c7d2fe; }
+.note-tech-tag--ci { background: #d1fae5; color: #047857; border-color: #a7f3d0; }
+.note-tech-tag--monitoring { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.note-tech-tag--visualization { background: #fde2e7; color: #be185d; border-color: #fbcfe8; }
+.note-tech-tag--scripting { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+.note-tech-tag--shell { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
+.note-tech-tag--os { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+.note-tech-tag--network { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.note-tech-tag--virtualization { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+.note-tech-tag--office { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.note-tech-tag--ticketing { background: #f0f9ff; color: #0369a1; border-color: #7dd3fc; }
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .note-timeline::before {
+        left: 1rem;
+    }
+    
+    .note-timeline-marker {
+        width: 2rem;
+    }
+    
+    .note-timeline-content {
+        margin-left: 1rem;
+    }
+    
+    .note-experience-card {
+        padding: 1.5rem;
+    }
+    
+    .note-experience-card__title {
+        font-size: 1.25rem;
+    }
+    
+    .note-experience-card__company {
+        font-size: 1rem;
+    }
+    
+    .note-tech-tags {
+        gap: 0.375rem;
+    }
+    
+    .note-tech-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* ==========================================================================
+   保有資格セクション - Certifications Section CSS
+   ========================================================================== */
+
+.note-certifications {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 資格カテゴリータブ */
+.note-certifications__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--note-border-color);
+    padding-bottom: 1rem;
+}
+
+.note-cert-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius);
+    color: var(--note-text-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.note-cert-tab:hover {
+    background: var(--note-accent-color);
+    border-color: var(--note-primary-color);
+    color: var(--note-primary-color);
+}
+
+.note-cert-tab--active {
+    background: var(--note-primary-color);
+    border-color: var(--note-primary-color);
+    color: white;
+}
+
+/* 資格コンテンツ */
+.note-cert-content {
+    display: none;
+}
+
+.note-cert-content--active {
+    display: block;
+}
+
+/* 資格グリッド */
+.note-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 資格カード */
+.note-cert-card {
+    background: var(--note-card-background);
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--note-shadow-sm);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.note-cert-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--note-shadow-lg);
+}
+
+/* カードヘッダー */
+.note-cert-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.note-cert-card__icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--note-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--note-accent-color);
+    border: 1px solid var(--note-border-color);
+}
+
+.note-cert-card__badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--note-border-radius);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.note-cert-card__badge--featured {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    animation: shimmer 2s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+    from {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* カードコンテンツ */
+.note-cert-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--note-heading-color);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.note-cert-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.note-cert-card__issuer,
+.note-cert-card__date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--note-text-muted);
+}
+
+.note-cert-card__description {
+    color: var(--note-text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* スコアバッジ */
+.note-cert-card__score {
+    margin-bottom: 1rem;
+}
+
+.note-score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border-radius: var(--note-border-radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* 有効期限バッジ */
+.note-cert-card__validity {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--note-border-color);
+}
+
+.note-validity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--note-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.note-validity-badge--valid {
+    background: #d1fae5;
+    color: #047857;
+    border: 1px solid #10b981;
+}
+
+.note-validity-badge--permanent {
+    background: #e0e7ff;
+    color: #3730a3;
+    border: 1px solid #6366f1;
+}
+
+.note-validity-badge--renewal {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #f59e0b;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .note-certifications__tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .note-cert-tab {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+    
+    .note-cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .note-cert-card {
+        padding: 1.5rem;
+    }
+    
+    .note-cert-card__header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .note-cert-card__title {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .note-cert-card {
+        padding: 1rem;
+    }
+    
+    .note-cert-card__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .note-cert-card__title {
+        font-size: 1rem;
+    }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+    .note-tech-tag--cloud { background: #451a03; color: #fbbf24; border-color: #92400e; }
+    .note-tech-tag--container { background: #164e63; color: #67e8f9; border-color: #0891b2; }
+    .note-tech-tag--orchestration { background: #1e3a8a; color: #93c5fd; border-color: #3b82f6; }
+    .note-tech-tag--iac { background: #312e81; color: #c7d2fe; border-color: #6366f1; }
+    .note-tech-tag--ci { background: #064e3b; color: #6ee7b7; border-color: #10b981; }
+    .note-tech-tag--monitoring { background: #92400e; color: #fbbf24; border-color: #d97706; }
+    .note-tech-tag--visualization { background: #831843; color: #f9a8d4; border-color: #ec4899; }
+    .note-tech-tag--scripting { background: #312e81; color: #c7d2fe; border-color: #6366f1; }
+    .note-tech-tag--shell { background: #374151; color: #d1d5db; border-color: #6b7280; }
+    .note-tech-tag--os { background: #581c87; color: #ddd6fe; border-color: #8b5cf6; }
+    .note-tech-tag--network { background: #064e3b; color: #6ee7b7; border-color: #10b981; }
+    .note-tech-tag--virtualization { background: #991b1b; color: #fca5a5; border-color: #ef4444; }
+    .note-tech-tag--office { background: #1e3a8a; color: #93c5fd; border-color: #3b82f6; }
+    .note-tech-tag--ticketing { background: #0c4a6e; color: #7dd3fc; border-color: #0284c7; }
+}
+
+/* ==========================================================================
+   詳細展開機能とアニメーション強化
+   ========================================================================== */
+
+/* 詳細展開エリア */
+.note-experience-card__details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 0;
+    padding: 0 24px;
+}
+
+.note-experience-card__details.note-expanded {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 24px;
+    border-top: 1px solid var(--note-border-color);
+    margin-top: 16px;
+}
+
+/* 詳細コンテンツ */
+.note-experience-details__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--note-primary-color);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.note-experience-details__title::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 16px;
+    background: linear-gradient(135deg, var(--note-primary-color), var(--note-secondary-color));
+    border-radius: 2px;
+}
+
+.note-detail-section {
+    margin-bottom: 20px;
+}
+
+.note-detail-section h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--note-text-color);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.note-detail-section h6::before {
+    content: '▸';
+    color: var(--note-primary-color);
+    font-size: 12px;
+}
+
+.note-detail-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--note-text-light);
+    margin-bottom: 12px;
+}
+
+.note-detail-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-detail-section li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--note-text-light);
+    margin-bottom: 8px;
+    padding-left: 16px;
+    position: relative;
+}
+
+.note-detail-section li::before {
+    content: '●';
+    color: var(--note-primary-color);
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+/* メトリクス表示 */
+.note-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.note-metric-item {
+    text-align: center;
+    padding: 16px 12px;
+    background: linear-gradient(135deg, var(--note-card-bg), var(--note-secondary-bg));
+    border-radius: 12px;
+    border: 1px solid var(--note-border-color);
+    transition: all 0.3s ease;
+}
+
+.note-metric-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.note-metric-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--note-primary-color);
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.note-metric-label {
+    display: block;
+    font-size: 12px;
+    color: var(--note-text-light);
+    font-weight: 500;
+}
+
+/* アクションボタン */
+.note-experience-card__actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.note-detail-toggle {
+    background: linear-gradient(135deg, var(--note-primary-color), var(--note-secondary-color));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.note-detail-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.note-detail-toggle:active {
+    transform: translateY(0);
+}
+
+.note-detail-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.note-detail-toggle[aria-expanded="true"] i {
+    transform: rotate(45deg);
+}
+
+/* アニメーション強化 */
+@keyframes noteSlideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes notePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes noteShimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+/* スクロールアニメーション */
+.note-animate-in {
+    animation: noteSlideInUp 0.6s ease forwards;
+}
+
+/* ホバーアニメーション強化 */
+.note-experience-card:hover .note-tech-tag {
+    animation: notePulse 0.6s ease;
+}
+
+.note-cert-card:hover .note-cert-card__icon {
+    animation: notePulse 0.4s ease;
+}
+
+/* ローディングアニメーション */
+.note-loading {
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(99, 102, 241, 0.1), 
+        transparent
+    );
+    background-size: 200px 100%;
+    animation: noteShimmer 1.5s infinite;
+}
+
+/* スクロール進行状況インジケーター
+   ========================================================================== */
+
+.note-scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(99, 102, 241, 0.1);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+}
+
+.note-scroll-progress__bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--note-primary-color), var(--note-secondary-color));
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* パルスアニメーション強化 */
+@keyframes notePulseEnhanced {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+/* インタラクティブ要素の強化 */
+.note-timeline-marker__dot--current {
+    animation: notePulseEnhanced 2s infinite;
+}
+
+.note-timeline-marker__dot:hover {
+    animation: notePulseEnhanced 0.6s ease infinite;
+}
+
+/* ==========================================================================
+   既存のコード（変更なし）
+   ========================================================================== */
+
+/* ダークテーマ対応 */
+@media (prefers-color-scheme: dark) {
+    .note-metric-item {
+        background: linear-gradient(135deg, #1f2937, #374151);
+        border-color: #4b5563;
+    }
+    
+    .note-detail-section h6::before {
+        color: #8b5cf6;
+    }
+    
+    .note-detail-section li::before {
+        color: #8b5cf6;
+    }
+}
+
+/* フォーカス状態の改善 */
+.note-detail-toggle:focus {
+    outline: 2px solid var(--note-primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+/* 印刷対応 */
+@media print {
+    .note-experience-card__details {
+        max-height: none !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+    }
+    
+    .note-detail-toggle {
+        display: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .note-metric-item {
+        border: 2px solid;
+    }
+    
+    .note-detail-toggle {
+        border: 2px solid currentColor;
+    }
+}
