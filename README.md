@@ -1,4 +1,4 @@
-# 🌟 足立慧 (Kei Adachi) - ポートフォリオサイト
+# 🌟 足立圭 (Kei Adachi) - ポートフォリオサイト
 
 [![GitHub Pages Deploy](https://github.com/Kei-Adachi0709/Kei-Adachi0709.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/Kei-Adachi0709/Kei-Adachi0709.github.io/actions/workflows/deploy.yml)
 [![PageSpeed Insights](https://img.shields.io/badge/PageSpeed-90%2B-brightgreen)](https://pagespeed.web.dev/)
