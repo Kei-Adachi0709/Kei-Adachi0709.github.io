@@ -33,9 +33,11 @@
     "predeploy": "npm run health && npm run build",
     "prestart": "npm run install",
     "start": "npm run dev",
-    "check": "npm run validate && npm run lint",
-    "setup": "npm install && npm run build",
-    "release": "npm run predeploy && npm run deploy"
+    "check": "npm run validate && npm run lint",    "setup": "npm install && npm run build",
+    "release": "npm run predeploy && npm run deploy",
+    "scripts:build": "scripts\\build.bat",
+    "scripts:dev": "scripts\\dev-server.bat",
+    "scripts:deploy": "scripts\\deploy.bat"
   },
   "keywords": [
     "portfolio",

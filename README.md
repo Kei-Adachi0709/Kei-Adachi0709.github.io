@@ -49,19 +49,42 @@
 
 ```
 Kei-Adachi0709.github.io/
-├── assets/
-│   ├── css/
+├── 📁 assets/                 # 静的ファイル（CSS, JS, 画像等）
+│   ├── css/                   # スタイルシート
 │   │   └── main.css           # メインスタイルシート
-│   ├── scss/                  # SCSS開発用（Phase 2）
+│   ├── scss/                  # SCSS元ファイル
 │   │   └── main.scss
-│   ├── js/
+│   ├── js/                    # JavaScriptファイル
 │   │   └── main.js            # メインJavaScript
 │   ├── images/                # 画像ファイル
-│   └── fonts/                 # フォントファイル
-├── index.html                 # メインHTMLファイル
-├── package.json              # プロジェクト設定・依存関係
-├── .gitignore               # Git除外設定
-└── README.md                # プロジェクト説明
+│   ├── fonts/                 # Webフォント
+│   └── dist/                  # ビルド後ファイル
+├── 📁 config/                 # 設定ファイル群
+│   ├── webpack.config.js      # Webpackビルド設定
+│   ├── .eslintrc.json         # ESLint設定
+│   ├── .prettierrc            # Prettier設定
+│   ├── .lighthouserc.json     # Lighthouse設定
+│   └── security.conf          # セキュリティ設定
+├── 📁 docs/                   # ドキュメント・ガイド
+│   ├── QUICK_START.md         # 開始ガイド
+│   ├── DEPLOYMENT_CHECKLIST.md # デプロイ手順
+│   ├── SECURITY.md            # セキュリティガイド
+│   └── 安全なウェブサイトの作り方.pdf
+├── 📁 scripts/                # 開発用スクリプト
+│   ├── build.bat              # ビルドスクリプト
+│   ├── dev-server.bat         # 開発サーバー
+│   └── deploy.bat             # デプロイスクリプト
+├── 📁 temp/                   # 一時ファイル・レポート
+├── 📄 index.html              # メインページ
+├── 📄 404.md                  # 404エラーページ
+├── 📄 manifest.json           # PWAマニフェスト
+├── 📄 sw.js                   # Service Worker
+├── 📄 robots.txt              # SEO設定
+├── 📄 sitemap.xml             # サイトマップ
+├── 📄 package.json            # プロジェクト設定・依存関係
+├── 📄 .gitignore              # Git除外設定
+├── 📄 _config.yml             # GitHub Pages設定
+└── 📄 README.md               # プロジェクト説明
 ```
 
 ## 機能
