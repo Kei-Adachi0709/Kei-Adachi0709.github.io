@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ詳細 - 足立圭 (Kei Adachi)</title>
+    <meta name="description" content="足立圭のポートフォリオ詳細ページ。各プロジェクトの詳細情報、使用技術、制作期間、リンクなどを掲載。">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <i class="ri-arrow-left-line"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main">
+        <section class="portfolio-detail section">
+            <div class="container">
+                <h1 class="section__title">Portfolio Details</h1>
+                <span class="section__subtitle">Project showcase</span>
+
+                <div id="portfolio-detail-content" class="portfolio-detail__container">
+                    <!-- プロジェクト詳細はJavaScriptで動的に生成 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Kei Adachi</h1>
+                    <span class="footer__subtitle">Infrastructure Engineer</span>
+                </div>
+                <ul class="footer__links">
+                    <li><a href="index.html#portfolio" class="footer__link">Portfolio</a></li>
+                    <li><a href="index.html#contact" class="footer__link">Contact</a></li>
+                    <li><a href="index.html#about" class="footer__link">About</a></li>
+                </ul>
+            </div>
+            <p class="footer__copy">&#169; Kei Adachi. All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/portfolio-data.js"></script>
+    <script>
+        // URLパラメータから詳細表示
+        function getProjectIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('id')) || 1;
+        }
+
+        function displayProjectDetail(projectId) {
+            const project = portfolioData.find(p => p.id === projectId);
+            if (!project) return;
+
+            const container = document.getElementById('portfolio-detail-content');
+            container.innerHTML = `
+                <div class="project-detail">
+                    <div class="project-detail__header">
+                        <img src="${project.image}" alt="${project.title}" class="project-detail__image">
+                        <div class="project-detail__info">
+                            <h2 class="project-detail__title">${project.title}</h2>
+                            <p class="project-detail__description">${project.description}</p>
+                            
+                            <div class="project-detail__meta">
+                                <div class="meta-item">
+                                    <i class="ri-calendar-line"></i>
+                                    <span>制作期間: ${project.period}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="ri-team-line"></i>
+                                    <span>制作人数: ${project.members}人</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="ri-price-tag-3-line"></i>
+                                    <span>カテゴリ: ${project.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-detail__tech">
+                        <h3>使用技術</h3>
+                        <div class="tech-tags">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="project-detail__links">
+                        <h3>プロジェクトリンク</h3>
+                        <div class="link-cards">
+                            ${project.links.protopedia ? `
+                                <a href="${project.links.protopedia.url}" target="_blank" class="detail-link-card">
+                                    <div class="detail-card">
+                                        <img src="${project.links.protopedia.favicon}" alt="ProtoPedia" class="detail-card__favicon">
+                                        <div class="detail-card__content">
+                                            <h4 class="detail-card__title">${project.links.protopedia.title}</h4>
+                                            <p class="detail-card__description">${project.links.protopedia.description}</p>
+                                            <span class="detail-card__url">protopedia.net</span>
+                                        </div>
+                                        <i class="ri-external-link-line detail-card__icon"></i>
+                                    </div>
+                                </a>
+                            ` : ''}
+                            
+                            ${project.links.github ? `
+                                <a href="${project.links.github.url}" target="_blank" class="detail-link-card">
+                                    <div class="detail-card">
+                                        <img src="${project.links.github.favicon}" alt="GitHub" class="detail-card__favicon">
+                                        <div class="detail-card__content">
+                                            <h4 class="detail-card__title">${project.links.github.title}</h4>
+                                            <p class="detail-card__description">${project.links.github.description}</p>
+                                            <span class="detail-card__url">github.com</span>
+                                        </div>
+                                        <i class="ri-external-link-line detail-card__icon"></i>
+                                    </div>
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="project-detail__navigation">
+                        <a href="index.html#portfolio" class="button button--flex">
+                            <i class="ri-arrow-left-line"></i>
+                            ポートフォリオに戻る
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ページ読み込み時に実行
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectId = getProjectIdFromURL();
+            displayProjectDetail(projectId);
+        });
+    </script>
+</body>
+</html>

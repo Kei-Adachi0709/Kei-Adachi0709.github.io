@@ -1,0 +1,399 @@
+/* ポートフォリオ専用スタイル */
+
+/* ポートフォリオコンテンツ */
+.portfolio__content {
+    background-color: var(--container-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(3, 3, 3, 0.15);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio__content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(3, 3, 3, 0.15);
+}
+
+.portfolio__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.portfolio__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 0.5rem;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
+.portfolio__description {
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.5;    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 技術タグ */
+.portfolio__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.portfolio__tech-tag {
+    background-color: var(--first-color-alt);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+}
+
+/* メタ情報 */
+.portfolio__meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+}
+
+/* カードリンク */
+.portfolio__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.portfolio__link-card {
+    text-decoration: none;
+    display: block;
+}
+
+.link-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: var(--body-color);
+}
+
+.link-card:hover {
+    border-color: var(--first-color);
+    box-shadow: 0 4px 12px rgba(var(--first-color-rgb), 0.15);
+    transform: translateY(-2px);
+}
+
+.link-card__favicon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.link-card__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.link-card__title {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-card__description {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.link-card__url {
+    font-size: var(--smaller-font-size);
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+}
+
+/* フィルター */
+.portfolio__filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.portfolio__filter {
+    background-color: var(--container-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+}
+
+.portfolio__filter:hover,
+.portfolio__filter.active {
+    background-color: var(--first-color);
+    color: white;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+    .portfolio__content {
+        padding: 1rem;
+    }
+    
+    .portfolio__img {
+        height: 150px;
+    }
+    
+    .portfolio__meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .link-card {
+        padding: 0.5rem;
+    }
+    
+    .link-card__favicon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .portfolio__filters {
+        gap: 0.5rem;
+    }
+    
+    .portfolio__filter {
+        padding: 0.375rem 0.75rem;
+        font-size: var(--smaller-font-size);
+    }
+}
+
+/* ダークテーマ対応 */
+.dark-theme .link-card {
+    background-color: var(--container-color);
+    border-color: var(--border-color);
+}
+
+.dark-theme .link-card:hover {
+    border-color: var(--first-color);
+}
+
+/* ポートフォリオ詳細ページ */
+.portfolio-detail {
+    padding-top: 6rem;
+}
+
+.project-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-detail__header {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.project-detail__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.project-detail__title {
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.project-detail__description {
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-detail__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+}
+
+.meta-item i {
+    color: var(--first-color);
+}
+
+.project-detail__tech {
+    margin-bottom: 2rem;
+}
+
+.project-detail__tech h3 {
+    font-size: var(--h3-font-size);
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background-color: var(--first-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+}
+
+.project-detail__links {
+    margin-bottom: 2rem;
+}
+
+.project-detail__links h3 {
+    font-size: var(--h3-font-size);
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-link-card {
+    text-decoration: none;
+    display: block;
+}
+
+.detail-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: var(--body-color);
+}
+
+.detail-card:hover {
+    border-color: var(--first-color);
+    box-shadow: 0 8px 24px rgba(var(--first-color-rgb), 0.15);
+    transform: translateY(-3px);
+}
+
+.detail-card__favicon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.detail-card__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-card__title {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    margin-bottom: 0.5rem;
+}
+
+.detail-card__description {
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.detail-card__url {
+    font-size: var(--small-font-size);
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+}
+
+.detail-card__icon {
+    font-size: 1.5rem;
+    color: var(--first-color);
+    flex-shrink: 0;
+}
+
+.project-detail__navigation {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* レスポンシブ - 詳細ページ */
+@media screen and (min-width: 768px) {
+    .project-detail__header {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+    
+    .project-detail__meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio-detail {
+        padding-top: 4rem;
+    }
+    
+    .project-detail__image {
+        height: 250px;
+    }
+    
+    .detail-card {
+        padding: 1rem;
+    }
+    
+    .detail-card__favicon {
+        width: 24px;
+        height: 24px;
+    }
+}

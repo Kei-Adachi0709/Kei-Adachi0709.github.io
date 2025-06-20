@@ -136,10 +136,13 @@
     
     <!-- クリティカルCSS（Above the Fold） -->
     <link rel="stylesheet" href="assets/css/critical.css">
-    
-    <!-- 非クリティカルCSS（遅延読み込み） -->
+      <!-- 非クリティカルCSS（遅延読み込み） -->
     <link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    
+    <!-- ポートフォリオ専用CSS -->
+    <link rel="preload" href="assets/css/portfolio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/portfolio.css"></noscript>
     
     <!-- フォント最適化読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -708,64 +711,22 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- ポートフォリオセクション -->
+        </section>        <!-- ポートフォリオセクション -->
         <section class="portfolio section" id="portfolio">
             <h2 class="section__title">Portfolio</h2>
             <span class="section__subtitle">Most recent work</span>
 
+            <!-- フィルター -->
+            <div class="portfolio__filters">
+                <button class="portfolio__filter active" data-filter="all">All</button>
+                <button class="portfolio__filter" data-filter="Mobile App">Mobile App</button>
+                <button class="portfolio__filter" data-filter="Web App">Web App</button>
+                <button class="portfolio__filter" data-filter="IoT App">IoT App</button>
+            </div>
+
             <div class="portfolio__container container swiper-container">
-                <div class="swiper-wrapper">                    <!-- ポートフォリオ1 -->
-                    <div class="portfolio__content grid swiper-slide">
-                        <img src="https://via.placeholder.com/400x200/2563eb/ffffff?text=E-COMMERCE" alt="Portfolio 1" class="portfolio__img">
-
-                        <div class="portfolio__data">
-                            <h3 class="portfolio__title">Modern E-commerce Website</h3>
-                            <p class="portfolio__description">
-                                React、TypeScript、Next.jsを使用したモダンなECサイト。
-                                ユーザー認証、決済機能、管理画面を実装。
-                            </p>
-                            <a href="#" class="button button--flex button--small portfolio__button">
-                                Demo
-                                <i class="ri-arrow-right-line button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- ポートフォリオ2 -->
-                    <div class="portfolio__content grid swiper-slide">
-                        <img src="https://via.placeholder.com/400x200/3b82f6/ffffff?text=TASK+APP" alt="Portfolio 2" class="portfolio__img">
-
-                        <div class="portfolio__data">
-                            <h3 class="portfolio__title">Task Management App</h3>
-                            <p class="portfolio__description">
-                                Vue.js、Vuex、Firebaseを使用したタスク管理アプリ。
-                                リアルタイム同期、ドラッグ&ドロップ機能を実装。
-                            </p>
-                            <a href="#" class="button button--flex button--small portfolio__button">
-                                Demo
-                                <i class="ri-arrow-right-line button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- ポートフォリオ3 -->
-                    <div class="portfolio__content grid swiper-slide">
-                        <img src="https://via.placeholder.com/400x200/1d4ed8/ffffff?text=WEATHER" alt="Portfolio 3" class="portfolio__img">
-
-                        <div class="portfolio__data">
-                            <h3 class="portfolio__title">Weather Dashboard</h3>
-                            <p class="portfolio__description">
-                                JavaScript、Chart.js、OpenWeather APIを使用した天気予報ダッシュボード。
-                                レスポンシブデザインとPWA対応。
-                            </p>
-                            <a href="#" class="button button--flex button--small portfolio__button">
-                                Demo
-                                <i class="ri-arrow-right-line button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
+                <div class="swiper-wrapper">
+                    <!-- ポートフォリオデータはJavaScriptで動的に生成されます -->
                 </div>
 
                 <!-- スワイパーのナビゲーション -->
@@ -964,9 +925,9 @@
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    
-    <!-- 機能別スクリプト -->
+    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>    <!-- 機能別スクリプト -->
+    <script defer src="assets/js/portfolio-data.js"></script>
+    <script defer src="assets/js/portfolio-filter.js"></script>
     <script defer src="assets/js/image-optimization.js"></script>
     <script defer src="assets/js/security.js"></script>
     <script defer src="assets/js/security-test.js"></script>
