@@ -137,7 +137,41 @@
     <!-- クリティカルCSS（Above the Fold） -->
     <link rel="stylesheet" href="assets/css/critical.css">    <!-- 非クリティカルCSS（遅延読み込み） -->
     <link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>    <!-- note風メインスタイル -->
+    <link rel="preload" href="assets/css/note-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-style.css"></noscript>
+    
+    <!-- スキルセクション専用CSS -->
+    <link rel="preload" href="assets/css/note-skills.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-skills.css"></noscript>
+      <!-- ポートフォリオセクション専用CSS -->
+    <link rel="preload" href="assets/css/note-portfolio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-portfolio.css"></noscript>
+    
+    <!-- ポートフォリオモーダル専用CSS -->
+    <link rel="preload" href="assets/css/note-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-modal.css"></noscript>
+      <!-- note風デザインCSS -->
+    <link rel="preload" href="assets/css/note-design.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-design.css"></noscript>
+    
+    <!-- コンタクトセクション専用CSS -->
+    <link rel="preload" href="assets/css/note-contact.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-contact.css"></noscript>
+    
+    <!-- フッター専用CSS -->
+    <link rel="preload" href="assets/css/note-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-footer.css"></noscript>>
+    
+    <!-- note風デザインCSS -->
+    <link rel="preload" href="assets/css/note-design.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-design.css"></noscript>
+    
+    <link rel="preload" href="assets/css/note-header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-header.css"></noscript>
+    
+    <link rel="preload" href="assets/css/note-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-components.css"></noscript>
     
     <!-- レスポンシブCSS -->
     <link rel="preload" href="assets/css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -284,278 +318,519 @@
     </script>    <!-- クリティカルJavaScript（一時的に無効化） -->
     <!-- <script src="assets/js/critical.js"></script> -->
 </head>
-<body>
-
-    <!-- ヘッダー・ナビゲーション -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <!-- ロゴ -->
-            <a href="#home" class="nav__logo">
-                Kei Adachi
-            </a>            <!-- ナビゲーションメニュー -->
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">
-                            <i class="ri-home-5-line nav__icon"></i> Home
-                        </a>
+<body>    <!-- note風ヘッダー -->
+    <header class="note-header">
+        <div class="note-header__container">
+            <nav class="note-nav">
+                <!-- ロゴ -->
+                <a href="#home" class="note-nav__logo">
+                    <span class="note-nav__logo-text">Kei Adachi</span>
+                    <span class="note-nav__logo-subtitle">Portfolio</span>
+                </a>
+                
+                <!-- デスクトップナビゲーション -->
+                <ul class="note-nav__list">
+                    <li class="note-nav__item">
+                        <a href="#about" class="note-nav__link">About</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link">
-                            <i class="ri-user-2-line nav__icon"></i> About
-                        </a>
+                    <li class="note-nav__item">
+                        <a href="#skills" class="note-nav__link">Skills</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="#skills" class="nav__link">
-                            <i class="ri-file-list-3-line nav__icon"></i> Skills
-                        </a>
+                    <li class="note-nav__item">
+                        <a href="#portfolio" class="note-nav__link">Portfolio</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="#portfolio" class="nav__link">
-                            <i class="ri-image-line nav__icon"></i> Portfolio
-                        </a>
-                    </li>                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class="ri-send-plane-line nav__icon"></i> Contact
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#security" class="nav__link">
-                            <i class="ri-shield-check-line nav__icon"></i> Security
-                        </a>
+                    <li class="note-nav__item">
+                        <a href="#contact" class="note-nav__link">Contact</a>
                     </li>
                 </ul>
-
-                <!-- メニュー閉じるボタン -->
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-line"></i>
+                
+                <!-- アクションボタン -->
+                <div class="note-nav__actions">
+                    <button class="note-nav__theme-toggle" id="theme-toggle" aria-label="テーマ切り替え">
+                        <i class="ri-moon-line"></i>
+                    </button>
+                    <a href="#contact" class="note-btn note-btn--primary note-btn--sm">
+                        採用担当者様へ
+                    </a>
                 </div>
-            </div>
-
-            <!-- テーマ切り替えボタン -->
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line"></i>
-            </div>
-
-            <!-- ダークモード切り替え -->
-            <i class="ri-moon-line change-theme" id="theme-button"></i>
-        </nav>
-    </header>    <!-- メインコンテンツ -->
-    <main class="main">
-        <!-- ヒーローセクション -->
-        <section class="hero section" id="home">
-            <div class="hero__container container grid">
-                <div class="hero__content">
-                    <div class="hero__data">
-                        <span class="hero__greeting">Hello, I'm</span>
-                        <h1 class="hero__name">Kei Adachi</h1>
-                        <h2 class="hero__profession">
-                            <span class="typed"></span>
-                        </h2>
-                        <p class="hero__description">
-                            フロントエンド開発者として、ユーザー体験を重視したモダンなWebアプリケーションの開発を行っています。
-                            React、Vue.js、TypeScriptを使用したSPA開発が得意です。
-                        </p>
-                        <div class="hero__buttons">
-                            <a href="#contact" class="button hero__button">Contact Me</a>
-                            <a href="#portfolio" class="button button--ghost hero__button">View Work</a>
-                        </div>
-                    </div>
-                    <div class="hero__img">
-                        <svg class="hero__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg">
-                            <mask id="mask0" mask-type="alpha">
-                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                            </mask>                            <g mask="url(#mask0)">
-                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                <image class="hero__blob-img" x="12" y="18" href="https://via.placeholder.com/170x170/2563eb/ffffff?text=KEI"/>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <div class="hero__scroll">
-                    <a href="#about" class="hero__scroll-button button--flex">
-                        <i class="ri-mouse-line hero__scroll-mouse"></i>
-                        <span class="hero__scroll-name">Scroll down</span>
-                        <i class="ri-arrow-down-line hero__scroll-arrow"></i>
+                
+                <!-- モバイルメニューボタン -->
+                <button class="note-nav__mobile-toggle" id="mobile-menu-toggle" aria-label="メニュー">
+                    <span class="note-nav__hamburger"></span>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- モバイルメニュー -->
+        <div class="note-nav__mobile-menu" id="mobile-menu">
+            <div class="note-nav__mobile-content">
+                <ul class="note-nav__mobile-list">
+                    <li><a href="#about" class="note-nav__mobile-link">About</a></li>
+                    <li><a href="#skills" class="note-nav__mobile-link">Skills</a></li>
+                    <li><a href="#portfolio" class="note-nav__mobile-link">Portfolio</a></li>
+                    <li><a href="#contact" class="note-nav__mobile-link">Contact</a></li>
+                </ul>
+                <div class="note-nav__mobile-actions">
+                    <a href="#contact" class="note-btn note-btn--primary note-btn--block">
+                        採用担当者様へ
                     </a>
                 </div>
             </div>
-        </section>        <!-- アバウトセクション -->
-        <section class="about section" id="about">
-            <h2 class="section__title" data-aos="fade-up">About Me</h2>
-            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">My introduction</span>            <div class="about__container container grid">
-                <img src="https://via.placeholder.com/350x400/2563eb/ffffff?text=ABOUT" alt="About image" class="about__img" data-aos="fade-right">
-
-                <div class="about__data" data-aos="fade-left">
-                    <p class="about__description">
-                        フロントエンド開発者として3年の経験を持ち、ユーザー体験を重視したWebアプリケーション開発に情熱を注いでいます。
-                        React、Vue.js、TypeScriptを用いたモダンな開発手法に精通しており、
-                        レスポンシブデザインやアクセシビリティにも配慮した品質の高いコードを書くことを心がけています。
-                    </p>                    <div class="about__info">
-                        <div class="about__info-item">
-                            <span class="about__info-title">03+</span>
-                            <span class="about__info-name">Years <br> experience</span>
+        </div>
+    </header>    <!-- メインコンテンツ -->
+    <main class="note-main">
+        <!-- ヒーローセクション -->
+        <section class="note-hero" id="home">
+            <div class="note-container">
+                <div class="note-hero__content">
+                    <div class="note-hero__text">
+                        <p class="note-hero__greeting">👋 Hello, World!</p>
+                        <h1 class="note-hero__title">
+                            足立圭 (Kei Adachi)
+                        </h1>
+                        <h2 class="note-hero__subtitle">
+                            インフラエンジニア開発者
+                        </h2>
+                        <p class="note-hero__description">
+                            AWS、Docker、Kubernetesを専門とする2025年新卒採用向けのインフラエンジニア開発者です。<br>
+                            革新的なクラウドインフラ構築とDevOpsに情熱を注いでいます。
+                        </p>
+                        <div class="note-hero__actions">
+                            <a href="#contact" class="note-btn note-btn--primary note-btn--lg">
+                                <i class="ri-mail-line"></i>
+                                採用担当者様へ
+                            </a>
+                            <a href="#portfolio" class="note-btn note-btn--outline note-btn--lg">
+                                <i class="ri-eye-line"></i>
+                                作品を見る
+                            </a>
                         </div>
-
-                        <div class="about__info-item">
-                            <span class="about__info-title">20+</span>
-                            <span class="about__info-name">Completed <br> projects</span>
-                        </div>
-
-                        <div class="about__info-item">
-                            <span class="about__info-title">05+</span>
-                            <span class="about__info-name">Companies <br> worked</span>
+                        <div class="note-hero__social">
+                            <a href="https://github.com/Kei-Adachi0709" target="_blank" rel="noopener" class="note-social-link">
+                                <i class="ri-github-fill"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/kei-adachi0709" target="_blank" rel="noopener" class="note-social-link">
+                                <i class="ri-linkedin-fill"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://protopedia.net/user/Kei-Adachi0709" target="_blank" rel="noopener" class="note-social-link">
+                                <i class="ri-lightbulb-line"></i>
+                                <span>ProtoPedia</span>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="about__buttons">
-                        <a download="" href="assets/pdf/Kei-Adachi-CV.pdf" class="button button--flex">
-                            Download CV<i class="ri-download-line button__icon"></i>
+                    <div class="note-hero__visual">
+                        <div class="note-hero__avatar">
+                            <img src="assets/images/profile.jpg" alt="足立圭のプロフィール写真" class="note-hero__avatar-img">
+                            <div class="note-hero__avatar-ring"></div>
+                        </div>
+                        <div class="note-hero__decoration">
+                            <div class="note-floating-card note-floating-card--aws">
+                                <i class="ri-cloud-line"></i>
+                                <span>AWS</span>
+                            </div>
+                            <div class="note-floating-card note-floating-card--docker">
+                                <i class="ri-database-2-line"></i>
+                                <span>Docker</span>
+                            </div>
+                            <div class="note-floating-card note-floating-card--k8s">
+                                <i class="ri-server-line"></i>
+                                <span>Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        <!-- Aboutセクション -->
+        <section class="note-section" id="about">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">About Me</h2>
+                    <p class="note-section__subtitle">インフラエンジニア開発者への道のり</p>
+                </div>
+                
+                <div class="note-about">
+                    <div class="note-about__content">
+                        <div class="note-about__story">
+                            <div class="note-about__intro">
+                                <h3 class="note-about__heading">はじめまして、足立圭です</h3>
+                                <p class="note-about__text">
+                                    大学でコンピューターサイエンスを学び、特にクラウドインフラストラクチャとDevOpsに魅了されました。
+                                    「技術で世界をより良くしたい」という想いから、インフラエンジニア開発者を目指しています。
+                                </p>
+                            </div>
+                            
+                            <div class="note-about__expertise">
+                                <h4 class="note-about__subheading">専門分野</h4>
+                                <div class="note-expertise-grid">
+                                    <div class="note-expertise-card">
+                                        <div class="note-expertise-card__icon">
+                                            <i class="ri-cloud-line"></i>
+                                        </div>
+                                        <h5 class="note-expertise-card__title">クラウドインフラ</h5>
+                                        <p class="note-expertise-card__desc">AWS、Azure、GCPを使用したスケーラブルなインフラ設計・構築</p>
+                                    </div>
+                                    
+                                    <div class="note-expertise-card">
+                                        <div class="note-expertise-card__icon">
+                                            <i class="ri-code-box-line"></i>
+                                        </div>
+                                        <h5 class="note-expertise-card__title">DevOps</h5>
+                                        <p class="note-expertise-card__desc">CI/CD、Infrastructure as Code、監視・ログ管理システムの構築</p>
+                                    </div>
+                                    
+                                    <div class="note-expertise-card">
+                                        <div class="note-expertise-card__icon">
+                                            <i class="ri-server-line"></i>
+                                        </div>
+                                        <h5 class="note-expertise-card__title">コンテナ技術</h5>
+                                        <p class="note-expertise-card__desc">Docker、Kubernetes、マイクロサービスアーキテクチャの実装</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-about__stats">
+                                <div class="note-stats-grid">
+                                    <div class="note-stat">
+                                        <div class="note-stat__number">10+</div>
+                                        <div class="note-stat__label">プロジェクト</div>
+                                    </div>
+                                    <div class="note-stat">
+                                        <div class="note-stat__number">3+</div>
+                                        <div class="note-stat__label">年間の学習</div>
+                                    </div>
+                                    <div class="note-stat">
+                                        <div class="note-stat__number">5+</div>
+                                        <div class="note-stat__label">技術資格</div>
+                                    </div>
+                                    <div class="note-stat">
+                                        <div class="note-stat__number">100%</div>
+                                        <div class="note-stat__label">情熱</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="note-about__visual">
+                            <div class="note-about__profile">
+                                <img src="assets/images/about-profile.jpg" alt="足立圭 - インフラエンジニア開発者" class="note-about__profile-img">
+                            </div>
+                            <div class="note-about__decorations">
+                                <!-- 装飾用アニメーション要素 -->
+                                <div class="note-decoration note-decoration--1"></div>
+                                <div class="note-decoration note-decoration--2"></div>
+                                <div class="note-decoration note-decoration--3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="note-about__actions">
+                        <a href="assets/pdf/Kei-Adachi-Resume.pdf" download class="note-btn note-btn--outline">
+                            <i class="ri-download-line"></i>
+                            履歴書をダウンロード
                         </a>
+                        <a href="#portfolio" class="note-btn note-btn--primary">
+                            <i class="ri-eye-line"></i>
+                            ポートフォリオを見る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>        <!-- スキルセクション -->
+        <section class="note-section note-section--alt" id="skills">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">Technical Skills</h2>
+                    <p class="note-section__subtitle">インフラエンジニア開発者としての技術スタック</p>
+                </div>
+                
+                <div class="note-skills">
+                    <!-- スキルカテゴリータブ -->
+                    <div class="note-skills__tabs">
+                        <button class="note-skill-tab note-skill-tab--active" data-tab="infrastructure">
+                            <i class="ri-cloud-line"></i>
+                            インフラ
+                        </button>
+                        <button class="note-skill-tab" data-tab="devops">
+                            <i class="ri-code-box-line"></i>
+                            DevOps
+                        </button>
+                        <button class="note-skill-tab" data-tab="programming">
+                            <i class="ri-braces-line"></i>
+                            プログラミング
+                        </button>
+                        <button class="note-skill-tab" data-tab="tools">
+                            <i class="ri-tools-line"></i>
+                            ツール
+                        </button>
+                    </div>
+                    
+                    <!-- インフラスキル -->
+                    <div class="note-skill-content note-skill-content--active" data-content="infrastructure">
+                        <div class="note-skill-grid">
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-cloud-line" style="color: #ff9900;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Amazon Web Services</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">EC2、S3、Lambda、RDS、VPC等を使用したクラウドインフラ構築</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">EC2</span>
+                                        <span class="note-skill-tag">S3</span>
+                                        <span class="note-skill-tag">Lambda</span>
+                                        <span class="note-skill-tag">RDS</span>
+                                        <span class="note-skill-tag">VPC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-database-2-line" style="color: #0db7ed;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Docker</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">コンテナ化、Docker Compose、マルチステージビルド</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Containerization</span>
+                                        <span class="note-skill-tag">Docker Compose</span>
+                                        <span class="note-skill-tag">Multi-stage Build</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-server-line" style="color: #326ce5;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Kubernetes</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">コンテナオーケストレーション、Pod管理、Service設定</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Pods</span>
+                                        <span class="note-skill-tag">Services</span>
+                                        <span class="note-skill-tag">Deployments</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DevOpsスキル -->
+                    <div class="note-skill-content" data-content="devops">
+                        <div class="note-skill-grid">
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-git-branch-line" style="color: #f05032;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">CI/CD</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">GitHub Actions、Jenkins、GitLab CIを使用した自動化</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">GitHub Actions</span>
+                                        <span class="note-skill-tag">Jenkins</span>
+                                        <span class="note-skill-tag">GitLab CI</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-file-code-line" style="color: #623ce4;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Infrastructure as Code</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">Terraform、Ansible、CloudFormationによるインフラ管理</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Terraform</span>
+                                        <span class="note-skill-tag">Ansible</span>
+                                        <span class="note-skill-tag">CloudFormation</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-bar-chart-line" style="color: #e6522c;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">監視・ログ管理</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">Prometheus、Grafana、ELKスタックでの監視体制構築</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Prometheus</span>
+                                        <span class="note-skill-tag">Grafana</span>
+                                        <span class="note-skill-tag">ELK Stack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- プログラミングスキル -->
+                    <div class="note-skill-content" data-content="programming">
+                        <div class="note-skill-grid">
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-code-s-slash-line" style="color: #3776ab;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Python</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">自動化スクリプト、API開発、データ処理</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Flask</span>
+                                        <span class="note-skill-tag">FastAPI</span>
+                                        <span class="note-skill-tag">Pandas</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-terminal-box-line" style="color: #89e051;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Shell Scripting</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">Bash、Zsh、自動化スクリプト作成</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Bash</span>
+                                        <span class="note-skill-tag">Zsh</span>
+                                        <span class="note-skill-tag">Automation</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-braces-line" style="color: #f7df1e;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">JavaScript / Node.js</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">サーバーサイド開発、API作成、フロントエンド</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Express.js</span>
+                                        <span class="note-skill-tag">React</span>
+                                        <span class="note-skill-tag">REST API</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ツールスキル -->
+                    <div class="note-skill-content" data-content="tools">
+                        <div class="note-skill-grid">
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-git-branch-line" style="color: #f05032;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Git / GitHub</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">バージョン管理、ブランチ戦略、コラボレーション</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Git Flow</span>
+                                        <span class="note-skill-tag">Pull Request</span>
+                                        <span class="note-skill-tag">Code Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-terminal-line" style="color: #000000;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">Linux / Unix</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">サーバー管理、コマンドライン操作、システム設定</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">Ubuntu</span>
+                                        <span class="note-skill-tag">CentOS</span>
+                                        <span class="note-skill-tag">systemd</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="note-skill-card">
+                                <div class="note-skill-card__header">
+                                    <div class="note-skill-card__icon">
+                                        <i class="ri-database-line" style="color: #336791;"></i>
+                                    </div>
+                                    <h4 class="note-skill-card__title">データベース</h4>
+                                    <div class="note-skill-card__level">
+                                        <span class="note-skill-level note-skill-level--intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="note-skill-card__content">
+                                    <p class="note-skill-card__desc">MySQL、PostgreSQL、MongoDB、Redis</p>
+                                    <div class="note-skill-card__tags">
+                                        <span class="note-skill-tag">MySQL</span>
+                                        <span class="note-skill-tag">PostgreSQL</span>
+                                        <span class="note-skill-tag">MongoDB</span>
+                                        <span class="note-skill-tag">Redis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- スキルセクション -->
-        <section class="skills section" id="skills">
-            <h2 class="section__title" data-aos="fade-up">Skills</h2>
-            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">My technical level</span>
-
-            <div class="skills__container container grid">
-                <div data-aos="fade-right">
-                    <!-- スキル1 -->
-                    <div class="skills__content skills__open">
-                        <div class="skills__header">
-                            <i class="ri-braces-line skills__icon"></i>
-
-                            <div>
-                                <h1 class="skills__title">Frontend Developer</h1>
-                                <span class="skills__subtitle">More than 3 years</span>
-                            </div>
-
-                            <i class="ri-arrow-down-s-line skills__arrow"></i>
-                        </div>
-
-                        <div class="skills__list grid">
-                            <!-- ...existing skills list... -->
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">HTML</h3>
-                                    <span class="skills__number">90%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__html"></span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">CSS</h3>
-                                    <span class="skills__number">85%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__css"></span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">JavaScript</h3>
-                                    <span class="skills__number">80%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__js"></span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">React</h3>
-                                    <span class="skills__number">75%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__react"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- スキル2 -->
-                    <div class="skills__content skills__close">
-                        <div class="skills__header">
-                            <i class="ri-server-line skills__icon"></i>
-
-                            <div>
-                                <h1 class="skills__title">Backend Developer</h1>
-                                <span class="skills__subtitle">More than 2 years</span>
-                            </div>
-
-                            <i class="ri-arrow-down-s-line skills__arrow"></i>
-                        </div>
-
-                        <div class="skills__list grid">
-                            <!-- ...existing skills list... -->
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Node.js</h3>
-                                    <span class="skills__number">70%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__node"></span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Express.js</h3>
-                                    <span class="skills__number">65%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__express"></span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">MongoDB</h3>
-                                    <span class="skills__number">60%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__mongo"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div data-aos="fade-left">
-                    <!-- スキル3 -->
-                    <div class="skills__content skills__close">
-                        <div class="skills__header">
-                            <i class="ri-pencil-ruler-2-line skills__icon"></i>
-
-                            <div>
-                                <h1 class="skills__title">Designer</h1>
-                                <span class="skills__subtitle">More than 2 years</span>
-                            </div>
-
-                            <i class="ri-arrow-down-s-line skills__arrow"></i>
-                        </div>
-
-                        <div class="skills__list grid">
-                            <!-- ...existing skills list... -->
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Figma</h3>
-                                    <span class="skills__number">80%</span>
-                                </div>
                                 <div class="skills__bar">
                                     <span class="skills__percentage skills__figma"></span>
                                 </div>
@@ -713,99 +988,464 @@
                 </div>
             </div>
         </section>        <!-- ポートフォリオセクション -->
-        <section class="portfolio section" id="portfolio">
-            <h2 class="section__title">Portfolio</h2>
-            <span class="section__subtitle">Most recent work</span>
-
-            <!-- フィルター -->
-            <div class="portfolio__filters">
-                <button class="portfolio__filter active" data-filter="all">All</button>
-                <button class="portfolio__filter" data-filter="Mobile App">Mobile App</button>
-                <button class="portfolio__filter" data-filter="Web App">Web App</button>
-                <button class="portfolio__filter" data-filter="IoT App">IoT App</button>
-            </div>
-
-            <div class="portfolio__container container swiper-container">
-                <div class="swiper-wrapper">
-                    <!-- ポートフォリオデータはJavaScriptで動的に生成されます -->
+        <section class="note-section" id="portfolio">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">Portfolio</h2>
+                    <p class="note-section__subtitle">インフラエンジニア開発者としての実績・作品集</p>
                 </div>
-
-                <!-- スワイパーのナビゲーション -->
-                <div class="swiper-button-next">
-                    <i class="ri-arrow-right-s-line swiper-portfolio-icon"></i>
+                
+                <div class="note-portfolio">
+                    <!-- フィルターボタン -->
+                    <div class="note-portfolio__filters">
+                        <button class="note-filter-btn note-filter-btn--active" data-filter="all">
+                            すべて
+                        </button>
+                        <button class="note-filter-btn" data-filter="cloud">
+                            クラウド
+                        </button>
+                        <button class="note-filter-btn" data-filter="devops">
+                            DevOps
+                        </button>
+                        <button class="note-filter-btn" data-filter="web">
+                            Web開発
+                                <img src="https://via.placeholder.com/600x300/41c9b4/ffffff?text=AWS+Infrastructure" alt="AWS インフラ構築プロジェクト" class="note-portfolio-card__image">
+                        <button class="note-filter-btn" data-filter="automation">
+                            自動化
+                        </button>
+                    </div>
+                    
+                    <!-- ポートフォリオグリッド -->
+                    <div class="note-portfolio__grid">                        <!-- プロジェクト1: AWS インフラ構築 -->
+                        <article class="note-portfolio-card" data-category="cloud devops" data-project-id="1">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/aws-infrastructure.jpg" alt="AWS インフラ構築プロジェクト" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="aws-infrastructure">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/aws-infrastructure" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--cloud">AWS</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--devops">DevOps</span>
+                                    <time class="note-portfolio-card__date">2024年3月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    スケーラブルなWebアプリケーション用AWS インフラ構築
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Terraformを使用してAWS上にスケーラブルなインフラを構築。ALB、Auto Scaling、RDS、ElastiCacheを組み合わせた高可用性アーキテクチャを実装。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Terraform</span>
+                                <img src="https://via.placeholder.com/600x300/326ce5/ffffff?text=Kubernetes+Cluster" alt="Kubernetes デプロイメント" class="note-portfolio-card__image">
+                                    <span class="note-tech-tag">ALB</span>
+                                    <span class="note-tech-tag">RDS</span>
+                                    <span class="note-tech-tag">Auto Scaling</span>
+                                </div>
+                            </div>
+                        </article>
+                          <!-- プロジェクト2: Docker + Kubernetes -->
+                        <article class="note-portfolio-card" data-category="devops cloud" data-project-id="2">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/kubernetes-deployment.jpg" alt="Kubernetes デプロイメント" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="kubernetes-deployment">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/k8s-microservices" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--k8s">Kubernetes</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--docker">Docker</span>
+                                    <time class="note-portfolio-card__date">2024年2月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    マイクロサービス向けKubernetesクラスター構築
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Kubernetesを使用したマイクロサービスアーキテクチャの実装。Helm、Ingress Controller、Prometheus/Grafanaによる監視体制も構築。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Kubernetes</span>
+                                <img src="https://via.placeholder.com/600x300/f05032/ffffff?text=CI%2FCD+Pipeline" alt="CI/CD パイプライン" class="note-portfolio-card__image">
+                                    <span class="note-tech-tag">Helm</span>
+                                    <span class="note-tech-tag">Prometheus</span>
+                                    <span class="note-tech-tag">Grafana</span>
+                                </div>
+                            </div>
+                        </article>
+                          <!-- プロジェクト3: CI/CD パイプライン -->
+                        <article class="note-portfolio-card" data-category="devops automation" data-project-id="3">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/cicd-pipeline.jpg" alt="CI/CD パイプライン" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="cicd-pipeline">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/cicd-pipeline" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--automation">CI/CD</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--github">GitHub Actions</span>
+                                    <time class="note-portfolio-card__date">2024年1月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    GitHub Actionsを使用したCI/CDパイプライン構築
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    コードプッシュから本番デプロイまでを自動化するCI/CDパイプラインを構築。テスト、セキュリティチェック、Docker イメージビルドを含む完全自動化を実現。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                <img src="https://via.placeholder.com/600x300/e6522c/ffffff?text=Monitoring+Dashboard" alt="モニタリングダッシュボード" class="note-portfolio-card__image">
+                                    <span class="note-tech-tag">Docker</span>
+                                    <span class="note-tech-tag">SonarQube</span>
+                                    <span class="note-tech-tag">AWS ECR</span>
+                                </div>
+                            </div>
+                        </article>
+                          <!-- プロジェクト4: モニタリングダッシュボード -->
+                        <article class="note-portfolio-card" data-category="devops" data-project-id="4">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/monitoring-dashboard.jpg" alt="モニタリングダッシュボード" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="monitoring-dashboard">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://protopedia.net/user/Kei-Adachi0709/monitoring-system" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
+                                            <i class="ri-play-line"></i>
+                                            ProtoPedia
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--monitoring">監視</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--dashboard">ダッシュボード</span>
+                                    <time class="note-portfolio-card__date">2023年12月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    Prometheus + Grafana モニタリングシステム
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Prometheusによるメトリクス収集とGrafanaによる可視化を組み合わせたモニタリングシステム。アラート機能とSlack通知も実装。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Prometheus</span>
+                                    <span class="note-tech-tag">Grafana</span>
+                                    <span class="note-tech-tag">AlertManager</span>
+                                    <span class="note-tech-tag">Slack API</span>
+                                </div>
+                            </div>
+                        </article>
+                          <!-- プロジェクト5: Webアプリケーション -->
+                        <article class="note-portfolio-card" data-category="web" data-project-id="5">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/web-application.jpg" alt="Webアプリケーション" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="web-application">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://your-demo-url.com" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
+                                            <i class="ri-external-link-line"></i>
+                                            デモを見る
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--web">React</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--api">REST API</span>
+                                    <time class="note-portfolio-card__date">2023年11月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    レスポンシブWebアプリケーション開発
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    React + Node.js + PostgreSQLを使用したフルスタックWebアプリケーション。RESTful APIの設計・実装とレスポンシブデザインを両立。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">React</span>
+                                    <span class="note-tech-tag">Node.js</span>
+                                    <span class="note-tech-tag">PostgreSQL</span>
+                                    <span class="note-tech-tag">Express.js</span>
+                                </div>
+                            </div>
+                        </article>
+                          <!-- プロジェクト6: インフラ自動化 -->
+                        <article class="note-portfolio-card" data-category="automation devops" data-project-id="6">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/automation-scripts.jpg" alt="自動化スクリプト" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="automation-scripts">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/automation-scripts" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--automation">自動化</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--python">Python</span>
+                                    <time class="note-portfolio-card__date">2023年10月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    インフラ運用自動化スクリプト集
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Pythonで作成したインフラ運用自動化ツール群。サーバー監視、ログ解析、バックアップ作業の自動化により運用効率を大幅改善。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Python</span>
+                                    <span class="note-tech-tag">Bash</span>
+                                    <span class="note-tech-tag">Cron</span>
+                                    <span class="note-tech-tag">Ansible</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                <div class="swiper-button-prev">
-                    <i class="ri-arrow-left-s-line swiper-portfolio-icon"></i>
-                </div>
-
-                <!-- ページネーション -->
-                <div class="swiper-pagination"></div>
             </div>
         </section>
 
+        <!-- ポートフォリオ詳細モーダル -->
+        <div class="note-modal" id="portfolio-modal">
+            <div class="note-modal__backdrop"></div>
+            <div class="note-modal__content">
+                <div class="note-modal__header">
+                    <h3 class="note-modal__title" id="modal-title"></h3>
+                    <button class="note-modal__close" id="modal-close">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+                <div class="note-modal__body" id="modal-body">
+                    <!-- モーダル内容は JavaScript で動的に生成 -->
+                </div>
+            </div>
+        </div>
         <!-- コンタクトセクション -->
-        <section class="contact section" id="contact">
-            <h2 class="section__title">Contact Me</h2>
-            <span class="section__subtitle">Get in touch</span>
-
-            <div class="contact__container container grid">
-                <div>
-                    <div class="contact__information">
-                        <i class="ri-phone-line contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">Call Me</h3>
-                            <span class="contact__subtitle">+81 090-1234-5678</span>
+        <section class="note-section note-section--contact" id="contact">
+            <div class="note-container">
+                <div class="note-section__header">
+                    <h2 class="note-section__title">Contact</h2>
+                    <p class="note-section__subtitle">採用担当者様、お気軽にお声かけください</p>
+                </div>
+                
+                <div class="note-contact">
+                    <div class="note-contact__content">
+                        <div class="note-contact__info">
+                            <div class="note-contact__intro">
+                                <h3 class="note-contact__heading">お話しましょう</h3>
+                                <p class="note-contact__text">
+                                    インフラエンジニア開発者として、貴社の技術チームに貢献できることを心から願っております。
+                                    AWS、Docker、Kubernetesを活用したモダンなインフラ構築について、ぜひお話しする機会をいただければと思います。
+                                </p>
+                            </div>
+                            
+                            <!-- 連絡先情報 -->
+                            <div class="note-contact__details">
+                                <div class="note-contact-item">
+                                    <div class="note-contact-item__icon">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                    <div class="note-contact-item__content">
+                                        <h4 class="note-contact-item__title">Email</h4>
+                                        <a href="mailto:kei.adachi0709@example.com" class="note-contact-item__link">
+                                            kei.adachi0709@example.com
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="note-contact-item">
+                                    <div class="note-contact-item__icon">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                    <div class="note-contact-item__content">
+                                        <h4 class="note-contact-item__title">Phone</h4>
+                                        <a href="tel:+81901234567" class="note-contact-item__link">
+                                            +81 90-1234-5678
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="note-contact-item">
+                                    <div class="note-contact-item__icon">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <div class="note-contact-item__content">
+                                        <h4 class="note-contact-item__title">Location</h4>
+                                        <span class="note-contact-item__text">東京都, Japan</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="note-contact-item">
+                                    <div class="note-contact-item__icon">
+                                        <i class="ri-calendar-line"></i>
+                                    </div>
+                                    <div class="note-contact-item__content">
+                                        <h4 class="note-contact-item__title">入社希望時期</h4>
+                                        <span class="note-contact-item__text">2025年4月～</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- ソーシャルリンク -->
+                            <div class="note-contact__social">
+                                <h4 class="note-contact__social-title">SNS・ポートフォリオ</h4>
+                                <div class="note-contact__social-links">
+                                    <a href="https://github.com/Kei-Adachi0709" target="_blank" rel="noopener" class="note-social-btn note-social-btn--github">
+                                        <i class="ri-github-fill"></i>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="https://linkedin.com/in/kei-adachi0709" target="_blank" rel="noopener" class="note-social-btn note-social-btn--linkedin">
+                                        <i class="ri-linkedin-fill"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="https://protopedia.net/user/Kei-Adachi0709" target="_blank" rel="noopener" class="note-social-btn note-social-btn--protopedia">
+                                        <i class="ri-lightbulb-line"></i>
+                                        <span>ProtoPedia</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="contact__information">
-                        <i class="ri-mail-line contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">Email</h3>
-                            <span class="contact__subtitle">kei.adachi0709@example.com</span>
-                        </div>
-                    </div>
-
-                    <div class="contact__information">
-                        <i class="ri-map-pin-line contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">Location</h3>
-                            <span class="contact__subtitle">Tokyo, Japan</span>
+                        
+                        <!-- お問い合わせフォーム -->
+                        <div class="note-contact__form-container">
+                            <form class="note-contact-form" id="contact-form">
+                                <div class="note-form-header">
+                                    <h3 class="note-form-title">お問い合わせフォーム</h3>
+                                    <p class="note-form-subtitle">お気軽にメッセージをお送りください</p>
+                                </div>
+                                
+                                <div class="note-form-group">
+                                    <label for="contact-name" class="note-form-label">
+                                        お名前 <span class="note-form-required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="contact-name" 
+                                        name="name" 
+                                        class="note-form-input"
+                                        placeholder="山田太郎"
+                                        required
+                                    >
+                                </div>
+                                
+                                <div class="note-form-group">
+                                    <label for="contact-email" class="note-form-label">
+                                        メールアドレス <span class="note-form-required">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        id="contact-email" 
+                                        name="email" 
+                                        class="note-form-input"
+                                        placeholder="yamada@example.com"
+                                        required
+                                    >
+                                </div>
+                                
+                                <div class="note-form-group">
+                                    <label for="contact-company" class="note-form-label">
+                                        会社名・組織名
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="contact-company" 
+                                        name="company" 
+                                        class="note-form-input"
+                                        placeholder="株式会社〇〇"
+                                    >
+                                </div>
+                                
+                                <div class="note-form-group">
+                                    <label for="contact-subject" class="note-form-label">
+                                        件名 <span class="note-form-required">*</span>
+                                    </label>
+                                    <select id="contact-subject" name="subject" class="note-form-select" required>
+                                        <option value="">件名を選択してください</option>
+                                        <option value="recruitment">採用に関するお問い合わせ</option>
+                                        <option value="interview">面接のご案内</option>
+                                        <option value="collaboration">業務委託・協業について</option>
+                                        <option value="technical">技術的な質問</option>
+                                        <option value="other">その他</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="note-form-group">
+                                    <label for="contact-message" class="note-form-label">
+                                        メッセージ <span class="note-form-required">*</span>
+                                    </label>
+                                    <textarea 
+                                        id="contact-message" 
+                                        name="message" 
+                                        class="note-form-textarea"
+                                        rows="6"
+                                        placeholder="お問い合わせ内容をご記入ください。採用に関するご質問、面接の詳細、技術的な内容など、どのようなことでもお気軽にお聞かせください。"
+                                        required
+                                    ></textarea>
+                                </div>
+                                
+                                <div class="note-form-group note-form-group--checkbox">
+                                    <label class="note-form-checkbox">
+                                        <input type="checkbox" name="privacy" required>
+                                        <span class="note-form-checkmark"></span>
+                                        <span class="note-form-checkbox-text">
+                                            <a href="#" class="note-form-link">プライバシーポリシー</a>に同意します
+                                        </span>
+                                    </label>
+                                </div>
+                                
+                                <div class="note-form-actions">
+                                    <button type="submit" class="note-btn note-btn--primary note-btn--lg note-btn--block">
+                                        <i class="ri-send-plane-line"></i>
+                                        メッセージを送信
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <form action="" class="contact__form grid">
-                    <div class="contact__inputs grid">
-                        <div class="contact__content">
-                            <label for="name" class="contact__label">Name</label>
-                            <input type="text" id="name" class="contact__input">
-                        </div>
-                        <div class="contact__content">
-                            <label for="email" class="contact__label">Email</label>
-                            <input type="email" id="email" class="contact__input">
-                        </div>
-                    </div>
-                    <div class="contact__content">
-                        <label for="project" class="contact__label">Project</label>
-                        <input type="text" id="project" class="contact__input">
-                    </div>
-                    <div class="contact__content">
-                        <label for="message" class="contact__label">Message</label>
-                        <textarea name="" id="message" cols="0" rows="7" class="contact__input"></textarea>
-                    </div>
-
-                    <div>
-                        <a href="#" class="button button--flex">
-                            Send Message
-                            <i class="ri-send-plane-line button__icon"></i>
-                        </a>
-                    </div>                </form>
             </div>
-        </section>        <!-- セキュリティテスト -->
+        </section>
+        <!-- セキュリティテスト -->
         <section class="security section" id="security">
             <h2 class="section__title" data-aos="fade-up">Security Testing</h2>
             <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">サイトのセキュリティ対策を検証</span>
@@ -877,66 +1517,116 @@
             </div>
         </section>
     </main><!-- フッター -->
-    <footer class="footer">
-        <div class="footer__bg">
-            <div class="footer__container container grid">
-                <div>
-                    <h1 class="footer__title">Kei Adachi</h1>
-                    <span class="footer__subtitle">Frontend developer</span>
-                </div>                <ul class="footer__links">
-                    <li>
-                        <a href="#portfolio" class="footer__link">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="footer__link">Contact</a>
-                    </li>
-                    <li>
-                        <a href="#security" class="footer__link">Security</a>
-                    </li>
-                    <li>
-                        <a href="#about" class="footer__link">About</a>
-                    </li>
-                </ul>
-
-                <div class="footer__socials">
-                    <a href="https://www.github.com/" target="_blank" class="footer__social">
-                        <i class="ri-github-line"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/" target="_blank" class="footer__social">
-                        <i class="ri-linkedin-box-line"></i>
-                    </a>
-                    <a href="https://twitter.com/" target="_blank" class="footer__social">
-                        <i class="ri-twitter-line"></i>
-                    </a>
+    <footer class="note-footer">
+        <div class="note-container">
+            <div class="note-footer__content">
+                <div class="note-footer__main">
+                    <div class="note-footer__brand">
+                        <h3 class="note-footer__title">Kei Adachi</h3>
+                        <p class="note-footer__subtitle">インフラエンジニア開発者</p>
+                        <p class="note-footer__description">
+                            AWS、Docker、Kubernetesを専門とする2025年新卒採用向けエンジニア。
+                            モダンなクラウドインフラ構築に情熱を注いでいます。
+                        </p>
+                    </div>
+                    
+                    <div class="note-footer__links">
+                        <div class="note-footer__section">
+                            <h4 class="note-footer__section-title">ナビゲーション</h4>
+                            <ul class="note-footer__list">
+                                <li><a href="#about" class="note-footer__link">About</a></li>
+                                <li><a href="#skills" class="note-footer__link">Skills</a></li>
+                                <li><a href="#portfolio" class="note-footer__link">Portfolio</a></li>
+                                <li><a href="#contact" class="note-footer__link">Contact</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note-footer__section">
+                            <h4 class="note-footer__section-title">技術スキル</h4>
+                            <ul class="note-footer__list">
+                                <li><span class="note-footer__text">AWS / Azure / GCP</span></li>
+                                <li><span class="note-footer__text">Docker / Kubernetes</span></li>
+                                <li><span class="note-footer__text">Terraform / Ansible</span></li>
+                                <li><span class="note-footer__text">CI/CD / DevOps</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note-footer__section">
+                            <h4 class="note-footer__section-title">お問い合わせ</h4>
+                            <ul class="note-footer__list">
+                                <li>
+                                    <a href="mailto:kei.adachi0709@example.com" class="note-footer__link">
+                                        kei.adachi0709@example.com
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel:+81901234567" class="note-footer__link">
+                                        +81 90-1234-5678
+                                    </a>
+                                </li>
+                                <li><span class="note-footer__text">東京都, Japan</span></li>
+                                <li><span class="note-footer__text">2025年4月～</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="note-footer__social">
+                    <div class="note-footer__social-links">
+                        <a href="https://github.com/Kei-Adachi0709" target="_blank" rel="noopener" class="note-footer__social-link">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/kei-adachi0709" target="_blank" rel="noopener" class="note-footer__social-link">
+                            <i class="ri-linkedin-fill"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://protopedia.net/user/Kei-Adachi0709" target="_blank" rel="noopener" class="note-footer__social-link">
+                            <i class="ri-lightbulb-line"></i>
+                            <span>ProtoPedia</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="note-footer__bottom">
+                    <div class="note-footer__copyright">
+                        <p>&copy; 2024 Kei Adachi. All rights reserved.</p>
+                        <p class="note-footer__note">
+                            このポートフォリオサイトは採用活動のために作成されました。
+                        </p>
+                    </div>
+                    <div class="note-footer__legal">
+                        <a href="#" class="note-footer__legal-link">プライバシーポリシー</a>
+                        <a href="#" class="note-footer__legal-link">利用規約</a>
+                    </div>
                 </div>
             </div>
-
-            <p class="footer__copy">&#169; Kei Adachi. All rights reserved</p>
-        </div>
-    </footer>
-
-    <!-- スクロールアップボタン -->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="ri-arrow-up-line"></i>
-    </a>    <!-- JavaScript（パフォーマンス最適化済み） -->
-    <!-- クリティカルスクリプト（即座に実行） -->
-    <script src="assets/js/performance.js"></script>
+        </footer>
+          <!-- スクロールトップボタン -->
+        <button class="note-scroll-top" id="scroll-top" aria-label="ページトップへ戻る">
+            <i class="ri-arrow-up-line"></i>
+        </button>
     
-    <!-- 非クリティカルスクリプト（遅延読み込み） -->
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>    <!-- 機能別スクリプト -->
-    <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/portfolio-data.js"></script>
-    <script defer src="assets/js/portfolio-filter.js"></script>
-    <script defer src="assets/js/image-optimization.js"></script>
-    <script defer src="assets/js/security.js"></script>
-    <script defer src="assets/js/security-test.js"></script>
-    <script defer src="assets/js/analytics.js"></script>
+        <!-- 外部ライブラリスクリプト -->
+        <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+        <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     
-    <!-- メインスクリプト（最後に読み込み） -->
-    <script defer src="assets/js/main.js"></script>
+        <!-- データ・設定系スクリプト（最初に読み込み） -->
+        <script defer src="assets/js/portfolio-data.js"></script>
+        
+        <!-- 機能別スクリプト -->
+        <script defer src="assets/js/note-app.js"></script>
+        <script defer src="assets/js/navigation.js"></script>
+        <script defer src="assets/js/portfolio-filter.js"></script>
+        <script defer src="assets/js/image-optimization.js"></script>
+        <script defer src="assets/js/security.js"></script>
+        <script defer src="assets/js/security-test.js"></script>
+        <script defer src="assets/js/analytics.js"></script>
+        
+        <!-- メインスクリプト（最後に読み込み） -->
+        <script defer src="assets/js/main.js"></script>
     
     <!-- サービスワーカー登録（PWA対応） -->
     <script>

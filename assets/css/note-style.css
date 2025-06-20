@@ -1,0 +1,715 @@
+/* note.com風スタイル - メインスタイルシート */
+
+/* リセット & 基本設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* コンテナ */
+.note-container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .note-container {
+        padding: 0 var(--space-4);
+    }
+}
+
+/* ボタンコンポーネント */
+.note-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.note-btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.note-btn--primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.note-btn--outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.note-btn--outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.note-btn--sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+}
+
+.note-btn--lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+}
+
+.note-btn--block {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ヘッダー */
+.note-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    z-index: var(--z-fixed);
+    transition: all 0.3s ease;
+}
+
+.note-header__container {
+    padding: var(--space-4) 0;
+}
+
+.note-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+/* ロゴ */
+.note-nav__logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.note-nav__logo-text {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+}
+
+.note-nav__logo-subtitle {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-top: -var(--space-1);
+}
+
+/* ナビゲーション */
+.note-nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    list-style: none;
+}
+
+.note-nav__link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.note-nav__link:hover,
+.note-nav__link--active {
+    color: var(--primary-color);
+}
+
+.note-nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -var(--space-2);
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.2s ease;
+}
+
+.note-nav__link:hover::after,
+.note-nav__link--active::after {
+    width: 100%;
+}
+
+/* ナビゲーションアクション */
+.note-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.note-nav__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-100);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.note-nav__theme-toggle:hover {
+    background-color: var(--gray-200);
+    color: var(--text-primary);
+}
+
+/* モバイルメニュー */
+.note-nav__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.note-nav__hamburger {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.note-nav__hamburger::before,
+.note-nav__hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.note-nav__hamburger::before {
+    top: -8px;
+}
+
+.note-nav__hamburger::after {
+    bottom: -8px;
+}
+
+.note-nav__mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.note-nav__mobile-content {
+    padding: var(--space-6);
+}
+
+.note-nav__mobile-list {
+    list-style: none;
+    margin-bottom: var(--space-6);
+}
+
+.note-nav__mobile-list li {
+    margin-bottom: var(--space-4);
+}
+
+.note-nav__mobile-link {
+    display: block;
+    padding: var(--space-3) 0;
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .note-nav__list,
+    .note-nav__actions .note-btn {
+        display: none;
+    }
+    
+    .note-nav__mobile-toggle {
+        display: flex;
+    }
+    
+    .note-nav__mobile-menu--open {
+        display: block;
+    }
+}
+
+/* メイン */
+.note-main {
+    padding-top: 80px; /* ヘッダーの高さ分 */
+}
+
+/* セクション共通 */
+.note-section {
+    padding: var(--space-20) 0;
+}
+
+.note-section--alt {
+    background-color: var(--bg-secondary);
+}
+
+.note-section__header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+}
+
+.note-section__title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.note-section__subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .note-section {
+        padding: var(--space-16) 0;
+    }
+    
+    .note-section__title {
+        font-size: var(--text-3xl);
+    }
+    
+    .note-section__subtitle {
+        font-size: var(--text-base);
+    }
+}
+
+/* ヒーローセクション */
+.note-hero {
+    padding: var(--space-24) 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.note-hero__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+    min-height: 500px;
+}
+
+.note-hero__greeting {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.note-hero__title {
+    font-size: var(--text-5xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.1;
+}
+
+.note-hero__subtitle {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+    color: var(--primary-color);
+    margin-bottom: var(--space-6);
+}
+
+.note-hero__description {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: 1.6;
+}
+
+.note-hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.note-hero__social {
+    display: flex;
+    gap: var(--space-6);
+}
+
+.note-social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.note-social-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ヒーロービジュアル */
+.note-hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.note-hero__avatar {
+    position: relative;
+    z-index: 2;
+}
+
+.note-hero__avatar-img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: var(--shadow-xl);
+}
+
+.note-hero__avatar-ring {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* フローティングカード */
+.note-hero__decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.note-floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    animation: float 6s ease-in-out infinite;
+}
+
+.note-floating-card--aws {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.note-floating-card--docker {
+    top: 60%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.note-floating-card--k8s {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* レスポンシブ - ヒーロー */
+@media (max-width: 768px) {
+    .note-hero {
+        padding: var(--space-16) 0;
+    }
+    
+    .note-hero__content {
+        grid-template-columns: 1fr;
+        gap: var(--space-12);
+        text-align: center;
+    }
+    
+    .note-hero__title {
+        font-size: var(--text-3xl);
+    }
+    
+    .note-hero__subtitle {
+        font-size: var(--text-xl);
+    }
+    
+    .note-hero__actions {
+        flex-direction: column;
+    }
+    
+    .note-hero__avatar-img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .note-floating-card {
+        display: none;
+    }
+}
+
+/* About セクション */
+.note-about {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+}
+
+.note-about__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-16);
+    margin-bottom: var(--space-12);
+}
+
+.note-about__heading {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.note-about__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+}
+
+.note-about__subheading {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-6);
+}
+
+/* 専門分野グリッド */
+.note-expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+.note-expertise-card {
+    padding: var(--space-6);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.note-expertise-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.note-expertise-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+}
+
+.note-expertise-card__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.note-expertise-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 統計 */
+.note-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+}
+
+.note-stat {
+    text-align: center;
+    padding: var(--space-4);
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+}
+
+.note-stat__number {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+    margin-bottom: var(--space-1);
+}
+
+.note-stat__label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* About ビジュアル */
+.note-about__visual {
+    position: relative;
+}
+
+.note-about__profile-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+.note-about__decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.note-decoration {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 8s ease-in-out infinite;
+}
+
+.note-decoration--1 {
+    top: 10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.note-decoration--2 {
+    top: 50%;
+    right: -10%;
+    animation-delay: 3s;
+}
+
+.note-decoration--3 {
+    bottom: 10%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+/* About アクション */
+.note-about__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+/* レスポンシブ - About */
+@media (max-width: 768px) {
+    .note-about__content {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+    
+    .note-expertise-grid {
+        gap: var(--space-4);
+    }
+    
+    .note-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+    }
+    
+    .note-about__actions {
+        flex-direction: column;
+    }
+}

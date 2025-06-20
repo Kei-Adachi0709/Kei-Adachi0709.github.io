@@ -1,61 +1,41 @@
-// ポートフォリオフィルター機能
+// ポートフォリオフィルター機能（note.com風）
 document.addEventListener('DOMContentLoaded', function() {
-    // フィルターボタンの初期化
-    const filterButtons = document.querySelectorAll('.portfolio__filter');
+    // note.com風フィルターボタンの初期化
+    const filterButtons = document.querySelectorAll('.note-filter-btn');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             // アクティブクラスの切り替え
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
+            filterButtons.forEach(btn => btn.classList.remove('note-filter-btn--active'));
+            this.classList.add('note-filter-btn--active');
             
             // フィルター実行
             const filterValue = this.getAttribute('data-filter');
-            filterPortfolio(filterValue);
+            filterPortfolioCards(filterValue);
         });
     });
 });
 
-// Swiperの初期化（ポートフォリオデータ読み込み後）
-function initPortfolioSwiper() {
-    window.portfolioSwiper = new Swiper('.portfolio__container', {
-        loop: true,
-        spaceBetween: 24,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            576: {
-                slidesPerView: 1,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
+// note.com風ポートフォリオカードフィルター関数
+function filterPortfolioCards(category = 'all') {
+    const portfolioCards = document.querySelectorAll('.note-portfolio-card');
+    
+    portfolioCards.forEach(card => {
+        const cardCategories = card.getAttribute('data-category').split(' ');
+        
+        if (category === 'all' || cardCategories.includes(category)) {
+            card.style.display = 'block';
+            // アニメーション効果
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 10);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            // フェードアウト後に非表示
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);        }
     });
 }
-
-// ページ読み込み時にSwiper初期化を遅延実行
-document.addEventListener('DOMContentLoaded', function() {
-    // Swiperライブラリが読み込まれるまで待機
-    function waitForSwiper() {
-        if (typeof Swiper !== 'undefined') {
-            // ポートフォリオデータの読み込みを待つ
-            setTimeout(() => {
-                initPortfolioSwiper();
-            }, 500);
-        } else {
-            setTimeout(waitForSwiper, 100);
-        }
-    }
-    
-    waitForSwiper();
-});

@@ -2,311 +2,368 @@
 const portfolioData = [
     {
         id: 1,
-        title: "SmartPhoneSaber",
-        description: "音楽に合わせてスマホを振って遊ぶアプリです。スマホによる若者の運動不足を解消、そして家庭間のコミュニケーションを広げるためのレクリエーションツールとして使えるように制作した。",
+        title: "AWS インフラ構築プロジェクト",
+        description: "Terraformを使用してAWS上にスケーラブルなインフラを構築。ALB、Auto Scaling、RDS、ElastiCacheを組み合わせた高可用性アーキテクチャを実装。",
         detailedDescription: `
             <div class="project-detail">
-                <h3>🎵 アプリ概要</h3>
-                <p>音楽に合わせてスマホを振って遊ぶ革新的なアプリです。現代の若者のスマホ依存による運動不足を解消し、家庭間のコミュニケーションを活性化するレクリエーションツールとして開発しました。</p>
+                <h3>🚀 プロジェクト概要</h3>
+                <p>スケーラブルなWebアプリケーション用のAWSインフラを構築しました。Terraformを使用したInfrastructure as Codeにより、再現性の高い環境構築を実現しています。</p>
                 
-                <h3>📱 使用方法</h3>
-                <ol>
-                    <li>スマホ内の楽曲と効果音を選択</li>
-                    <li>スタートボタンを押してゲーム開始</li>
-                    <li>音楽に合わせてスマホを振り、効果音を楽しむ</li>
-                    <li>楽曲終了後にスコアが表示される</li>
-                </ol>
-                
-                <h3>🔧 技術的特徴</h3>
+                <h3>🏗️ アーキテクチャ設計</h3>
                 <ul>
-                    <li>Unity 3Dエンジンを使用したクロスプラットフォーム開発</li>
-                    <li>スマートフォンの加速度センサーを活用</li>
-                    <li>リアルタイム音声処理とスコア計算システム</li>
-                    <li>直感的なUIデザインとユーザー体験</li>
+                    <li>Application Load Balancer (ALB) による負荷分散</li>
+                    <li>Auto Scalingによる自動スケーリング</li>
+                    <li>Multi-AZ RDSによる高可用性データベース</li>
+                    <li>ElastiCacheによるキャッシュ層</li>
+                    <li>CloudFrontによるCDN配信</li>
+                    <li>VPCによるネットワーク分離</li>
+                </ul>
+                
+                <h3>⚙️ 技術的な実装</h3>
+                <ul>
+                    <li>Terraformを使用したIaCによるインフラ管理</li>
+                    <li>AWS Systems Managerによる設定管理</li>
+                    <li>CloudWatchによる監視・アラート設定</li>
+                    <li>IAMロールによる最小権限の原則実装</li>
+                    <li>セキュリティグループによるアクセス制御</li>
                 </ul>
                 
                 <div class="project-meta">
                     <div class="meta-item">
                         <i class="ri-calendar-line"></i>
-                        <span><strong>制作期間:</strong> 2023年5月1日〜7月23日（約3ヶ月）</span>
+                        <span><strong>制作期間:</strong> 2024年3月1日〜3月31日（1ヶ月）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-team-line"></i>
-                        <span><strong>制作人数:</strong> 3人チーム開発</span>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-user-line"></i>
-                        <span><strong>担当:</strong> メインプログラマー・UI設計</span>
+                        <span><strong>担当:</strong> インフラ設計・構築・運用</span>
                     </div>
                 </div>
             </div>
         `,
-        image: "https://protopedia.net/pic/ce6c7cec-88ae-423f-9287-abdd107d4cb7.jpg",
-        technologies: ["Unity", "C#", "Android", "iOS", "センサー技術"],
-        period: "2023年5月〜7月",
-        members: 3,
+        image: "https://via.placeholder.com/600x300/41c9b4/ffffff?text=AWS+Infrastructure",
+        technologies: ["AWS", "Terraform", "ALB", "RDS", "Auto Scaling", "CloudWatch"],
+        period: "2024年3月",
+        members: 1,
+        category: "cloud",
         links: {
-            protopedia: {
-                url: "https://protopedia.net/prototype/4730",
-                title: "SmartPhoneSaber | ProtoPedia",
-                description: "音楽ゲーム × フィットネス の革新的アプリ",
-                favicon: "https://protopedia.net/favicon.ico"
+            github: {
+                url: "https://github.com/Kei-Adachi0709/aws-infrastructure",
+                title: "AWS インフラ構築 - GitHub",
+                description: "Terraformを使用したAWSインフラ構築のソースコード",
+                favicon: "https://github.com/favicon.ico"
             }
-        },
-        category: "Mobile App",
-        featured: true
+        }
     },
     {
         id: 2,
-        title: "スマートお迎え",
-        description: "保護者が保育園に近づいたら、保育園に保護者の接近を音声で通知するアプリ。これにより、児童が事前に帰宅の準備ができ、お迎えにかかる時間を短縮することができる。",
+        title: "Kubernetes クラスター構築",
+        description: "Kubernetesを使用したマイクロサービスアーキテクチャの実装。Helm、Ingress Controller、Prometheus/Grafanaによる監視体制も構築。",
         detailedDescription: `
             <div class="project-detail">
-                <h3>🏫 アプリ概要</h3>
-                <p>「スマートお迎え」は、IoT技術を活用した保育園向けの革新的な通知システムです。保護者が保育園に近づくと自動的に園側に通知し、児童の事前準備を可能にします。これにより、お迎え時間の短縮、駐車場の混雑緩和、交通渋滞の解消に貢献します。</p>
+                <h3>🎯 プロジェクト目標</h3>
+                <p>マイクロサービス向けKubernetesクラスターを構築し、コンテナオーケストレーションによる高い可用性とスケーラビリティを実現しました。</p>
                 
-                <h3>📋 主な機能</h3>
+                <h3>📦 構築内容</h3>
                 <ul>
-                    <li><strong>位置ベース自動通知:</strong> Wi-Fi接続により保護者の接近を検知</li>
-                    <li><strong>音声アナウンス:</strong> 園内での児童呼び出し機能</li>
-                    <li><strong>混雑状況表示:</strong> リアルタイムでの保護者数表示</li>
-                    <li><strong>お迎え管理:</strong> 園児の帰宅状況を一覧管理</li>
+                    <li>Kubernetesクラスターの構築・設定</li>
+                    <li>Helmを使用したアプリケーション管理</li>
+                    <li>Ingress Controllerによる外部アクセス制御</li>
+                    <li>Prometheus/Grafanaによる監視ダッシュボード</li>
+                    <li>HPA（Horizontal Pod Autoscaler）による自動スケーリング</li>
+                    <li>PersistentVolumeによるデータ永続化</li>
                 </ul>
                 
-                <h3>🎯 使用方法</h3>
-                <div class="usage-section">
-                    <h4>保育園側の設定</h4>
-                    <ol>
-                        <li>専用Wi-FiのSSIDを保護者に配布（QRコード対応）</li>
-                        <li>園児管理画面で呼び出し・帰宅状況を確認</li>
-                    </ol>
-                    
-                    <h4>保護者側の操作</h4>
-                    <ol>
-                        <li>初期設定：SSID、クラス名、児童名、お迎え時間を入力</li>
-                        <li>お迎え時にアプリを起動</li>
-                        <li>園に近づくと自動的に呼び出しが実行</li>
-                    </ol>
-                </div>
-                
-                <h3>💡 社会的効果</h3>
+                <h3>🔧 使用技術</h3>
                 <ul>
-                    <li>お迎え時間の平均30%短縮</li>
-                    <li>駐車場待ち時間の削減</li>
-                    <li>周辺道路の交通渋滞緩和</li>
-                    <li>保育士の業務効率化</li>
+                    <li>Kubernetes (EKS) でのクラスター管理</li>
+                    <li>Helmチャートによるアプリケーションデプロイ</li>
+                    <li>NGINX Ingress Controllerによるトラフィック制御</li>
+                    <li>Prometheusによるメトリクス収集</li>
+                    <li>Grafanaによるダッシュボード構築</li>
                 </ul>
                 
                 <div class="project-meta">
                     <div class="meta-item">
                         <i class="ri-calendar-line"></i>
-                        <span><strong>制作期間:</strong> 2023年5月1日〜7月23日（約3ヶ月）</span>
+                        <span><strong>制作期間:</strong> 2024年2月1日〜2月28日（1ヶ月）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-team-line"></i>
-                        <span><strong>制作人数:</strong> 3人チーム開発</span>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-user-line"></i>
-                        <span><strong>担当:</strong> システム設計・フロントエンド開発</span>
+                        <span><strong>担当:</strong> Kubernetesアーキテクト・DevOpsエンジニア</span>
                     </div>
                 </div>
             </div>
         `,
-        image: "https://protopedia.net/pic/125642fa-8eac-4459-b095-16c3e1389b76.png",        technologies: ["React Native", "Node.js", "Wi-Fi API", "Text-to-Speech", "IoT"],
-        period: "2023年5月〜7月",
-        members: 3,
+        image: "https://via.placeholder.com/600x300/326ce5/ffffff?text=Kubernetes+Cluster",
+        technologies: ["Kubernetes", "Docker", "Helm", "Prometheus", "Grafana"],
+        period: "2024年2月",
+        members: 1,
+        category: "devops",
         links: {
-            protopedia: {
-                url: "https://protopedia.net/prototype/4100",
-                title: "スマートお迎え | ProtoPedia",
-                description: "IoT技術で保育園のお迎えを効率化する革新的システム",
-                favicon: "https://protopedia.net/favicon.ico"
-            },
             github: {
-                url: "https://github.com/Kei-Adachi0709/SmartPickup",
-                title: "GitHub - Kei-Adachi0709/SmartPickup",
-                description: "Smart Pickup alerts daycare staff when a parent arrives, helping children prepare and reducing pickup time.",
-                favicon: "https://github.githubassets.com/favicons/favicon.svg"
+                url: "https://github.com/Kei-Adachi0709/k8s-microservices",
+                title: "Kubernetes マイクロサービス - GitHub",
+                description: "Kubernetesを使用したマイクロサービスアーキテクチャの実装",
+                favicon: "https://github.com/favicon.ico"
             }
-        },
-        category: "IoT App",
-        featured: true
+        }
     },
     {
         id: 3,
-        title: "QR食品表示",
-        description: "飲食店で、どんな食材が使用されているのかわかりにくい商品があると思います。食品の情報をWebアプリに登録することで、今までわかりにくかった情報をお客さんに正確に伝達することができるようになります。",
+        title: "CI/CD パイプライン構築",
+        description: "GitHub Actionsを使用したCI/CDパイプライン構築。コードプッシュから本番デプロイまでを自動化するCI/CDパイプラインを構築。テスト、セキュリティチェック、Docker イメージビルドを含む完全自動化を実現。",
         detailedDescription: `
             <div class="project-detail">
-                <h3>🍽️ アプリ概要</h3>
-                <p>「QR食品表示」は、飲食店向けのアレルゲン・食材情報管理システムです。キッチンカーや屋台など、詳細なメニュー情報の表示が困難な環境において、QRコードを通じて正確で詳細な食材情報をお客様に提供することを可能にします。</p>
+                <h3>🔄 CI/CD パイプライン概要</h3>
+                <p>GitHub Actionsを使用して、コードプッシュから本番デプロイまでの完全自動化パイプラインを構築しました。</p>
                 
-                <h3>🎯 解決する課題</h3>
+                <h3>🚀 自動化フロー</h3>
+                <ol>
+                    <li>コードプッシュ・プルリクエスト検知</li>
+                    <li>自動テスト実行（ユニット・統合テスト）</li>
+                    <li>セキュリティスキャン（SonarQube）</li>
+                    <li>Dockerイメージビルド・プッシュ</li>
+                    <li>ステージング環境デプロイ</li>
+                    <li>本番環境デプロイ（マニュアル承認）</li>
+                </ol>
+                
+                <h3>🛡️ セキュリティ・品質管理</h3>
                 <ul>
-                    <li><strong>アレルギー対応:</strong> アレルゲン情報の明確な表示</li>
-                    <li><strong>情報不足:</strong> 限られたスペースでの詳細情報提供</li>
-                    <li><strong>コミュニケーション:</strong> 言語の壁を超えた情報伝達</li>
-                    <li><strong>衛生管理:</strong> 非接触での情報取得</li>
-                </ul>
-                
-                <h3>📱 主な機能</h3>
-                <div class="feature-section">
-                    <h4>店舗側機能</h4>
-                    <ul>
-                        <li>商品情報の登録・編集</li>
-                        <li>アレルゲン情報の管理</li>
-                        <li>QRコードの自動生成</li>
-                        <li>メニューの一覧表示</li>
-                    </ul>
-                    
-                    <h4>お客様側機能</h4>
-                    <ul>
-                        <li>QRコードスキャンによる情報閲覧</li>
-                        <li>アレルゲンフィルター検索</li>
-                        <li>栄養成分の表示</li>
-                        <li>多言語対応（日本語・英語）</li>
-                    </ul>
-                </div>
-                
-                <h3>🔧 技術的実装</h3>
-                <ul>
-                    <li><strong>フロントエンド:</strong> React.js によるレスポンシブデザイン</li>
-                    <li><strong>バックエンド:</strong> Node.js + Express.js API開発</li>
-                    <li><strong>データベース:</strong> MongoDB での食材情報管理</li>
-                    <li><strong>QRコード:</strong> 動的QRコード生成システム</li>
-                    <li><strong>認証:</strong> JWT によるセキュアな店舗認証</li>
-                </ul>
-                
-                <h3>📊 期待される効果</h3>
-                <ul>
-                    <li>アレルギー事故の予防</li>
-                    <li>お客様満足度の向上</li>
-                    <li>多言語対応による外国人観光客への対応</li>
-                    <li>非接触サービスによる衛生環境の改善</li>
+                    <li>SonarQubeによるコード品質チェック</li>
+                    <li>依存関係の脆弱性スキャン</li>
+                    <li>Dockerイメージのセキュリティスキャン</li>
+                    <li>自動テストカバレッジ測定</li>
+                    <li>デプロイ前の手動承認プロセス</li>
                 </ul>
                 
                 <div class="project-meta">
                     <div class="meta-item">
                         <i class="ri-calendar-line"></i>
-                        <span><strong>制作期間:</strong> 2023年11月15日〜2024年1月15日（約2ヶ月）</span>
+                        <span><strong>制作期間:</strong> 2024年1月1日〜1月31日（1ヶ月）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-team-line"></i>
-                        <span><strong>制作人数:</strong> 3人チーム開発</span>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
                     </div>
                     <div class="meta-item">
                         <i class="ri-user-line"></i>
-                        <span><strong>担当:</strong> フルスタック開発・UI/UX設計</span>
+                        <span><strong>担当:</strong> DevOpsエンジニア・CI/CD設計</span>
                     </div>
                 </div>
             </div>
         `,
-        image: "https://protopedia.net/pic/2567fe95-d79f-4d4a-922c-da2c969a5d09.png",
-        technologies: ["React", "Node.js", "MongoDB", "QR Code API", "Express", "JWT"],
-        period: "2023年11月〜2024年1月",
-        members: 3,
+        image: "https://via.placeholder.com/600x300/f05032/ffffff?text=CI%2FCD+Pipeline",
+        technologies: ["GitHub Actions", "Docker", "SonarQube", "AWS ECR", "Kubernetes"],
+        period: "2024年1月",
+        members: 1,
+        category: "automation",
+        links: {
+            github: {
+                url: "https://github.com/Kei-Adachi0709/cicd-pipeline",
+                title: "CI/CD パイプライン - GitHub",
+                description: "GitHub Actionsを使用したCI/CDパイプラインの実装",
+                favicon: "https://github.com/favicon.ico"
+            }
+        }
+    },
+    {
+        id: 4,
+        title: "モニタリングシステム構築",
+        description: "Prometheusによるメトリクス収集とGrafanaによる可視化を組み合わせたモニタリングシステム。アラート機能とSlack通知も実装。",
+        detailedDescription: `
+            <div class="project-detail">
+                <h3>📊 モニタリングシステム概要</h3>
+                <p>Prometheus + Grafanaを使用した包括的なインフラモニタリングシステムを構築しました。</p>
+                
+                <h3>🔍 監視項目</h3>
+                <ul>
+                    <li>サーバーリソース（CPU、メモリ、ディスク）</li>
+                    <li>ネットワークトラフィック</li>
+                    <li>アプリケーションメトリクス</li>
+                    <li>データベースパフォーマンス</li>
+                    <li>Kubernetesクラスター状態</li>
+                    <li>ビジネスメトリクス（レスポンス時間、エラー率）</li>
+                </ul>
+                
+                <h3>🚨 アラート機能</h3>
+                <ul>
+                    <li>AlertManagerによるアラート管理</li>
+                    <li>Slack通知による即座の問題通知</li>
+                    <li>重要度レベル別のアラート分類</li>
+                    <li>ダッシュボードでの視覚的な問題発見</li>
+                </ul>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-line"></i>
+                        <span><strong>制作期間:</strong> 2023年12月1日〜12月31日（1ヶ月）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-team-line"></i>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-user-line"></i>
+                        <span><strong>担当:</strong> SREエンジニア・モニタリング設計</span>
+                    </div>
+                </div>
+            </div>
+        `,
+        image: "https://via.placeholder.com/600x300/e6522c/ffffff?text=Monitoring+Dashboard",
+        technologies: ["Prometheus", "Grafana", "AlertManager", "Slack API", "Docker"],
+        period: "2023年12月",
+        members: 1,
+        category: "devops",
         links: {
             protopedia: {
-                url: "https://protopedia.net/prototype/5781",
-                title: "QR食品表示 | ProtoPedia",
-                description: "QRコードでアレルゲン情報を安全に提供するWebアプリ",
+                url: "https://protopedia.net/user/Kei-Adachi0709/monitoring-system",
+                title: "モニタリングシステム - ProtoPedia",
+                description: "Prometheus + Grafanaモニタリングシステムの詳細",
                 favicon: "https://protopedia.net/favicon.ico"
+            }
+        }
+    },
+    {
+        id: 5,
+        title: "Webアプリケーション開発",
+        description: "React + Node.js + PostgreSQLを使用したフルスタックWebアプリケーション。RESTful APIの設計・実装とレスポンシブデザインを両立。",
+        detailedDescription: `
+            <div class="project-detail">
+                <h3>💻 アプリケーション概要</h3>
+                <p>モダンなフルスタック技術を使用したレスポンシブWebアプリケーションを開発しました。</p>
+                
+                <h3>🎨 フロントエンド機能</h3>
+                <ul>
+                    <li>React Hooksを使用した状態管理</li>
+                    <li>レスポンシブデザイン（スマホ・タブレット対応）</li>
+                    <li>Material-UIによるモダンなUI</li>
+                    <li>Redux Toolkitでの状態管理</li>
+                    <li>Axiosを使用したAPI通信</li>
+                </ul>
+                
+                <h3>⚙️ バックエンド機能</h3>
+                <ul>
+                    <li>Express.jsによるRESTful API</li>
+                    <li>JWT認証によるセキュアな認証システム</li>
+                    <li>PostgreSQLデータベース設計</li>
+                    <li>Prisma ORMによるデータアクセス</li>
+                    <li>バリデーション・エラーハンドリング</li>
+                </ul>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-line"></i>
+                        <span><strong>制作期間:</strong> 2023年11月1日〜11月30日（1ヶ月）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-team-line"></i>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-user-line"></i>
+                        <span><strong>担当:</strong> フルスタック開発・UI/UXデザイン</span>
+                    </div>
+                </div>
+            </div>
+        `,
+        image: "https://via.placeholder.com/600x300/61dafb/000000?text=React+Web+App",
+        technologies: ["React", "Node.js", "PostgreSQL", "Express.js", "Material-UI"],
+        period: "2023年11月",
+        members: 1,
+        category: "web",
+        links: {
+            demo: {
+                url: "https://your-demo-url.com",
+                title: "Webアプリケーション デモ",
+                description: "実際のアプリケーションを体験できます",
+                favicon: "https://your-demo-url.com/favicon.ico"
             },
             github: {
-                url: "https://github.com/Kei-Adachi0709/QR-Allergy-Guide",
-                title: "GitHub - Kei-Adachi0709/QR-Allergy-Guide",
-                description: "QR code-based allergen information system for restaurants",
-                favicon: "https://github.githubassets.com/favicons/favicon.svg"
+                url: "https://github.com/Kei-Adachi0709/web-application",
+                title: "Webアプリケーション - GitHub",
+                description: "React + Node.js フルスタックアプリケーションのソースコード",
+                favicon: "https://github.com/favicon.ico"
             }
-        },
-        category: "Web App",
-        featured: true
+        }
+    },
+    {
+        id: 6,
+        title: "インフラ運用自動化",
+        description: "Pythonで作成したインフラ運用自動化ツール群。サーバー監視、ログ解析、バックアップ作業の自動化により運用効率を大幅改善。",
+        detailedDescription: `
+            <div class="project-detail">
+                <h3>🤖 自動化ツール概要</h3>
+                <p>Pythonで作成した運用業務自動化ツール群により、日常的なインフラ運用作業を効率化しました。</p>
+                
+                <h3>⚡ 自動化機能</h3>
+                <ul>
+                    <li>サーバーヘルスチェック自動化</li>
+                    <li>ログ解析・異常検知</li>
+                    <li>定期バックアップ自動実行</li>
+                    <li>リソース使用量レポート生成</li>
+                    <li>セキュリティパッチ適用自動化</li>
+                    <li>障害通知・エスカレーション</li>
+                </ul>
+                
+                <h3>📈 効果・改善</h3>
+                <ul>
+                    <li>手動作業時間を70%削減</li>
+                    <li>ヒューマンエラーの大幅削減</li>
+                    <li>24時間365日の自動監視実現</li>
+                    <li>インシデント対応時間の短縮</li>
+                </ul>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <i class="ri-calendar-line"></i>
+                        <span><strong>制作期間:</strong> 2023年10月1日〜10月31日（1ヶ月）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-team-line"></i>
+                        <span><strong>制作人数:</strong> 1人（個人プロジェクト）</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ri-user-line"></i>
+                        <span><strong>担当:</strong> インフラ自動化エンジニア</span>
+                    </div>
+                </div>
+            </div>
+        `,
+        image: "https://via.placeholder.com/600x300/3776ab/ffffff?text=Python+Automation",
+        technologies: ["Python", "Bash", "Cron", "Ansible", "AWS CLI"],
+        period: "2023年10月",
+        members: 1,
+        category: "automation",
+        links: {
+            github: {
+                url: "https://github.com/Kei-Adachi0709/automation-scripts",
+                title: "インフラ自動化スクリプト - GitHub",
+                description: "Pythonで作成したインフラ運用自動化ツール群",
+                favicon: "https://github.com/favicon.ico"
+            }
+        }
     }
 ];
 
-// ポートフォリオカード作成関数
-function createPortfolioCard(project) {
-    return `
-        <div class="portfolio__content grid swiper-slide" data-category="${project.category}">
-            <img src="${project.image}" alt="${project.title}" class="portfolio__img">
-            
-            <div class="portfolio__data">
-                <h3 class="portfolio__title">${project.title}</h3>
-                <p class="portfolio__description">${project.description}</p>
-                
-                <div class="portfolio__tech">
-                    ${project.technologies.map(tech => `<span class="portfolio__tech-tag">${tech}</span>`).join('')}
-                </div>
-                
-                <div class="portfolio__meta">
-                    <span class="portfolio__period">📅 ${project.period}</span>
-                    <span class="portfolio__members">👥 ${project.members}人</span>
-                </div>
-                
-                <div class="portfolio__links">
-                    ${project.links.protopedia ? `
-                        <a href="${project.links.protopedia.url}" target="_blank" class="portfolio__link-card">
-                            <div class="link-card">
-                                <img src="${project.links.protopedia.favicon}" alt="ProtoPedia" class="link-card__favicon">
-                                <div class="link-card__content">
-                                    <h4 class="link-card__title">${project.links.protopedia.title}</h4>
-                                    <p class="link-card__description">${project.links.protopedia.description.substring(0, 100)}...</p>
-                                    <span class="link-card__url">protopedia.net</span>
-                                </div>
-                            </div>
-                        </a>
-                    ` : ''}
-                    
-                    ${project.links.github ? `
-                        <a href="${project.links.github.url}" target="_blank" class="portfolio__link-card">
-                            <div class="link-card">
-                                <img src="${project.links.github.favicon}" alt="GitHub" class="link-card__favicon">
-                                <div class="link-card__content">
-                                    <h4 class="link-card__title">${project.links.github.title}</h4>
-                                    <p class="link-card__description">${project.links.github.description.substring(0, 100)}...</p>
-                                    <span class="link-card__url">github.com</span>
-                                </div>
-                            </div>
-                        </a>
-                    ` : ''}
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// ポートフォリオフィルター関数
-function filterPortfolio(category = 'all') {
-    const container = document.querySelector('.swiper-wrapper');
-    if (!container) return;
-
-    let filteredData = portfolioData;
-    if (category !== 'all') {
-        filteredData = portfolioData.filter(project => project.category === category);
-    }
-
-    container.innerHTML = filteredData.map(project => createPortfolioCard(project)).join('');
-    
-    // Swiper を再初期化
-    if (window.portfolioSwiper) {
-        window.portfolioSwiper.update();
-    }
-}
+// グローバルにアクセス可能にする
+window.portfolioData = portfolioData;
 
 // ポートフォリオ初期化関数
 function initPortfolio() {
-    const container = document.querySelector('.swiper-wrapper');
-    if (container) {
-        // 既存のプレースホルダーをクリア
-        container.innerHTML = '';
-        
-        // 新しいポートフォリオデータを追加
-        container.innerHTML = portfolioData.map(project => createPortfolioCard(project)).join('');
-    }
+    // この関数は今回のリファクタリングでは使用しません
+    // 代わりにnote-app.jsでモーダル機能を統合管理します
 }
 
 // DOMが読み込まれたら実行
 document.addEventListener('DOMContentLoaded', function() {
-    initPortfolio();
+    // ポートフォリオデータをグローバルに設定済み
+    console.log('Portfolio data loaded:', portfolioData);
 });
