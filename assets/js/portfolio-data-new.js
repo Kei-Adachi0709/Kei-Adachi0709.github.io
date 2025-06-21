@@ -44,7 +44,7 @@ const portfolioData = [
                 </div>
             </div>
         `,
-        image: "assets/images/projects/smartphone-saber-screenshot.jpg",
+        image: "assets/images/projects/smartphone-saber.jpg",
         technologies: ["Android Studio", "Java", "Motion Sensor", "Audio Processing", "UI/UX"],
         period: "2023年5月〜7月",
         members: 3,
@@ -103,7 +103,7 @@ const portfolioData = [
                 </div>
             </div>
         `,
-        image: "assets/images/projects/smart-pickup-parent.jpg",
+        image: "assets/images/projects/smart-pickup.jpg",
         technologies: ["Android Studio", "Java", "Wi-Fi API", "WebSocket", "QR Code", "REST API"],
         period: "2023年5月〜7月",
         members: 3,
@@ -168,7 +168,7 @@ const portfolioData = [
                 </div>
             </div>
         `,
-        image: "assets/images/projects/qr-food-customer.jpg",
+        image: "assets/images/projects/qr-food-display.jpg",
         technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "QR Code", "Bootstrap"],
         period: "2023年11月〜2024年1月",
         members: 3,
