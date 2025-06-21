@@ -1468,153 +1468,40 @@
                     <h2 class="note-section__title">Portfolio</h2>
                     <p class="note-section__subtitle">インフラエンジニア開発者としての実績・作品集</p>
                 </div>
-                
-                <div class="note-portfolio">
+                  <div class="note-portfolio">
                     <!-- フィルターボタン -->
                     <div class="note-portfolio__filters">
                         <button class="note-filter-btn note-filter-btn--active" data-filter="all">
                             すべて
                         </button>
-                        <button class="note-filter-btn" data-filter="cloud">
-                            クラウド
-                        </button>
-                        <button class="note-filter-btn" data-filter="devops">
-                            DevOps
+                        <button class="note-filter-btn" data-filter="app">
+                            アプリ開発
                         </button>
                         <button class="note-filter-btn" data-filter="web">
                             Web開発
-                                <img src="https://via.placeholder.com/600x300/41c9b4/ffffff?text=AWS+Infrastructure" alt="AWS インフラ構築プロジェクト" class="note-portfolio-card__image">
-                        <button class="note-filter-btn" data-filter="automation">
-                            自動化
+                        </button>
+                        <button class="note-filter-btn" data-filter="android">
+                            Android
+                        </button>
+                        <button class="note-filter-btn" data-filter="fullstack">
+                            フルスタック
                         </button>
                     </div>
                     
                     <!-- ポートフォリオグリッド -->
-                    <div class="note-portfolio__grid">                        <!-- プロジェクト1: AWS インフラ構築 -->
-                        <article class="note-portfolio-card" data-category="cloud devops" data-project-id="1">
+                    <div class="note-portfolio__grid">
+                        <!-- プロジェクト1: SmartPhoneSaber -->
+                        <article class="note-portfolio-card" data-category="app android" data-project-id="1">
                             <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/aws-infrastructure.jpg" alt="AWS インフラ構築プロジェクト" class="note-portfolio-card__image">
+                                <img src="assets/images/projects/smartphone-saber.jpg" alt="SmartPhoneSaber" class="note-portfolio-card__image">
                                 <div class="note-portfolio-card__overlay">
                                     <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="aws-infrastructure">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="smartphone-saber">
                                             <i class="ri-eye-line"></i>
                                             詳細を見る
                                         </button>
-                                        <a href="https://github.com/Kei-Adachi0709/aws-infrastructure" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
-                                            <i class="ri-github-line"></i>
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="note-portfolio-card__content">
-                                <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--cloud">AWS</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--devops">DevOps</span>
-                                    <time class="note-portfolio-card__date">2024年3月</time>
-                                </div>
-                                <h3 class="note-portfolio-card__title">
-                                    スケーラブルなWebアプリケーション用AWS インフラ構築
-                                </h3>
-                                <p class="note-portfolio-card__excerpt">
-                                    Terraformを使用してAWS上にスケーラブルなインフラを構築。ALB、Auto Scaling、RDS、ElastiCacheを組み合わせた高可用性アーキテクチャを実装。
-                                </p>
-                                <div class="note-portfolio-card__tech">
-                                    <span class="note-tech-tag">Terraform</span>
-                                <img src="https://via.placeholder.com/600x300/326ce5/ffffff?text=Kubernetes+Cluster" alt="Kubernetes デプロイメント" class="note-portfolio-card__image">
-                                    <span class="note-tech-tag">ALB</span>
-                                    <span class="note-tech-tag">RDS</span>
-                                    <span class="note-tech-tag">Auto Scaling</span>
-                                </div>
-                            </div>
-                        </article>
-                          <!-- プロジェクト2: Docker + Kubernetes -->
-                        <article class="note-portfolio-card" data-category="devops cloud" data-project-id="2">
-                            <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/kubernetes-deployment.jpg" alt="Kubernetes デプロイメント" class="note-portfolio-card__image">
-                                <div class="note-portfolio-card__overlay">
-                                    <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="kubernetes-deployment">
-                                            <i class="ri-eye-line"></i>
-                                            詳細を見る
-                                        </button>
-                                        <a href="https://github.com/Kei-Adachi0709/k8s-microservices" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
-                                            <i class="ri-github-line"></i>
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="note-portfolio-card__content">
-                                <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--k8s">Kubernetes</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--docker">Docker</span>
-                                    <time class="note-portfolio-card__date">2024年2月</time>
-                                </div>
-                                <h3 class="note-portfolio-card__title">
-                                    マイクロサービス向けKubernetesクラスター構築
-                                </h3>
-                                <p class="note-portfolio-card__excerpt">
-                                    Kubernetesを使用したマイクロサービスアーキテクチャの実装。Helm、Ingress Controller、Prometheus/Grafanaによる監視体制も構築。
-                                </p>
-                                <div class="note-portfolio-card__tech">
-                                    <span class="note-tech-tag">Kubernetes</span>
-                                <img src="https://via.placeholder.com/600x300/f05032/ffffff?text=CI%2FCD+Pipeline" alt="CI/CD パイプライン" class="note-portfolio-card__image">
-                                    <span class="note-tech-tag">Helm</span>
-                                    <span class="note-tech-tag">Prometheus</span>
-                                    <span class="note-tech-tag">Grafana</span>
-                                </div>
-                            </div>
-                        </article>
-                          <!-- プロジェクト3: CI/CD パイプライン -->
-                        <article class="note-portfolio-card" data-category="devops automation" data-project-id="3">
-                            <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/cicd-pipeline.jpg" alt="CI/CD パイプライン" class="note-portfolio-card__image">
-                                <div class="note-portfolio-card__overlay">
-                                    <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="cicd-pipeline">
-                                            <i class="ri-eye-line"></i>
-                                            詳細を見る
-                                        </button>
-                                        <a href="https://github.com/Kei-Adachi0709/cicd-pipeline" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
-                                            <i class="ri-github-line"></i>
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="note-portfolio-card__content">
-                                <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--automation">CI/CD</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--github">GitHub Actions</span>
-                                    <time class="note-portfolio-card__date">2024年1月</time>
-                                </div>
-                                <h3 class="note-portfolio-card__title">
-                                    GitHub Actionsを使用したCI/CDパイプライン構築
-                                </h3>
-                                <p class="note-portfolio-card__excerpt">
-                                    コードプッシュから本番デプロイまでを自動化するCI/CDパイプラインを構築。テスト、セキュリティチェック、Docker イメージビルドを含む完全自動化を実現。
-                                </p>
-                                <div class="note-portfolio-card__tech">
-                                <img src="https://via.placeholder.com/600x300/e6522c/ffffff?text=Monitoring+Dashboard" alt="モニタリングダッシュボード" class="note-portfolio-card__image">
-                                    <span class="note-tech-tag">Docker</span>
-                                    <span class="note-tech-tag">SonarQube</span>
-                                    <span class="note-tech-tag">AWS ECR</span>
-                                </div>
-                            </div>
-                        </article>
-                          <!-- プロジェクト4: モニタリングダッシュボード -->
-                        <article class="note-portfolio-card" data-category="devops" data-project-id="4">
-                            <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/monitoring-dashboard.jpg" alt="モニタリングダッシュボード" class="note-portfolio-card__image">
-                                <div class="note-portfolio-card__overlay">
-                                    <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="monitoring-dashboard">
-                                            <i class="ri-eye-line"></i>
-                                            詳細を見る
-                                        </button>
-                                        <a href="https://protopedia.net/user/Kei-Adachi0709/monitoring-system" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
-                                            <i class="ri-play-line"></i>
+                                        <a href="https://protopedia.net/prototype/4730" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
+                                            <i class="ri-external-link-line"></i>
                                             ProtoPedia
                                         </a>
                                     </div>
@@ -1622,72 +1509,40 @@
                             </div>
                             <div class="note-portfolio-card__content">
                                 <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--monitoring">監視</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--dashboard">ダッシュボード</span>
-                                    <time class="note-portfolio-card__date">2023年12月</time>
+                                    <span class="note-portfolio-tag note-portfolio-tag--app">アプリ</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--android">Android</span>
+                                    <time class="note-portfolio-card__date">2023年5月〜7月</time>
                                 </div>
                                 <h3 class="note-portfolio-card__title">
-                                    Prometheus + Grafana モニタリングシステム
+                                    SmartPhoneSaber
                                 </h3>
                                 <p class="note-portfolio-card__excerpt">
-                                    Prometheusによるメトリクス収集とGrafanaによる可視化を組み合わせたモニタリングシステム。アラート機能とSlack通知も実装。
+                                    音楽に合わせてスマホを振って遊ぶエンターテインメントアプリ。運動不足解消と家庭間コミュニケーション促進を目的としたレクリエーションツール。
                                 </p>
                                 <div class="note-portfolio-card__tech">
-                                    <span class="note-tech-tag">Prometheus</span>
-                                    <span class="note-tech-tag">Grafana</span>
-                                    <span class="note-tech-tag">AlertManager</span>
-                                    <span class="note-tech-tag">Slack API</span>
+                                    <span class="note-tech-tag">Android Studio</span>
+                                    <span class="note-tech-tag">Java</span>
+                                    <span class="note-tech-tag">Motion Sensor</span>
+                                    <span class="note-tech-tag">Audio Processing</span>
                                 </div>
                             </div>
                         </article>
-                          <!-- プロジェクト5: Webアプリケーション -->
-                        <article class="note-portfolio-card" data-category="web" data-project-id="5">
+
+                        <!-- プロジェクト2: スマートお迎え -->
+                        <article class="note-portfolio-card" data-category="app android" data-project-id="2">
                             <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/web-application.jpg" alt="Webアプリケーション" class="note-portfolio-card__image">
+                                <img src="assets/images/projects/smart-pickup.jpg" alt="スマートお迎え" class="note-portfolio-card__image">
                                 <div class="note-portfolio-card__overlay">
                                     <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="web-application">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="smart-pickup">
                                             <i class="ri-eye-line"></i>
                                             詳細を見る
                                         </button>
-                                        <a href="https://your-demo-url.com" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
+                                        <a href="https://protopedia.net/prototype/4100" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
                                             <i class="ri-external-link-line"></i>
-                                            デモを見る
+                                            ProtoPedia
                                         </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="note-portfolio-card__content">
-                                <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--web">React</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--api">REST API</span>
-                                    <time class="note-portfolio-card__date">2023年11月</time>
-                                </div>
-                                <h3 class="note-portfolio-card__title">
-                                    レスポンシブWebアプリケーション開発
-                                </h3>
-                                <p class="note-portfolio-card__excerpt">
-                                    React + Node.js + PostgreSQLを使用したフルスタックWebアプリケーション。RESTful APIの設計・実装とレスポンシブデザインを両立。
-                                </p>
-                                <div class="note-portfolio-card__tech">
-                                    <span class="note-tech-tag">React</span>
-                                    <span class="note-tech-tag">Node.js</span>
-                                    <span class="note-tech-tag">PostgreSQL</span>
-                                    <span class="note-tech-tag">Express.js</span>
-                                </div>
-                            </div>
-                        </article>
-                          <!-- プロジェクト6: インフラ自動化 -->
-                        <article class="note-portfolio-card" data-category="automation devops" data-project-id="6">
-                            <div class="note-portfolio-card__media">
-                                <img src="assets/images/projects/automation-scripts.jpg" alt="自動化スクリプト" class="note-portfolio-card__image">
-                                <div class="note-portfolio-card__overlay">
-                                    <div class="note-portfolio-card__actions">
-                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="automation-scripts">
-                                            <i class="ri-eye-line"></i>
-                                            詳細を見る
-                                        </button>
-                                        <a href="https://github.com/Kei-Adachi0709/automation-scripts" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                        <a href="https://github.com/Kei-Adachi0709/SmartPickup" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
                                             <i class="ri-github-line"></i>
                                             GitHub
                                         </a>
@@ -1696,8 +1551,68 @@
                             </div>
                             <div class="note-portfolio-card__content">
                                 <div class="note-portfolio-card__meta">
-                                    <span class="note-portfolio-tag note-portfolio-tag--automation">自動化</span>
-                                    <span class="note-portfolio-tag note-portfolio-tag--python">Python</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--app">アプリ</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--android">Android</span>
+                                    <time class="note-portfolio-card__date">2023年5月〜7月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    スマートお迎え
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    保護者が保育園に近づくと自動で通知するアプリ。Wi-Fi SSID検知により、お迎え時間短縮と駐車場混雑緩和を実現。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Android Studio</span>
+                                    <span class="note-tech-tag">Wi-Fi API</span>
+                                    <span class="note-tech-tag">WebSocket</span>
+                                    <span class="note-tech-tag">QR Code</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- プロジェクト3: QR食品表示 -->
+                        <article class="note-portfolio-card" data-category="web fullstack" data-project-id="3">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/qr-food-display.jpg" alt="QR食品表示" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="qr-food-display">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://protopedia.net/prototype/5781" target="_blank" class="note-portfolio-btn note-portfolio-btn--demo">
+                                            <i class="ri-external-link-line"></i>
+                                            ProtoPedia
+                                        </a>
+                                        <a href="https://github.com/Kei-Adachi0709/QR-Allergy-Guide" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--web">Web</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--fullstack">フルスタック</span>
+                                    <time class="note-portfolio-card__date">2023年11月〜2024年1月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    QR食品表示
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    飲食店向け食品情報表示システム。QRコードでアレルゲン・原材料情報を簡単確認でき、多言語対応でアクセシビリティを向上。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">HTML5</span>
+                                    <span class="note-tech-tag">PHP</span>
+                                    <span class="note-tech-tag">MySQL</span>
+                                    <span class="note-tech-tag">QR Code</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
                                     <time class="note-portfolio-card__date">2023年10月</time>
                                 </div>
                                 <h3 class="note-portfolio-card__title">
