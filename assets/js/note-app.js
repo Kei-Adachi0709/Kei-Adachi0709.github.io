@@ -1,6 +1,9 @@
 // note.com風UI機能統合ファイル
 
 document.addEventListener('DOMContentLoaded', function() {
+    // スクロール状態をクリア（バグ修正の安全措置）
+    document.body.classList.remove('note-modal-open');
+    
     initSkillTabs();
     initMobileMenu();
     initSmoothScroll();
@@ -158,17 +161,33 @@ function initPortfolioModals() {
         }
     });
     
-    // モーダル閉じるイベント
+    // モーダル閉じるイベント（イベント委譲で重複を防ぐ）
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('note-modal__overlay') || 
-            e.target.classList.contains('note-modal__close')) {
+            e.target.classList.contains('note-modal__close') ||
+            e.target.closest('.note-modal__close')) {
+            e.preventDefault();
             closePortfolioModal();
         }
     });
     
-    // ESCキーでモーダルを閉じる
+    // ESCキーでモーダルを閉じる（既存のモーダルがある場合のみ）
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+        if (e.key === 'Escape' && document.querySelector('.note-modal')) {
+            e.preventDefault();
+            closePortfolioModal();
+        }
+    });
+    
+    // ページ遷移時やリロード時にスクロールを強制的に有効化
+    window.addEventListener('beforeunload', () => {
+        document.body.classList.remove('note-modal-open');
+    });
+    
+    // モーダル外のクリックでも閉じる（追加の安全措置）
+    document.addEventListener('click', (e) => {
+        const modal = document.querySelector('.note-modal');
+        if (modal && !e.target.closest('.note-modal__content') && e.target.classList.contains('note-modal__overlay')) {
             closePortfolioModal();
         }
     });
@@ -183,11 +202,11 @@ function openPortfolioModal(projectId) {
         return;
     }
     
-    // 既存のモーダルを削除
-    const existingModal = document.querySelector('.note-modal');
-    if (existingModal) {
-        existingModal.remove();
-    }
+    // 既存のモーダルがある場合は先に閉じる
+    closePortfolioModal();
+    
+    // 現在のスクロール位置を保存
+    const scrollY = window.scrollY;
     
     // モーダルHTML生成
     const modalHTML = createPortfolioModalHTML(project);
@@ -197,8 +216,10 @@ function openPortfolioModal(projectId) {
     modalElement.innerHTML = modalHTML;
     document.body.appendChild(modalElement.firstElementChild);
     
-    // スクロール無効化
+    // スクロール無効化と位置固定
+    document.body.style.top = `-${scrollY}px`;
     document.body.classList.add('note-modal-open');
+    document.body.setAttribute('data-scroll-y', scrollY);
     
     // アニメーション
     setTimeout(() => {
@@ -212,11 +233,28 @@ function openPortfolioModal(projectId) {
 // ポートフォリオモーダルを閉じる
 function closePortfolioModal() {
     const modal = document.querySelector('.note-modal');
+    
+    // スクロール位置の復元
+    const scrollY = document.body.getAttribute('data-scroll-y') || '0';
+    
+    // モーダルクラスを削除
+    document.body.classList.remove('note-modal-open');
+    document.body.classList.add('note-scroll-restored');
+    document.body.style.top = '';
+    document.body.removeAttribute('data-scroll-y');
+    
+    // スクロール位置を復元
+    window.scrollTo(0, parseInt(scrollY));
+    
+    // 補助クラスを削除
+    setTimeout(() => {
+        document.body.classList.remove('note-scroll-restored');
+    }, 100);
+    
     if (modal) {
         modal.classList.remove('note-modal--open');
         setTimeout(() => {
             modal.remove();
-            document.body.classList.remove('note-modal-open');
         }, 300);
     }
 }
