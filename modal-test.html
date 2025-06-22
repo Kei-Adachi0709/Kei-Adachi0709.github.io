@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モーダルテスト - スクロール修正確認</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-section {
+            height: 80vh;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .portfolio-card__image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #4a90e2, #7bb3f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .portfolio-card__content {
+            padding: 20px;
+        }
+        
+        .portfolio-card__title {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        
+        .portfolio-card__description {
+            margin: 0 0 15px 0;
+            color: #666;
+        }
+        
+        .portfolio-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .portfolio-btn:hover {
+            background: #0056b3;
+        }
+        
+        /* モーダルスタイル */
+        .note-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .note-modal--open {
+            display: block;
+            opacity: 1;
+        }
+        
+        .note-modal__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .note-modal__content {
+            position: relative;
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .note-modal__header {
+            padding: 20px 20px 0 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .note-modal__close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .note-modal__body {
+            padding: 20px;
+        }
+        
+        .status-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .debug-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ポートフォリオモーダルテスト</h1>
+        
+        <div>
+            <button class="debug-btn" onclick="debugScrollState()">スクロール状態確認</button>
+            <button class="debug-btn" onclick="clearLog()">ログクリア</button>
+        </div>
+        
+        <div class="status-log" id="statusLog">
+            <div>テストページ読み込み完了...</div>
+        </div>
+        
+        <div class="test-section">
+            <div>セクション 1 - 上部エリア</div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- テスト用ポートフォリオカード -->
+            <div class="portfolio-card note-portfolio-card" data-project-id="1">
+                <div class="portfolio-card__image">
+                    プロジェクト1 画像
+                </div>
+                <div class="portfolio-card__content">
+                    <h3 class="portfolio-card__title">SmartPhoneSaber</h3>
+                    <p class="portfolio-card__description">音楽に合わせてスマホを振って遊ぶエンターテインメントアプリ。</p>
+                    <button class="portfolio-btn note-portfolio-btn--view" data-project="smartphone-saber">
+                        詳細を見る
+                    </button>
+                </div>
+            </div>
+            
+            <div class="portfolio-card note-portfolio-card" data-project-id="2">
+                <div class="portfolio-card__image">
+                    プロジェクト2 画像
+                </div>
+                <div class="portfolio-card__content">
+                    <h3 class="portfolio-card__title">スマートお迎え</h3>
+                    <p class="portfolio-card__description">保護者が保育園に近づくと自動で通知するアプリ。</p>
+                    <button class="portfolio-btn note-portfolio-btn--view" data-project="smart-pickup">
+                        詳細を見る
+                    </button>
+                </div>
+            </div>
+            
+            <div class="portfolio-card note-portfolio-card" data-project-id="4">
+                <div class="portfolio-card__image">
+                    プロジェクト4 画像
+                </div>
+                <div class="portfolio-card__content">
+                    <h3 class="portfolio-card__title">AWS インフラ構築</h3>
+                    <p class="portfolio-card__description">Terraformを使用してAWS上にスケーラブルなインフラを構築。</p>
+                    <button class="portfolio-btn note-portfolio-btn--view" data-project="aws-infrastructure">
+                        詳細を見る
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <div>セクション 2 - 中央エリア</div>
+        </div>
+        
+        <div class="test-section">
+            <div>セクション 3 - 下部エリア</div>
+        </div>
+    </div>
+    
+    <!-- 必要なスクリプトの読み込み -->
+    <script src="assets/js/scroll-fix.js"></script>
+    <script src="assets/js/portfolio-data-extended.js"></script>
+    <script src="assets/js/note-app.js"></script>
+    
+    <script>
+        // ログ機能
+        function log(message) {
+            const logElement = document.getElementById('statusLog');
+            const timestamp = new Date().toLocaleTimeString();
+            logElement.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function clearLog() {
+            document.getElementById('statusLog').innerHTML = '<div>ログをクリアしました...</div>';
+        }
+        
+        function debugScrollState() {
+            if (window.debugScrollState) {
+                window.debugScrollState();
+            } else {
+                log('debugScrollState関数が見つかりません');
+            }
+        }
+        
+        // 初期化チェック
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.scrollController) {
+                    log('ScrollController 正常読み込み完了');
+                } else {
+                    log('ERROR: ScrollController 読み込み失敗');
+                }
+                
+                if (window.portfolioData) {
+                    log(`ポートフォリオデータ読み込み完了 (${window.portfolioData.length}件)`);
+                } else {
+                    log('ERROR: ポートフォリオデータ読み込み失敗');
+                }
+            }, 100);
+        });
+        
+        // オリジナルのconsole.logをラップしてログに表示
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            log(args.join(' '));
+        };
+        
+        const originalWarn = console.warn;
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            log('WARN: ' + args.join(' '));
+        };
+        
+        const originalError = console.error;
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            log('ERROR: ' + args.join(' '));
+        };
+    </script>
+</body>
+</html>

@@ -180,13 +180,14 @@ function initAnimations() {
 }
 
 // ポートフォリオモーダル機能
-function initPortfolioModals() {
-    // 詳細ボタンのクリックイベントを直接設定（カード全体ではなく）
+function initPortfolioModals() {    // 詳細ボタンのクリックイベントを直接設定（カード全体ではなく）
     document.addEventListener('click', (e) => {
         // 詳細を見るボタンがクリックされた場合
         if (e.target.closest('.note-portfolio-btn--view')) {
             e.preventDefault();
             e.stopPropagation();
+            
+            console.log('詳細を見るボタンがクリックされました');
             
             const viewBtn = e.target.closest('.note-portfolio-btn--view');
             const projectAttr = viewBtn.getAttribute('data-project');
@@ -203,16 +204,21 @@ function initPortfolioModals() {
                     'cicd-pipeline': 6
                 };
                 projectId = projectMap[projectAttr];
+                console.log(`プロジェクト特定: ${projectAttr} → ID: ${projectId}`);
             } else {
                 // フォールバック: 親カードのdata-project-idを使用
                 const portfolioCard = e.target.closest('.note-portfolio-card');
                 if (portfolioCard) {
                     projectId = parseInt(portfolioCard.dataset.projectId);
+                    console.log(`フォールバック: カードからID取得: ${projectId}`);
                 }
             }
             
             if (projectId) {
+                console.log(`モーダルを開く: プロジェクトID ${projectId}`);
                 openPortfolioModal(projectId);
+            } else {
+                console.error('プロジェクトIDが特定できません');
             }
             return;
         }
@@ -223,6 +229,7 @@ function initPortfolioModals() {
             e.target.closest('.note-modal__close')) {
             e.preventDefault();
             e.stopPropagation();
+            console.log('モーダル閉じるボタンがクリックされました');
             closePortfolioModal();
             return;
         }
@@ -255,6 +262,8 @@ function openPortfolioModal(projectId) {
         return;
     }
     
+    console.log('Opening portfolio modal for project:', projectId);
+    
     // 既存のモーダルがある場合は先に閉じる
     closePortfolioModal();
     
@@ -267,20 +276,27 @@ function openPortfolioModal(projectId) {
     const modalNode = modalElement.firstElementChild;
     document.body.appendChild(modalNode);
     
-    // 新しいScrollControllerを使用してスクロールを制御
+    // ScrollControllerを使用してスクロールを無効化
     if (window.scrollController) {
+        console.log('Disabling scroll with ScrollController');
         window.scrollController.disableScroll();
+    } else {
+        console.warn('ScrollController not found, falling back to legacy method');
+        // フォールバック（念のため）
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.classList.add('note-modal-open');
+        document.body.setAttribute('data-scroll-y', scrollY.toString());
     }
     
-    // 新しいModalControllerを使用
-    if (window.modalController) {
-        window.modalController.openModal(modalNode);
-    }
-      // アニメーション
+    // アニメーション
     requestAnimationFrame(() => {
         const modal = document.querySelector('.note-modal');
         if (modal) {
             modal.classList.add('note-modal--open');
+            console.log('Modal opened and animation started');
         }
     });
 }
@@ -290,23 +306,34 @@ function closePortfolioModal() {
     const modal = document.querySelector('.note-modal');
     if (!modal) return;
 
+    console.log('Closing portfolio modal');
+
     // フェードアウトアニメーション
     modal.classList.remove('note-modal--open');
     
-    // 新しいScrollControllerを使用してスクロールを有効化
+    // ScrollControllerを使用してスクロールを有効化
     if (window.scrollController) {
+        console.log('Enabling scroll with ScrollController');
         window.scrollController.enableScroll();
-    }
-    
-    // 新しいModalControllerを使用
-    if (window.modalController) {
-        window.modalController.closeModal();
+    } else {
+        console.warn('ScrollController not found, falling back to legacy method');
+        // フォールバック（念のため）
+        const scrollY = document.body.getAttribute('data-scroll-y');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.classList.remove('note-modal-open');
+        document.body.removeAttribute('data-scroll-y');
+        if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY));
+        }
     }
     
     // モーダル要素を削除
     setTimeout(() => {
         if (modal.parentNode) {
             modal.parentNode.removeChild(modal);
+            console.log('Modal element removed from DOM');
         }
     }, 300);
 }

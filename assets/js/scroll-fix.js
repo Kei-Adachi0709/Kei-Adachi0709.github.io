@@ -54,9 +54,7 @@ class ScrollController {
         this.scrollPosition = 0;
         
         console.log('ScrollController: スクロール状態を強制リセットしました');
-    }
-
-    /**
+    }    /**
      * スクロールを無効化
      */
     disableScroll() {
@@ -86,9 +84,19 @@ class ScrollController {
         this.isScrollDisabled = true;
         
         console.log(`ScrollController: スクロールを無効化しました (位置: ${this.scrollPosition})`);
-    }
-
-    /**
+        
+        // デバッグ用: 現在の状態をコンソールに出力
+        setTimeout(() => {
+            console.log('ScrollController Debug After Disable:', {
+                bodyPosition: document.body.style.position,
+                bodyTop: document.body.style.top,
+                bodyOverflow: document.body.style.overflow,
+                htmlOverflow: document.documentElement.style.overflow,
+                isScrollDisabled: this.isScrollDisabled,
+                savedPosition: this.scrollPosition
+            });
+        }, 10);
+    }    /**
      * スクロールを有効化
      */
     enableScroll() {
@@ -120,11 +128,29 @@ class ScrollController {
             setTimeout(() => {
                 window.scrollTo(0, this.scrollPosition);
             }, 10);
+            
+            // さらに確実にするため、もう一度実行
+            setTimeout(() => {
+                window.scrollTo(0, this.scrollPosition);
+            }, 50);
         }
         
         this.isScrollDisabled = false;
         
         console.log(`ScrollController: スクロールを有効化しました (復元位置: ${this.scrollPosition})`);
+        
+        // デバッグ用: 現在の状態をコンソールに出力
+        setTimeout(() => {
+            console.log('ScrollController Debug After Enable:', {
+                bodyPosition: document.body.style.position,
+                bodyTop: document.body.style.top,
+                bodyOverflow: document.body.style.overflow,
+                htmlOverflow: document.documentElement.style.overflow,
+                isScrollDisabled: this.isScrollDisabled,
+                currentScrollY: window.pageYOffset || document.documentElement.scrollTop,
+                restoredPosition: this.scrollPosition
+            });
+        }, 100);
         
         // 位置をリセット
         this.scrollPosition = 0;
@@ -227,7 +253,7 @@ window.disableScroll = function() {
 };
 
 /**
- * モーダル制御の統合
+ * モーダル制御の統合（簡略化版）
  */
 class ModalController {
     constructor(scrollController) {
@@ -236,41 +262,13 @@ class ModalController {
     }
 
     openModal(modalElement) {
-        // 既存のモーダルを閉じる
-        this.closeModal();
-        
-        // スクロールを無効化
-        this.scrollController.disableScroll();
-        
-        // モーダルを記録
+        console.log('ModalController: モーダルを開く処理をスキップ（note-app.jsで制御）');
         this.currentModal = modalElement;
-        
-        // フォーカストラップの設定
-        this.setupFocusTrap(modalElement);
-        
-        console.log('ModalController: モーダルを開きました');
     }
 
     closeModal() {
-        if (this.currentModal) {
-            // スクロールを有効化
-            this.scrollController.enableScroll();
-            
-            // モーダルをクリア
-            this.currentModal = null;
-            
-            console.log('ModalController: モーダルを閉じました');
-        }
-    }
-
-    setupFocusTrap(modal) {
-        const focusableElements = modal.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        
-        if (focusableElements.length > 0) {
-            focusableElements[0].focus();
-        }
+        console.log('ModalController: モーダルを閉じる処理をスキップ（note-app.jsで制御）');
+        this.currentModal = null;
     }
 }
 
