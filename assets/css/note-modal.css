@@ -1,5 +1,15 @@
 /* ポートフォリオ詳細モーダル用CSS */
 
+/* スクロール固定用のbodyスタイル */
+body.note-modal-open {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+}
+
 /* モーダル全体 */
 .note-modal {
     position: fixed;

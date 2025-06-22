@@ -11,7 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // スクロール状態を保護
+            if (document.body.classList.contains('note-modal-open')) {
+                return;
+            }
+            
             // アクティブクラスの切り替え
             filterButtons.forEach(btn => btn.classList.remove('note-filter-btn--active'));
             this.classList.add('note-filter-btn--active');

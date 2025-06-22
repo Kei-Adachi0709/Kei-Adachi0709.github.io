@@ -1467,8 +1467,7 @@
                     <h2 class="note-section__title">Portfolio</h2>
                     <p class="note-section__subtitle">実際の制作実績・アプリケーション開発プロジェクト</p>
                 </div>
-                  <div class="note-portfolio">
-                    <!-- フィルターボタン -->
+                  <div class="note-portfolio">                    <!-- フィルターボタン -->
                     <div class="note-portfolio__filters">
                         <button class="note-filter-btn note-filter-btn--active" data-filter="all">
                             すべて
@@ -1479,11 +1478,14 @@
                         <button class="note-filter-btn" data-filter="web">
                             Web開発
                         </button>
-                        <button class="note-filter-btn" data-filter="android">
-                            Android
+                        <button class="note-filter-btn" data-filter="infrastructure">
+                            インフラ
                         </button>
-                        <button class="note-filter-btn" data-filter="fullstack">
-                            フルスタック
+                        <button class="note-filter-btn" data-filter="devops">
+                            DevOps
+                        </button>
+                        <button class="note-filter-btn" data-filter="aws">
+                            AWS
                         </button>
                     </div>
                     
@@ -1599,13 +1601,128 @@
                                 <p class="note-portfolio-card__excerpt">
                                     飲食店向け食品情報表示システム。QRコードでアレルゲン・原材料情報を簡単確認でき、多言語対応でアクセシビリティを向上。
                                 </p>
-                                <div class="note-portfolio-card__tech">
-                                    <span class="note-tech-tag">HTML5</span>
+                                <div class="note-portfolio-card__tech">                                    <span class="note-tech-tag">HTML5</span>
                                     <span class="note-tech-tag">PHP</span>
                                     <span class="note-tech-tag">MySQL</span>
                                     <span class="note-tech-tag">QR Code</span>
                                 </div>
                             </div>                        </article>
+
+                        <!-- プロジェクト4: AWS インフラ構築 -->
+                        <article class="note-portfolio-card" data-category="infrastructure aws devops" data-project-id="4">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/aws-infrastructure.jpg" alt="AWS インフラ構築プロジェクト" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="aws-infrastructure">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/aws-terraform-infrastructure" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--aws">AWS</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--devops">DevOps</span>
+                                    <time class="note-portfolio-card__date">2024年3月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    AWS インフラ構築プロジェクト
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Terraformを使用してAWS上にスケーラブルなインフラを構築。ALB、Auto Scaling、RDS、ElastiCacheを組み合わせた高可用性アーキテクチャを実装。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Terraform</span>
+                                    <span class="note-tech-tag">AWS</span>
+                                    <span class="note-tech-tag">ALB</span>
+                                    <span class="note-tech-tag">RDS</span>
+                                    <span class="note-tech-tag">Auto Scaling</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- プロジェクト5: Kubernetes デプロイメント -->
+                        <article class="note-portfolio-card" data-category="infrastructure kubernetes devops" data-project-id="5">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/kubernetes-dashboard.jpg" alt="Kubernetes デプロイメント" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="kubernetes-deployment">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/k8s-microservices" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--kubernetes">Kubernetes</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--docker">Docker</span>
+                                    <time class="note-portfolio-card__date">2024年2月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    Kubernetes デプロイメント
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    Kubernetesを使用したマイクロサービスアーキテクチャの実装。Helm、Ingress Controller、Prometheus/Grafanaによる監視体制も構築。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">Kubernetes</span>
+                                    <span class="note-tech-tag">Docker</span>
+                                    <span class="note-tech-tag">Helm</span>
+                                    <span class="note-tech-tag">Prometheus</span>
+                                    <span class="note-tech-tag">Grafana</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- プロジェクト6: CI/CD パイプライン -->
+                        <article class="note-portfolio-card" data-category="devops cicd automation" data-project-id="6">
+                            <div class="note-portfolio-card__media">
+                                <img src="assets/images/projects/cicd-pipeline.jpg" alt="CI/CD パイプライン" class="note-portfolio-card__image">
+                                <div class="note-portfolio-card__overlay">
+                                    <div class="note-portfolio-card__actions">
+                                        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="cicd-pipeline">
+                                            <i class="ri-eye-line"></i>
+                                            詳細を見る
+                                        </button>
+                                        <a href="https://github.com/Kei-Adachi0709/cicd-pipeline-template" target="_blank" class="note-portfolio-btn note-portfolio-btn--github">
+                                            <i class="ri-github-line"></i>
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-portfolio-card__content">
+                                <div class="note-portfolio-card__meta">
+                                    <span class="note-portfolio-tag note-portfolio-tag--cicd">CI/CD</span>
+                                    <span class="note-portfolio-tag note-portfolio-tag--github">GitHub Actions</span>
+                                    <time class="note-portfolio-card__date">2024年1月</time>
+                                </div>
+                                <h3 class="note-portfolio-card__title">
+                                    CI/CD パイプライン
+                                </h3>
+                                <p class="note-portfolio-card__excerpt">
+                                    GitHub Actionsを使用したCI/CDパイプライン構築。コードプッシュから本番デプロイまでを自動化し、テスト・セキュリティチェック・Dockerイメージビルドを含む完全自動化を実現。
+                                </p>
+                                <div class="note-portfolio-card__tech">
+                                    <span class="note-tech-tag">GitHub Actions</span>
+                                    <span class="note-tech-tag">Docker</span>
+                                    <span class="note-tech-tag">SonarQube</span>
+                                    <span class="note-tech-tag">AWS ECR</span>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -1977,10 +2094,8 @@
         <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-        <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    
-        <!-- データ・設定系スクリプト（最初に読み込み） -->
-        <script defer src="assets/js/portfolio-data.js"></script>
+        <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>        <!-- データ・設定系スクリプト（最初に読み込み） -->
+        <script defer src="assets/js/portfolio-data-extended.js"></script>
         
         <!-- 機能別スクリプト -->
         <script defer src="assets/js/note-app.js"></script>
@@ -1992,10 +2107,9 @@
         
         <!-- AOS（Animate On Scroll）ライブラリ -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        
-        <!-- アプリケーションJavaScript（遅延読み込み） -->
+          <!-- アプリケーションJavaScript（遅延読み込み） -->
         <script defer src="assets/js/note-app.js"></script>
-        <script defer src="assets/js/portfolio-data.js"></script>
+        <script defer src="assets/js/portfolio-data-extended.js"></script>
         <script defer src="assets/js/portfolio-filter.js"></script>
         <script defer src="assets/js/navigation.js"></script>
         <script defer src="assets/js/note-experience.js"></script>
