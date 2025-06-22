@@ -14,6 +14,9 @@
 /* スキル - note-skills.css */
 @import url('note-skills.css');
 
+/* 職歴・資格 - note-experience.css */
+@import url('note-experience.css');
+
 /* ポートフォリオ - note-portfolio.css */
 @import url('note-portfolio.css');
 
