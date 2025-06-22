@@ -10,13 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+    filterButtons.forEach(button => {        button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // スクロール状態を保護
-            if (document.body.classList.contains('note-modal-open')) {
+            // スクロール状態を保護（新しいScrollController使用）
+            if (window.scrollController && window.scrollController.isScrollDisabled) {
                 return;
             }
             

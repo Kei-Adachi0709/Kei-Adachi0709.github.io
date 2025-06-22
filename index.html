@@ -2090,33 +2090,27 @@
             <i class="ri-arrow-up-line"></i>
         </button>
     
-        <!-- 外部ライブラリスクリプト -->
-        <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-        <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>        <!-- データ・設定系スクリプト（最初に読み込み） -->
-        <script defer src="assets/js/portfolio-data-extended.js"></script>
-        
-        <!-- 機能別スクリプト -->
-        <script defer src="assets/js/note-app.js"></script>
-        <script defer src="assets/js/navigation.js"></script>
-        <script defer src="assets/js/portfolio-filter.js"></script>
-        <script defer src="assets/js/image-optimization.js"></script>        <script defer src="assets/js/security.js"></script>
-        <script defer src="assets/js/analytics.js"></script>          <!-- メインスクリプト（最後に読み込み） -->
-        <!-- main.jsは削除済み - note-app.jsに統合 -->
-        
-        <!-- AOS（Animate On Scroll）ライブラリ -->
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-          <!-- アプリケーションJavaScript（遅延読み込み） -->
-        <script defer src="assets/js/note-app.js"></script>
-        <script defer src="assets/js/portfolio-data-extended.js"></script>
-        <script defer src="assets/js/portfolio-filter.js"></script>
-        <script defer src="assets/js/navigation.js"></script>
-        <script defer src="assets/js/note-experience.js"></script>
-        <script defer src="assets/js/image-optimization.js"></script>
-        <script defer src="assets/js/analytics.js"></script>
-        <script defer src="assets/js/performance.js"></script>
-        <script defer src="assets/js/security.js"></script>
+    <!-- 外部ライブラリスクリプト -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+    <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <!-- スクロール制御修正スクリプト（最優先で読み込み） -->
+    <script src="assets/js/scroll-fix.js"></script>
+    
+    <!-- データ・設定系スクリプト -->
+    <script defer src="assets/js/portfolio-data-extended.js"></script>
+    
+    <!-- 機能別スクリプト -->
+    <script defer src="assets/js/note-app.js"></script>
+    <script defer src="assets/js/navigation.js"></script>
+    <script defer src="assets/js/portfolio-filter.js"></script>
+    <script defer src="assets/js/note-experience.js"></script>
+    <script defer src="assets/js/image-optimization.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
+    <script defer src="assets/js/performance.js"></script>
+    <script defer src="assets/js/security.js"></script>
         
         <!-- AOS初期化 -->
         <script>

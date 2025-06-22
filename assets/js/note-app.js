@@ -1,21 +1,31 @@
 // note.com風UI機能統合ファイル
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 強制的にスクロール状態をクリア（バグ修正の安全措置）
-    restoreScroll();
-    document.body.classList.remove('note-modal-open');
+    // ScrollControllerが読み込まれるまで待機
+    const initializeWhenReady = () => {
+        if (window.scrollController) {
+            // スクロール制御の初期化は scroll-fix.js で処理済み
+            
+            // 各機能を初期化
+            initSkillTabs();
+            initMobileMenu();
+            initSmoothScroll();
+            initAnimations();
+            initPortfolioModals();
+            
+            // ページの読み込み完了を保証
+            setTimeout(() => {
+                document.body.classList.add('page-loaded');
+            }, 100);
+            
+            console.log('note-app.js: 初期化完了');
+        } else {
+            // ScrollControllerがまだ読み込まれていない場合は少し待つ
+            setTimeout(initializeWhenReady, 50);
+        }
+    };
     
-    // 再初期化処理
-    initSkillTabs();
-    initMobileMenu();
-    initSmoothScroll();
-    initAnimations();
-    initPortfolioModals();
-    
-    // ページの読み込み完了を保証
-    setTimeout(() => {
-        document.body.classList.add('page-loaded');
-    }, 100);
+    initializeWhenReady();
 });
 
 // スキルタブ機能
@@ -24,7 +34,15 @@ function initSkillTabs() {
     const contents = document.querySelectorAll('.note-skill-content');
     
     tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // モーダルが開いている場合は何もしない
+            if (document.body.classList.contains('note-modal-open')) {
+                return;
+            }
+            
             const targetTab = tab.dataset.tab;
             
             // すべてのタブとコンテンツの active クラスを削除
@@ -77,12 +95,17 @@ function initSmoothScroll() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // モーダルが開いている場合は何もしない
+            if (document.body.classList.contains('note-modal-open')) {
+                return;
+            }
+            
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                const headerHeight = document.querySelector('.note-header').offsetHeight;
+                const headerHeight = document.querySelector('.note-header')?.offsetHeight || 80;
                 const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -215,10 +238,11 @@ function initPortfolioModals() {
             }
         }
     });
-    
-    // ページ遷移時やリロード時にスクロールを強制的に有効化
+      // ページ遷移時やリロード時にスクロールを強制的に有効化
     window.addEventListener('beforeunload', () => {
-        restoreScroll();
+        if (window.scrollController) {
+            window.scrollController.forceResetScroll();
+        }
     });
 }
 
@@ -234,25 +258,25 @@ function openPortfolioModal(projectId) {
     // 既存のモーダルがある場合は先に閉じる
     closePortfolioModal();
     
-    // スクロール固定前の位置を保存
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    
     // モーダルHTML生成
     const modalHTML = createPortfolioModalHTML(project);
     
     // モーダルをボディに追加
     const modalElement = document.createElement('div');
     modalElement.innerHTML = modalHTML;
-    document.body.appendChild(modalElement.firstElementChild);
+    const modalNode = modalElement.firstElementChild;
+    document.body.appendChild(modalNode);
     
-    // スクロール固定
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.classList.add('note-modal-open');
-    document.body.setAttribute('data-scroll-y', scrollY.toString());
+    // 新しいScrollControllerを使用してスクロールを制御
+    if (window.scrollController) {
+        window.scrollController.disableScroll();
+    }
     
-    // アニメーション
+    // 新しいModalControllerを使用
+    if (window.modalController) {
+        window.modalController.openModal(modalNode);
+    }
+      // アニメーション
     requestAnimationFrame(() => {
         const modal = document.querySelector('.note-modal');
         if (modal) {
@@ -269,8 +293,15 @@ function closePortfolioModal() {
     // フェードアウトアニメーション
     modal.classList.remove('note-modal--open');
     
-    // スクロール位置を復元
-    restoreScroll();
+    // 新しいScrollControllerを使用してスクロールを有効化
+    if (window.scrollController) {
+        window.scrollController.enableScroll();
+    }
+    
+    // 新しいModalControllerを使用
+    if (window.modalController) {
+        window.modalController.closeModal();
+    }
     
     // モーダル要素を削除
     setTimeout(() => {
@@ -278,35 +309,6 @@ function closePortfolioModal() {
             modal.parentNode.removeChild(modal);
         }
     }, 300);
-}
-
-// スクロール復元関数
-function restoreScroll() {
-    const scrollY = document.body.getAttribute('data-scroll-y');
-    
-    // body のスタイルをリセット
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.classList.remove('note-modal-open');
-    document.body.removeAttribute('data-scroll-y');
-    
-    // スクロール位置を復元
-    if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY));
-    }
-    
-    // 念のため、一定時間後にもう一度スクロールを確認
-    setTimeout(() => {
-        if (document.body.classList.contains('note-modal-open')) {
-            document.body.classList.remove('note-modal-open');
-        }
-        if (document.body.style.position === 'fixed') {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-        }
-    }, 100);
 }
 
 // ポートフォリオモーダルHTML生成

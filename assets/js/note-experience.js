@@ -18,9 +18,16 @@ function initExperienceCertifications() {
 function initCertificationTabs() {
     const tabs = document.querySelectorAll('.note-cert-tab');
     const contents = document.querySelectorAll('.note-cert-content');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+      tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // スクロール状態を保護（新しいScrollController使用）
+            if (window.scrollController && window.scrollController.isScrollDisabled) {
+                return;
+            }
+            
             const targetTab = tab.dataset.tab;
             
             // 全てのタブからアクティブクラスを削除
