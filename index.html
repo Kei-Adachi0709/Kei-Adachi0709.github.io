@@ -126,8 +126,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//unpkg.com">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
-    
+    <link rel="dns-prefetch" href="//www.google-analytics.com">    
     <!-- プリロード設定（クリティカルリソース） -->
     <link rel="preload" href="assets/css/critical.css" as="style">
     <link rel="preload" href="assets/fonts/NotoSansJP-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -135,44 +134,11 @@
     <link rel="preload" href="assets/images/profile.webp" as="image" type="image/webp">
     
     <!-- クリティカルCSS（Above the Fold） -->
-    <link rel="stylesheet" href="assets/css/critical.css">    <!-- 非クリティカルCSS（遅延読み込み） --><!-- note風メインスタイル -->
-    <link rel="preload" href="assets/css/note-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-style.css"></noscript>
+    <link rel="stylesheet" href="assets/css/critical.css">
     
-    <!-- スキルセクション専用CSS -->
-    <link rel="preload" href="assets/css/note-skills.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-skills.css"></noscript>
-      <!-- ポートフォリオセクション専用CSS -->
-    <link rel="preload" href="assets/css/note-portfolio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-portfolio.css"></noscript>
-    
-    <!-- ポートフォリオモーダル専用CSS -->
-    <link rel="preload" href="assets/css/note-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-modal.css"></noscript>
-      <!-- note風デザインCSS -->
-    <link rel="preload" href="assets/css/note-design.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-design.css"></noscript>
-    
-    <!-- コンタクトセクション専用CSS -->
-    <link rel="preload" href="assets/css/note-contact.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-contact.css"></noscript>
-    
-    <!-- フッター専用CSS -->
-    <link rel="preload" href="assets/css/note-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-footer.css"></noscript>>
-    
-    <!-- note風デザインCSS -->
-    <link rel="preload" href="assets/css/note-design.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-design.css"></noscript>
-    
-    <link rel="preload" href="assets/css/note-header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-header.css"></noscript>
-      <link rel="preload" href="assets/css/note-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-components.css"></noscript>
-    
-    <!-- 職歴・資格セクション専用CSS -->
-    <link rel="preload" href="assets/css/note-experience.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/note-experience.css"></noscript>
+    <!-- 統合CSS（遅延読み込み） -->
+    <link rel="preload" href="assets/css/note-unified.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/note-unified.css"></noscript>
     
     <!-- フォント最適化読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1925,79 +1891,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- セキュリティテスト -->
-        <section class="security section" id="security">
-            <h2 class="section__title" data-aos="fade-up">Security Testing</h2>
-            <span class="section__subtitle" data-aos="fade-up" data-aos-delay="100">サイトのセキュリティ対策を検証</span>
-
-            <div class="security__container container grid">
-                <div class="security__info" data-aos="fade-right">
-                    <div class="security__description">
-                        <h3 class="security__title">セキュリティテストスイート</h3>
-                        <p class="security__details">
-                            このサイトに実装されているセキュリティ対策の有効性を検証できます。
-                            XSS、CSRF、入力値検証、SQLインジェクション対策などの包括的なテストを実行します。
-                        </p>
-                        
-                        <div class="security__features">
-                            <div class="security__feature" data-aos="fade-up" data-aos-delay="200">
-                                <i class="ri-shield-check-line security__feature-icon"></i>
-                                <span>XSS対策検証</span>
-                            </div>
-                            <div class="security__feature" data-aos="fade-up" data-aos-delay="300">
-                                <i class="ri-lock-line security__feature-icon"></i>
-                                <span>CSRF保護確認</span>
-                            </div>
-                            <div class="security__feature" data-aos="fade-up" data-aos-delay="400">
-                                <i class="ri-shield-star-line security__feature-icon"></i>
-                                <span>入力値検証テスト</span>
-                            </div>
-                            <div class="security__feature" data-aos="fade-up" data-aos-delay="500">
-                                <i class="ri-database-2-line security__feature-icon"></i>
-                                <span>SQLインジェクション対策</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="security__actions" data-aos="fade-up" data-aos-delay="600">
-                        <button class="button security__run-test" id="runSecurityTest">
-                            <i class="ri-play-circle-line"></i>
-                            セキュリティテスト実行
-                        </button>
-                        <button class="button button--flex security__benchmark" id="runBenchmark">
-                            <i class="ri-bar-chart-line"></i>
-                            セキュリティスコア計測
-                        </button>
-                    </div>
-                </div>
-
-                <div class="security__results" id="securityResults" data-aos="fade-left">
-                    <div class="security__score-display" id="securityScore">
-                        <div class="security__score-circle">
-                            <span class="security__score-number" id="scoreNumber">--</span>
-                            <span class="security__score-label">セキュリティスコア</span>
-                        </div>
-                    </div>
-                    
-                    <div class="security__test-output" id="testOutput">
-                        <h4 class="security__output-title">テスト結果</h4>
-                        <div class="security__console" id="securityConsole">
-                            <p class="security__console-placeholder">セキュリティテストを実行すると結果がここに表示されます</p>
-                        </div>
-                    </div>
-                    
-                    <div class="security__recommendations" id="securityRecommendations" style="display: none;">
-                        <h4 class="security__recommendations-title">
-                            <i class="ri-lightbulb-line"></i>
-                            改善提案
-                        </h4>
-                        <ul class="security__recommendations-list" id="recommendationsList"></ul>
-                    </div>
-                </div>
-            </div>
+                </div>            </div>
         </section>
     </main><!-- フッター -->
     <footer class="note-footer">
@@ -2088,29 +1982,12 @@
           <!-- スクロールトップボタン -->
         <button class="note-scroll-top" id="scroll-top" aria-label="ページトップへ戻る">
             <i class="ri-arrow-up-line"></i>
-        </button>
-    
-    <!-- 外部ライブラリスクリプト -->
+        </button>    <!-- 外部ライブラリスクリプト -->
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
     <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     
-    <!-- スクロール制御修正スクリプト（最優先で読み込み） -->
-    <script src="assets/js/scroll-fix.js"></script>
-    
-    <!-- データ・設定系スクリプト -->
-    <script defer src="assets/js/portfolio-data-extended.js"></script>
-    
-    <!-- 機能別スクリプト -->
-    <script defer src="assets/js/note-app.js"></script>
-    <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/portfolio-filter.js"></script>
-    <script defer src="assets/js/note-experience.js"></script>
-    <script defer src="assets/js/image-optimization.js"></script>
-    <script defer src="assets/js/analytics.js"></script>
-    <script defer src="assets/js/performance.js"></script>
-    <script defer src="assets/js/security.js"></script>
+    <!-- メインアプリケーションスクリプト（統合済み） -->
+    <script src="assets/js/main.js"></script>
         
         <!-- AOS初期化 -->
         <script>
