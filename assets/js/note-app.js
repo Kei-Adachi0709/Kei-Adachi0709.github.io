@@ -4,21 +4,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // ScrollControllerが読み込まれるまで待機
     const initializeWhenReady = () => {
         if (window.scrollController) {
-            // スクロール制御の初期化は scroll-fix.js で処理済み
+            // ポートフォリオデータが読み込まれるまで待機
+            const waitForPortfolioData = () => {
+                if (window.portfolioData || window.portfolioDataExtended) {
+                    console.log('Portfolio data loaded:', window.portfolioData || window.portfolioDataExtended);
+                    
+                    // 各機能を初期化
+                    initSkillTabs();
+                    initMobileMenu();
+                    initSmoothScroll();
+                    initAnimations();
+                    initPortfolioModals();
+                    
+                    // ページの読み込み完了を保証
+                    setTimeout(() => {
+                        document.body.classList.add('page-loaded');
+                    }, 100);
+                    
+                    console.log('note-app.js: 初期化完了');
+                } else {
+                    console.log('Waiting for portfolio data...');
+                    setTimeout(waitForPortfolioData, 50);
+                }
+            };
             
-            // 各機能を初期化
-            initSkillTabs();
-            initMobileMenu();
-            initSmoothScroll();
-            initAnimations();
-            initPortfolioModals();
-            
-            // ページの読み込み完了を保証
-            setTimeout(() => {
-                document.body.classList.add('page-loaded');
-            }, 100);
-            
-            console.log('note-app.js: 初期化完了');
+            waitForPortfolioData();
         } else {
             // ScrollControllerがまだ読み込まれていない場合は少し待つ
             setTimeout(initializeWhenReady, 50);
@@ -181,11 +191,11 @@ function initAnimations() {
 
 // ポートフォリオモーダル機能
 function initPortfolioModals() {    // 詳細ボタンのクリックイベントを直接設定（カード全体ではなく）
-    document.addEventListener('click', (e) => {
-        // 詳細を見るボタンがクリックされた場合
+    document.addEventListener('click', (e) => {        // 詳細を見るボタンがクリックされた場合
         if (e.target.closest('.note-portfolio-btn--view')) {
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
             
             console.log('詳細を見るボタンがクリックされました');
             
@@ -213,14 +223,20 @@ function initPortfolioModals() {    // 詳細ボタンのクリックイベン�
                     console.log(`フォールバック: カードからID取得: ${projectId}`);
                 }
             }
-            
-            if (projectId) {
+              if (projectId) {
                 console.log(`モーダルを開く: プロジェクトID ${projectId}`);
+                // プロジェクトIDが見つかった場合、すぐにモーダルを開く
                 openPortfolioModal(projectId);
             } else {
                 console.error('プロジェクトIDが特定できません');
+                console.log('ボタン要素:', viewBtn);
+                console.log('data-project:', projectAttr);
+                console.log('親カード:', e.target.closest('.note-portfolio-card'));
+                
+                // エラー時は普通のアラートで通知
+                alert('申し訳ございません。プロジェクトの詳細を表示できませんでした。ページを再読み込みしてお試しください。');
             }
-            return;
+            return false;
         }
         
         // モーダル閉じるイベント
@@ -231,9 +247,9 @@ function initPortfolioModals() {    // 詳細ボタンのクリックイベン�
             e.stopPropagation();
             console.log('モーダル閉じるボタンがクリックされました');
             closePortfolioModal();
-            return;
+            return false;
         }
-    });
+    }, true); // キャプチャフェーズで実行
     
     // ESCキーでモーダルを閉じる
     document.addEventListener('keydown', (e) => {
@@ -255,14 +271,34 @@ function initPortfolioModals() {    // 詳細ボタンのクリックイベン�
 
 // ポートフォリオモーダルを開く
 function openPortfolioModal(projectId) {
-    // portfolio-data.jsからプロジェクトデータを取得
-    const project = window.portfolioData?.find(p => p.id === projectId);
-    if (!project) {
-        console.error('Project not found:', projectId);
+    console.log('openPortfolioModal called with projectId:', projectId);
+    
+    // 現在のスクロール位置を保存
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    console.log('現在のスクロール位置を保存:', currentScrollY);
+    
+    // まず、ポートフォリオデータの存在を確認
+    let project;
+    if (window.portfolioData) {
+        project = window.portfolioData.find(p => p.id === projectId);
+        console.log('Using window.portfolioData, found project:', project);
+    } else if (window.portfolioDataExtended) {
+        project = window.portfolioDataExtended.find(p => p.id === projectId);
+        console.log('Using window.portfolioDataExtended, found project:', project);
+    } else {
+        console.error('No portfolio data found! Checking available variables...');
+        console.log('window.portfolioData:', window.portfolioData);
+        console.log('window.portfolioDataExtended:', window.portfolioDataExtended);
         return;
     }
     
-    console.log('Opening portfolio modal for project:', projectId);
+    if (!project) {
+        console.error('Project not found for ID:', projectId);
+        console.log('Available projects:', window.portfolioData || window.portfolioDataExtended);
+        return;
+    }
+    
+    console.log('Opening portfolio modal for project:', project.title);
     
     // 既存のモーダルがある場合は先に閉じる
     closePortfolioModal();
@@ -283,12 +319,11 @@ function openPortfolioModal(projectId) {
     } else {
         console.warn('ScrollController not found, falling back to legacy method');
         // フォールバック（念のため）
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
         document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
+        document.body.style.top = `-${currentScrollY}px`;
         document.body.style.width = '100%';
         document.body.classList.add('note-modal-open');
-        document.body.setAttribute('data-scroll-y', scrollY.toString());
+        document.body.setAttribute('data-scroll-y', currentScrollY.toString());
     }
     
     // アニメーション
@@ -325,7 +360,9 @@ function closePortfolioModal() {
         document.body.classList.remove('note-modal-open');
         document.body.removeAttribute('data-scroll-y');
         if (scrollY) {
-            window.scrollTo(0, parseInt(scrollY));
+            const scrollPos = parseInt(scrollY);
+            console.log('Restoring scroll position to:', scrollPos);
+            window.scrollTo(0, scrollPos);
         }
     }
     
@@ -565,3 +602,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('loaded');
     }, 100);
 });
+
+// デバッグ用: ページ全体のクリック監視（問題特定のため）
+if (window.location.search.includes('debug=true')) {
+    document.addEventListener('click', (e) => {
+        console.log('=== PAGE CLICK DEBUG ===');
+        console.log('クリックされた要素:', e.target);
+        console.log('イベントのバブリング情報:', {
+            target: e.target.tagName,
+            currentTarget: e.currentTarget.tagName,
+            eventPhase: e.eventPhase,
+            bubbles: e.bubbles
+        });
+        console.log('現在のスクロール位置:', window.pageYOffset);
+        
+        setTimeout(() => {
+            console.log('100ms後のスクロール位置:', window.pageYOffset);
+        }, 100);
+        
+        setTimeout(() => {
+            console.log('500ms後のスクロール位置:', window.pageYOffset);
+        }, 500);
+    }, true);
+}
