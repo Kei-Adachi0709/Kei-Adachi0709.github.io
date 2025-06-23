@@ -1,0 +1,628 @@
+/* ==========================================================================
+   職歴・資格セクション CSS - 最大限シンプル版
+   ========================================================================== */
+
+:root {
+    /* 職歴・資格セクション専用変数 */
+    --note-primary-color: #6366f1;
+    --note-secondary-color: #8b5cf6;
+    --note-background-color: #ffffff;
+    --note-card-background: #ffffff;
+    --note-border-color: #e2e8f0;
+    --note-text-color: #1e293b;
+    --note-text-light: #64748b;
+    --note-heading-color: #0f172a;
+    --note-accent-color: #f1f5f9;
+    --note-border-radius: 6px;
+    --note-border-radius-lg: 8px;
+}
+
+/* ==========================================================================
+   職歴セクション - Experience Section CSS (最大限シンプル版)
+   ========================================================================== */
+
+.note-experience {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* タイムライン全体 */
+.note-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.note-timeline::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--note-primary-color);
+    opacity: 0.3;
+}
+
+/* タイムラインアイテム */
+.note-timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.note-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* タイムラインマーカー */
+.note-timeline-marker {
+    position: relative;
+    flex-shrink: 0;
+    width: 4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.note-timeline-marker__dot {
+    width: 14px;
+    height: 14px;
+    background: var(--note-background-color);
+    border: 2px solid var(--note-primary-color);
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+
+.note-timeline-marker__dot--current {
+    background: var(--note-primary-color);
+}
+
+/* タイムラインコンテンツ */
+.note-timeline-content {
+    flex: 1;
+    margin-left: 2rem;
+}
+
+/* 経験カード */
+.note-experience-card {
+    background: var(--note-card-background);
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius-lg);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.note-experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--note-primary-color);
+    opacity: 0.6;
+}
+
+/* カードヘッダー */
+.note-experience-card__header {
+    margin-bottom: 1.5rem;
+}
+
+.note-experience-card__period {
+    margin-bottom: 0.75rem;
+}
+
+.note-period-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--note-accent-color);
+    color: var(--note-text-color);
+    border-radius: var(--note-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--note-border-color);
+}
+
+.note-period-badge--current {
+    background: var(--note-primary-color);
+    color: white;
+    border-color: var(--note-primary-color);
+}
+
+.note-experience-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--note-heading-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.note-experience-card__company {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    color: var(--note-primary-color);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* カードコンテンツ */
+.note-experience-card__description {
+    color: var(--note-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* 実績セクション */
+.note-experience-card__achievements {
+    margin-bottom: 1.5rem;
+}
+
+.note-experience-card__achievements-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--note-heading-color);
+    margin-bottom: 0.75rem;
+}
+
+.note-experience-card__achievements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-experience-card__achievements-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--note-text-color);
+    line-height: 1.5;
+}
+
+.note-experience-card__achievements-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--note-primary-color);
+    font-weight: bold;
+}
+
+/* 技術タグセクション */
+.note-experience-card__technologies {
+    margin-bottom: 0;
+}
+
+.note-experience-card__tech-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--note-heading-color);
+    margin-bottom: 0.75rem;
+}
+
+.note-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.note-tech-tag {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--note-border-radius);
+    border: 1px solid var(--note-border-color);
+    background: var(--note-background-color);
+    color: var(--note-text-color);
+}
+
+/* 技術タグのシンプルな色分け */
+.note-tech-tag--cloud { background: #fff3cd; color: #856404; border-color: #ffeaa7; }
+.note-tech-tag--container { background: #d1ecf1; color: #0c5460; border-color: #bee5eb; }
+.note-tech-tag--orchestration { background: #d4f5f7; color: #0f4c81; border-color: #b6ebf0; }
+.note-tech-tag--iac { background: #e2e3ff; color: #3730a3; border-color: #c7d2fe; }
+.note-tech-tag--ci { background: #d1fae5; color: #047857; border-color: #a7f3d0; }
+.note-tech-tag--monitoring { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.note-tech-tag--visualization { background: #fde2e7; color: #be185d; border-color: #fbcfe8; }
+.note-tech-tag--scripting { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+.note-tech-tag--shell { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
+.note-tech-tag--os { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+.note-tech-tag--network { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.note-tech-tag--virtualization { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+.note-tech-tag--office { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.note-tech-tag--ticketing { background: #f0f9ff; color: #0369a1; border-color: #7dd3fc; }
+
+/* アクションボタンのシンプルなスタイル */
+.note-experience-card__actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--note-border-color);
+    display: flex;
+    justify-content: center;
+}
+
+.note-detail-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--note-primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--note-border-radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.note-detail-toggle:hover {
+    background: var(--note-secondary-color);
+}
+
+.note-detail-toggle:active {
+    transform: scale(0.98);
+}
+
+.note-detail-toggle i {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.note-detail-toggle[aria-expanded="true"] i {
+    transform: rotate(45deg);
+}
+
+/* 詳細セクションのシンプルなスタイル */
+.note-experience-card__details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 0;
+}
+
+.note-experience-card__details--expanded {
+    max-height: 1000px;
+    margin-top: 1rem;
+}
+
+.note-experience-details {
+    padding: 1.5rem;
+    background: var(--note-accent-color);
+    border-radius: var(--note-border-radius);
+    border: 1px solid var(--note-border-color);
+}
+
+.note-experience-details__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--note-heading-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.note-detail-section {
+    margin-bottom: 1.5rem;
+}
+
+.note-detail-section:last-child {
+    margin-bottom: 0;
+}
+
+.note-detail-section h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--note-primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.note-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.note-metric-item {
+    text-align: center;
+    padding: 1rem;
+    background: var(--note-background-color);
+    border-radius: var(--note-border-radius);
+    border: 1px solid var(--note-border-color);
+}
+
+.note-metric-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--note-primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.note-metric-label {
+    font-size: 0.875rem;
+    color: var(--note-text-color);
+    font-weight: 500;
+}
+
+/* レスポンシブデザイン - シンプル版 */
+@media (max-width: 768px) {
+    .note-timeline::before {
+        left: 1rem;
+    }
+    
+    .note-timeline-marker {
+        width: 2rem;
+    }
+    
+    .note-timeline-content {
+        margin-left: 1rem;
+    }
+    
+    .note-experience-card {
+        padding: 1.5rem;
+    }
+    
+    .note-experience-card__title {
+        font-size: 1.25rem;
+    }
+    
+    .note-experience-card__company {
+        font-size: 1rem;
+    }
+    
+    .note-tech-tags {
+        gap: 0.375rem;
+    }
+    
+    .note-tech-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* ==========================================================================
+   保有資格セクション - Certifications Section CSS (シンプル版)
+   ========================================================================== */
+
+.note-certifications {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 資格カテゴリータブ */
+.note-certifications__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--note-border-color);
+    padding-bottom: 1rem;
+}
+
+.note-cert-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius);
+    color: var(--note-text-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.note-cert-tab:hover {
+    background: var(--note-accent-color);
+    border-color: var(--note-primary-color);
+    color: var(--note-primary-color);
+}
+
+.note-cert-tab--active {
+    background: var(--note-primary-color);
+    border-color: var(--note-primary-color);
+    color: white;
+}
+
+/* 資格コンテンツ */
+.note-cert-content {
+    display: none;
+}
+
+.note-cert-content--active {
+    display: block;
+}
+
+/* 資格グリッド */
+.note-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 資格カード */
+.note-cert-card {
+    background: var(--note-card-background);
+    border: 1px solid var(--note-border-color);
+    border-radius: var(--note-border-radius-lg);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+/* カードヘッダー */
+.note-cert-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.note-cert-card__icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--note-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--note-accent-color);
+    border: 1px solid var(--note-border-color);
+}
+
+.note-cert-card__badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--note-border-radius);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.note-cert-card__badge--featured {
+    background: #fbbf24;
+    color: white;
+}
+
+/* カードコンテンツ */
+.note-cert-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--note-heading-color);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.note-cert-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.note-cert-card__issuer,
+.note-cert-card__date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--note-text-light);
+}
+
+.note-cert-card__description {
+    color: var(--note-text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* スコアバッジ */
+.note-cert-card__score {
+    margin-bottom: 1rem;
+}
+
+.note-score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #10b981;
+    color: white;
+    border-radius: var(--note-border-radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* 有効期限バッジ */
+.note-cert-card__validity {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--note-border-color);
+}
+
+.note-validity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--note-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.note-validity-badge--valid {
+    background: #d1fae5;
+    color: #047857;
+    border: 1px solid #10b981;
+}
+
+.note-validity-badge--permanent {
+    background: #e0e7ff;
+    color: #3730a3;
+    border: 1px solid #6366f1;
+}
+
+.note-validity-badge--renewal {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #f59e0b;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .note-certifications__tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .note-cert-tab {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+    
+    .note-cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .note-cert-card {
+        padding: 1.5rem;
+    }
+    
+    .note-cert-card__header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .note-cert-card__title {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .note-cert-card {
+        padding: 1rem;
+    }
+    
+    .note-cert-card__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .note-cert-card__title {
+        font-size: 1rem;
+    }
+}
