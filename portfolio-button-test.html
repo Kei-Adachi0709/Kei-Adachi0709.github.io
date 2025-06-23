@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオボタンテスト</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            min-height: 200vh; /* スクロール可能にする */
+        }
+        .test-container {
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .note-portfolio-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .note-portfolio-btn:hover {
+            background: #005a9e;
+        }
+        .test-section {
+            margin: 50px 0;
+            padding: 20px;
+            border: 2px solid #ddd;
+        }
+        .scroll-marker {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-marker" id="scrollMarker">スクロール位置: 0</div>
+    
+    <h1>ポートフォリオボタンテスト</h1>
+    <p>このページでボタンクリック時のスクロール動作をテストします。</p>
+    
+    <div class="test-section">
+        <h2>テスト1: 基本的なボタン</h2>
+        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="smartphone-saber">
+            詳細を見る (基本)
+        </button>
+    </div>
+    
+    <div class="test-section">
+        <h2>テスト2: アイコン付きボタン</h2>
+        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="smart-pickup">
+            <i class="ri-eye-line"></i>
+            詳細を見る (アイコン付き)
+        </button>
+    </div>
+    
+    <div class="test-section">
+        <h2>テスト3: スクロールを下げてからテスト</h2>
+        <p>このセクションが見えるまでスクロールしてからボタンをクリックしてください。</p>
+        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="qr-food-display">
+            詳細を見る (スクロール後)
+        </button>
+    </div>
+    
+    <div style="height: 500px; background: linear-gradient(to bottom, #e0e0e0, #c0c0c0); display: flex; align-items: center; justify-content: center;">
+        <h2>スクロール領域</h2>
+    </div>
+    
+    <div class="test-section">
+        <h2>テスト4: ページ下部でのテスト</h2>
+        <p>ページ下部でボタンをクリックしたときの動作を確認します。</p>
+        <button class="note-portfolio-btn note-portfolio-btn--view" data-project="aws-infrastructure">
+            詳細を見る (ページ下部)
+        </button>
+    </div>
+
+    <!-- scroll-fix.js と note-app.js を読み込み -->
+    <script src="assets/js/scroll-fix.js"></script>
+    <script src="assets/js/portfolio-data-extended.js"></script>
+    <script src="assets/js/note-app.js"></script>
+    
+    <script>
+        // スクロール位置を表示
+        function updateScrollMarker() {
+            const scrollMarker = document.getElementById('scrollMarker');
+            scrollMarker.textContent = `スクロール位置: ${Math.round(window.pageYOffset)}px`;
+        }
+        
+        window.addEventListener('scroll', updateScrollMarker);
+        updateScrollMarker();
+        
+        // ボタンクリック時のデバッグログ
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.note-portfolio-btn--view')) {
+                console.log('=== ボタンクリック検出 ===');
+                console.log('クリック位置:', window.pageYOffset);
+                console.log('クリックされた要素:', e.target);
+                console.log('data-project:', e.target.closest('.note-portfolio-btn--view').getAttribute('data-project'));
+                
+                // 1秒後にスクロール位置を確認
+                setTimeout(() => {
+                    console.log('1秒後のスクロール位置:', window.pageYOffset);
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
