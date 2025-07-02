@@ -1,0 +1,75 @@
+# 🔒 GitHub リポジトリセキュリティ設定
+# 最高レベルのセキュリティ対策設定ファイル
+
+# Dependabot 設定 - 依存関係の自動更新・脆弱性対応
+version: 2
+updates:
+  # npm パッケージの自動更新
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    
+    # 自動マージ設定
+    auto-merge:
+      - match:
+          dependency-type: "development"
+          update-type: "semver:patch"
+      - match:
+          dependency-type: "production"
+          update-type: "semver:patch"
+    
+    # バージョニング戦略
+    versioning-strategy: "increase"
+    
+    # カスタムラベル
+    labels:
+      - "dependencies"
+      - "security"
+      - "automated"
+    
+    # レビュワー設定
+    reviewers:
+      - "Kei-Adachi0709"
+    
+    # コミットメッセージ設定
+    commit-message:
+      prefix: "🔧"
+      prefix-development: "🛠️"
+      include: "scope"
+
+  # GitHub Actions ワークフローの自動更新
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    labels:
+      - "github-actions"
+      - "security"
+      - "automated"
+
+# セキュリティアラート設定
+security-updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    
+# 無視する依存関係 (慎重に設定)
+ignore:
+  # 特定パッケージの特定バージョンを無視
+  - dependency-name: "lodash"
+    versions: ["4.17.20"]
+    reason: "Breaking changes in newer versions"
+  
+  # 開発依存関係のメジャー更新を無視
+  - dependency-name: "*"
+    dependency-type: "development"
+    update-types: ["version-update:semver-major"]
